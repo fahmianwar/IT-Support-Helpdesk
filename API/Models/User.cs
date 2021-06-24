@@ -18,13 +18,10 @@ namespace API.Models
         public DateTime BirthDate { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
-        public string Location { get; set; }
         public string Department { get; set; }
         public string Company { get; set; }
         public string Detail { get; set; }
         public int RoleId { get; set; }
-        public int StaffId { get; set; }
-        public int ClientId { get; set; }
         public virtual Role Role { get; set; }
         public virtual ICollection<Convertation> Convertation { get; set; }
 
