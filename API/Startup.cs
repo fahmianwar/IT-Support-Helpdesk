@@ -39,12 +39,10 @@ namespace API
             services.AddScoped<AttachmentRepository>();
             services.AddScoped<CaseRepository>();
             services.AddScoped<CategoryRepository>();
-            services.AddScoped<ClientRepository>();
             services.AddScoped<ConvertationRepository>();
             services.AddScoped<HistoryRepository>();
             services.AddScoped<PriorityRepository>();
             services.AddScoped<RoleRepository>();
-            services.AddScoped<StaffRepository>();
             services.AddScoped<StatusCodeRepository>();
             services.AddScoped<UserRepository>();
             services.AddDbContext<MyContext>(options =>

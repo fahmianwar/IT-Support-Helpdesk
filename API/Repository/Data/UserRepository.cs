@@ -25,36 +25,43 @@ namespace API.Repository.Data
             entities = context.Set<RegisterVM>();
             Configuration = configuration;
         }
-
         public int Register (RegisterVM registerVM)
         {
             var result = 0;
             var cek = context.Users.FirstOrDefault(u => u.Email == registerVM.Email);
-            if (cek== null)
+            if (cek == null)
             {
-                Client client = new Client()
+                User user = new User()
                 {
+                    Name = registerVM.Name,
+                    Email = registerVM.Email,
+                    Password = HashPassword(registerVM.Password),
+                    BirthDate = registerVM.BirthDate,
+                    RoleId = registerVM.RoleId,
                     Phone = registerVM.Phone,
                     Address = registerVM.Address,
                     Department = registerVM.Department,
                     Company = registerVM.Company
                 };
-                context.Add(client);
-                context.SaveChanges();
-
-                User user = new User()
-                {
-                    Name = registerVM.Name,
-                    Email = registerVM.Email,
-                    Password = registerVM.Password,
-                    BirthDate = registerVM.BirthDate,
-                    RoleId = registerVM.RoleId,
-                    ClientId = client.Id
-                };
                 context.Add(user);
                 result = context.SaveChanges();
             }
             return result;
+        }
+
+        private static string GetRandomSalt()
+        {
+            return BCrypt.Net.BCrypt.GenerateSalt(12);
+        }
+
+        private static string HashPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(password, GetRandomSalt());
+        }
+
+        private static bool ValidatePassword(string password, string hashPassword)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hashPassword);
         }
         public string GenerateTokenLogin(LoginVM loginVM)
         {
@@ -86,7 +93,7 @@ namespace API.Repository.Data
         public int Login(LoginVM loginVM)
         {
             var cek = context.Users.FirstOrDefault(u => u.Email == loginVM.Email);
-            if (cek.Password == loginVM.Password)
+            if (ValidatePassword(loginVM.Password, cek.Password))
             {
                 return 1;
             }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210624045140_NewTable")]
-    partial class NewTable
+    [Migration("20210624075757_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -103,31 +103,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TB_M_Categories");
-                });
-
-            modelBuilder.Entity("API.Models.Client", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Company")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Department")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Detail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_M_Clients");
                 });
 
             modelBuilder.Entity("API.Models.Convertation", b =>
@@ -222,25 +197,6 @@ namespace API.Migrations
                     b.ToTable("TB_M_Roles");
                 });
 
-            modelBuilder.Entity("API.Models.Staff", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Detail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_M_Staff");
-                });
-
             modelBuilder.Entity("API.Models.StatusCode", b =>
                 {
                     b.Property<int>("Id")
@@ -266,19 +222,37 @@ namespace API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Department")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Detail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RoleId")
@@ -324,17 +298,6 @@ namespace API.Migrations
                     b.Navigation("Priority");
                 });
 
-            modelBuilder.Entity("API.Models.Client", b =>
-                {
-                    b.HasOne("API.Models.User", "User")
-                        .WithOne("Client")
-                        .HasForeignKey("API.Models.Client", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("API.Models.Convertation", b =>
                 {
                     b.HasOne("API.Models.Case", "Case")
@@ -371,17 +334,6 @@ namespace API.Migrations
                     b.Navigation("Case");
 
                     b.Navigation("StatusCode");
-                });
-
-            modelBuilder.Entity("API.Models.Staff", b =>
-                {
-                    b.HasOne("API.Models.User", "User")
-                        .WithOne("Staff")
-                        .HasForeignKey("API.Models.Staff", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>
@@ -429,11 +381,7 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Models.User", b =>
                 {
-                    b.Navigation("Client");
-
                     b.Navigation("Convertation");
-
-                    b.Navigation("Staff");
                 });
 #pragma warning restore 612, 618
         }
