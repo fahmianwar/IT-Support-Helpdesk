@@ -17,8 +17,21 @@ namespace API.Controllers
         {
             this.userRepository = userRepository;
         }
+        [HttpPost("Register")]
+        public ActionResult Register (RegisterVM registerVM)
+        {
+            var register = userRepository.Register(registerVM);
+            if (register > 0)
+            {
+                return Ok("Register Berhasil");
+            }
+            else
+            {
+                return BadRequest("Register Gagal");
+            }
+        }
 
-        [HttpPost]
+        [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)
         {
             var post = userRepository.Login(loginVM);

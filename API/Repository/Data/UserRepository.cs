@@ -32,17 +32,6 @@ namespace API.Repository.Data
             var cek = context.Users.FirstOrDefault(u => u.Email == registerVM.Email);
             if (cek== null)
             {
-                User user = new User()
-                {
-                    Name = registerVM.Name,
-                    Email = registerVM.Email,
-                    Password = BCrypt.Net.HashPassword(registerVM.Password),
-                    BirthDate = registerVM.BirthDate,
-                    RoleId = registerVM.RoleId
-                };
-                context.Add(user);
-                result = context.SaveChanges();
-
                 Client client = new Client()
                 {
                     Phone = registerVM.Phone,
@@ -51,6 +40,18 @@ namespace API.Repository.Data
                     Company = registerVM.Company
                 };
                 context.Add(client);
+                context.SaveChanges();
+
+                User user = new User()
+                {
+                    Name = registerVM.Name,
+                    Email = registerVM.Email,
+                    Password = registerVM.Password,
+                    BirthDate = registerVM.BirthDate,
+                    RoleId = registerVM.RoleId,
+                    ClientId = client.Id
+                };
+                context.Add(user);
                 result = context.SaveChanges();
             }
             return result;
