@@ -28,9 +28,24 @@ namespace API.Repository.Data
                 {
                     Name = registerVM.Name,
                     Email = registerVM.Email,
-                    BirthDate
-                }
+                    Password = BCrypt.Net.HashPassword(registerVM.Password),
+                    BirthDate = registerVM.BirthDate,
+                    RoleId = registerVM.RoleId
+                };
+                context.Add(user);
+                result = context.SaveChanges();
+
+                Client client = new Client()
+                {
+                    Phone = registerVM.Phone,
+                    Address = registerVM.Address,
+                    Department = registerVM.Department,
+                    Company = registerVM.Company
+                };
+                context.Add(client);
+                result = context.SaveChanges();
             }
+            return result;
         }
     }
 }

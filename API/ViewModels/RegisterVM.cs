@@ -14,5 +14,10 @@ namespace API.ViewModels
         public DateTime BirthDate { get; set; }
         public int RoleId { get; set; }
         public string Phone { get; set; }
+        public string Address { get; set; }
+        public string Department { get; set; }
+        public string Company { get; set; }
+        public string Detail { get; set; }
+
     }
 }
