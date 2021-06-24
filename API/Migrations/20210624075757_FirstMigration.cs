@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class NewTable : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -103,6 +103,12 @@ namespace API.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     StaffId = table.Column<int>(type: "int", nullable: false),
                     ClientId = table.Column<int>(type: "int", nullable: false)
@@ -147,28 +153,6 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TB_M_Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TB_M_Clients", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TB_M_Clients_TB_M_Users_Id",
-                        column: x => x.Id,
-                        principalTable: "TB_M_Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "TB_M_Convertations",
                 columns: table => new
                 {
@@ -191,26 +175,6 @@ namespace API.Migrations
                     table.ForeignKey(
                         name: "FK_TB_M_Convertations_TB_M_Users_UserId",
                         column: x => x.UserId,
-                        principalTable: "TB_M_Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TB_M_Staff",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Detail = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TB_M_Staff", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TB_M_Staff_TB_M_Users_Id",
-                        column: x => x.Id,
                         principalTable: "TB_M_Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -287,13 +251,7 @@ namespace API.Migrations
                 name: "TB_M_Attachments");
 
             migrationBuilder.DropTable(
-                name: "TB_M_Clients");
-
-            migrationBuilder.DropTable(
                 name: "TB_M_Histories");
-
-            migrationBuilder.DropTable(
-                name: "TB_M_Staff");
 
             migrationBuilder.DropTable(
                 name: "TB_M_Convertations");
