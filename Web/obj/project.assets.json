@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Metrodata Coding Camp (MCC)\\Juni 2021\\Final Project\\IT Support Helpdesk\\Web\\Web.csproj",
+      "projectUniqueName": "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj",
       "projectName": "Web",
-      "projectPath": "D:\\Projects\\Metrodata Coding Camp (MCC)\\Juni 2021\\Final Project\\IT Support Helpdesk\\Web\\Web.csproj",
+      "projectPath": "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj",
       "packagesPath": "C:\\Users\\Fahmi\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Metrodata Coding Camp (MCC)\\Juni 2021\\Final Project\\IT Support Helpdesk\\Web\\obj\\",
+      "outputPath": "D:\\Github\\IT Support Helpdesk\\Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Fahmi\\AppData\\Roaming\\NuGet\\NuGet.Config",

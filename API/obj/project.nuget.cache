@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7v9kXur88JWC/frQk5WrFMESAFpODNUKPJrg+ybaZzdFf11RaHlY5Ponq67kM4zpnc9xwwnOLIHM7etHrZK+RQ==",
+  "dgSpecHash": "6i/RRzEbppVSXUKsp2GwpcoRCxQMJMsqYnr4JGycIxluDfR1y8VitV/E2/loHh8dkpEkWGOepOfgGD6NnvSpDQ==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Metrodata Coding Camp (MCC)\\Juni 2021\\Final Project\\IT Support Helpdesk\\API\\API.csproj",
+  "projectFilePath": "D:\\Github\\IT Support Helpdesk\\API\\API.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
