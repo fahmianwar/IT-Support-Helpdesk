@@ -1,6 +1,8 @@
 ﻿using API.Base;
 using API.Models;
 using API.Repository.Data;
+using API.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,20 @@ namespace API.Controllers
         public UsersController(UserRepository userRepository) : base(userRepository)
         {
             this.userRepository = userRepository;
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginVM loginVM)
+        {
+            var post = userRepository.Login(loginVM);
+            if (post > 0)
+            {
+                return Ok("Berhasil Login");
+            }
+            else
+            {
+                return BadRequest("Gagal Login");
+            }
         }
     }
 }

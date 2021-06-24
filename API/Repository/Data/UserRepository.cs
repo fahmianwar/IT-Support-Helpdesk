@@ -32,5 +32,18 @@ namespace API.Repository.Data
                 }
             }
         }
+
+        public int Login(LoginVM loginVM)
+        {
+            var cek = context.Users.FirstOrDefault(u => u.Email == loginVM.Email);
+            if (cek.Password == loginVM.Password)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
