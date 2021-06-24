@@ -33,9 +33,47 @@ namespace API.Context
             .HasMany(r => r.User)
             .WithOne(u => u.Role);
 
-            modelBuilder.Entity<Attachment>()
-            .HasOne(a => a.Convertation)
-            .WithMany(c => c.Attachment);
+            modelBuilder.Entity<Staff>()
+            .HasOne(s => s.User)
+            .WithOne(u => u.Staff)
+            .HasForeignKey<Staff>(s => s.Id );
+
+            modelBuilder.Entity<Client>()
+            .HasOne(c => c.User)
+            .WithOne(u => u.Client)
+            .HasForeignKey<Client>(c => c.Id);
+
+            modelBuilder.Entity<User>()
+            .HasMany(u => u.Convertation)
+            .WithOne(cv => cv.User);
+
+            modelBuilder.Entity<Convertation>()
+            .HasMany(cv => cv.Attachment)
+            .WithOne(a => a.Convertation);
+
+            modelBuilder.Entity<Case>()
+            .HasMany(cs => cs.Convertation)
+            .WithOne(cv => cv.Case);
+
+            modelBuilder.Entity<Priority>()
+            .HasMany(p => p.Case)
+            .WithOne(cs => cs.Priority);
+
+            modelBuilder.Entity<Category>()
+            .HasMany(ct => ct.Case)
+            .WithOne(cs => cs.Category);
+
+            modelBuilder.Entity<History>()
+            .HasOne(h => h.Case)
+            .WithMany(cs => cs.History);
+
+            modelBuilder.Entity<StatusCode>()
+            .HasMany(sc => sc.History)
+            .WithOne(h => h.StatusCode);
+
+
+
+
 
             /*
             modelBuilder.Entity<AccountRole>()
