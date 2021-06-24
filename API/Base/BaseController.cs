@@ -12,13 +12,7 @@ namespace API.Base
     public class BaseController<Entity, Repository, Key> : ControllerBase where Entity : class where Repository : IRepository<Entity, Key>
     {
         private readonly Repository repository;
-        /*
-        public EducationRepository educationRepository;
-        public UniversityRepository universityRepository;
-        public PersonRepository personRepository;
-        public ProfilingRepository profilingRepository;
-        public AccountRepository accountRepository;
-        */
+
         public BaseController(Repository repository)
         {
             this.repository = repository;
