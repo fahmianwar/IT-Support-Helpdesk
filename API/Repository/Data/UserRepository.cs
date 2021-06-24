@@ -29,7 +29,7 @@ namespace API.Repository.Data
         {
             var result = 0;
             var cek = context.Users.FirstOrDefault(u => u.Email == registerVM.Email);
-            if (cek== null)
+            if (cek == null)
             {
                 User user = new User()
                 {
@@ -93,7 +93,7 @@ namespace API.Repository.Data
         public int Login(LoginVM loginVM)
         {
             var cek = context.Users.FirstOrDefault(u => u.Email == loginVM.Email);
-            if (cek.Password == HashPassword(loginVM.Password))
+            if (ValidatePassword(loginVM.Password, cek.Password))
             {
                 return 1;
             }
