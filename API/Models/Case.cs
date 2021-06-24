@@ -18,5 +18,9 @@ namespace API.Models
         public int Review { get; set; }
         public int PriorityId { get; set; }
         public int CategoryId { get; set; }
+        public virtual ICollection<History> History { get; set; }
+        public virtual ICollection<Convertation> Convertation { get; set; }
+        public virtual Priority Priority { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

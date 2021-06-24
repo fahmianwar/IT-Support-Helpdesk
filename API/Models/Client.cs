@@ -17,5 +17,6 @@ namespace API.Models
         public string Department { get; set; }
         public string Company { get; set; }
         public string Detail { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -28,17 +28,16 @@ namespace API.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Role>()
+            .HasMany(r => r.User)
+            .WithOne(u => u.Role);
+
+            modelBuilder.Entity<Attachment>()
+            .HasOne(a => a.Convertation)
+            .WithMany(c => c.Attachment);
+
             /*
-            modelBuilder.Entity<Person>()
-            .HasOne(p => p.Account)
-            .WithOne(a => a.Person)
-            .HasForeignKey<Account>(a => a.NIK);
-
-            modelBuilder.Entity<Account>()
-            .HasOne(a => a.Profiling)
-            .WithOne(p => p.Account)
-            .HasForeignKey<Profiling>(p => p.NIK);
-
             modelBuilder.Entity<AccountRole>()
                 .HasKey(ar => new { ar.NIK, ar.RoleId });
 

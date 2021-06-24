@@ -15,7 +15,6 @@ namespace API.Models
         public string Phone { get; set; }
         public string Location { get; set; }
         public string Detail { get; set; }
-
-        public virtual 
+        public virtual User User { get; set; }
     }
 }

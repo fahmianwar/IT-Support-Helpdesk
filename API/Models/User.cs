@@ -18,7 +18,10 @@ namespace API.Models
         public DateTime BirthDate { get; set; }
         public int RoleId { get; set; }
         public int StaffId { get; set; }
-        public int Client { get; set; }
+        public int ClientId { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual Staff Staff { get; set; }
+        public virtual Client Client { get; set; }
 
     }
 }

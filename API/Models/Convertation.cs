@@ -16,5 +16,8 @@ namespace API.Models
         public string Message { get; set; }
         public int CaseId { get; set; }
         public int UserId { get; set; }
+        public virtual ICollection<Attachment> Attachment { get; set; }
+        public virtual Case Case { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -18,5 +18,6 @@ namespace API.Models
         public string Description { get; set; }
         public string CreatedOn { get; set; }
         public int ConvertationId { get; set; }
+        public virtual Convertation Convertation { get; set; }
     }
 }
