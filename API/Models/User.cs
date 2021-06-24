@@ -22,6 +22,7 @@ namespace API.Models
         public virtual Role Role { get; set; }
         public virtual Staff Staff { get; set; }
         public virtual Client Client { get; set; }
+        public virtual ICollection<Convertation> Convertation { get; set }
 
     }
 }
