@@ -7,7 +7,6 @@ namespace API.ViewModels
 {
     public class RegisterVM
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -18,6 +17,5 @@ namespace API.ViewModels
         public string Department { get; set; }
         public string Company { get; set; }
         public string Detail { get; set; }
-
     }
 }
