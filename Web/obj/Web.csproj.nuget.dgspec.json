@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nabila\\Documents\\GitHub\\IT-Support-Helpdesk\\Web\\Web.csproj": {}
+    "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nabila\\Documents\\GitHub\\IT-Support-Helpdesk\\Web\\Web.csproj": {
+    "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nabila\\Documents\\GitHub\\IT-Support-Helpdesk\\Web\\Web.csproj",
+        "projectUniqueName": "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\Nabila\\Documents\\GitHub\\IT-Support-Helpdesk\\Web\\Web.csproj",
-        "packagesPath": "C:\\Users\\Nabila\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nabila\\Documents\\GitHub\\IT-Support-Helpdesk\\Web\\obj\\",
+        "projectPath": "D:\\Github\\IT Support Helpdesk\\Web\\Web.csproj",
+        "packagesPath": "C:\\Users\\Fahmi\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\IT Support Helpdesk\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Nabila\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Fahmi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

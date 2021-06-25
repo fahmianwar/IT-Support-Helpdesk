@@ -5,3 +5,19 @@ IT Support Helpdesk/Web/obj/
 IT Support Helpdesk/API/Migrations/
 .vs/
 .git/
+.vs/IT Support Helpdesk/DesignTimeBuild/.dtbcache.v2
+API/obj/API.csproj.nuget.dgspec.json
+API/obj/API.csproj.nuget.g.props
+API/obj/Debug/netcoreapp3.1/API.assets.cache
+API/obj/Debug/netcoreapp3.1/API.csproj.AssemblyReference.cache
+API/obj/project.assets.json
+API/obj/project.nuget.cache
+Web/obj/Debug/netcoreapp3.1/Web.assets.cache
+Web/obj/Debug/netcoreapp3.1/Web.csproj.AssemblyReference.cache
+Web/obj/Debug/netcoreapp3.1/Web.csprojAssemblyReference.cache
+Web/obj/project.assets.json
+Web/obj/project.nuget.cache
+Web/obj/Web.csproj.nuget.dgspec.json
+Web/obj/Web.csproj.nuget.g.props
+API/obj/Debug/netcoreapp3.1/API.csproj.AssemblyReference.cache
+Web/obj/Debug/netcoreapp3.1/Web.csproj.AssemblyReference.cache
