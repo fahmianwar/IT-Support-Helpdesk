@@ -1,6 +1,7 @@
 ﻿using API.Context;
 using API.Models;
 using API.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,18 +13,15 @@ namespace API.Repository.Data
     public class CaseRepository : GeneralRepository<MyContext, Case, int>
     {
         private readonly MyContext context;
-        private readonly Microsoft.EntityFrameworkCore.DbSet<TicketVM> entities;
-        public IConfiguration Configuration;
+        private readonly DbSet<TicketVM> entities;
         public CaseRepository(MyContext myContext) : base(myContext)
         {
-         
+            this.context = myContext;
+            entities = context.Set<TicketVM>();
         }
         public int CreateTicket(TicketVM ticketVM)
         {
             var result = 0;
-            var cek = context.Cases.FirstOrDefault(cs => cs.Description == ticketVM.Description);
-            if (cek == null)
-            {
                 Case cases = new Case()
                 {
                     Description = ticketVM.Description,
@@ -57,7 +55,6 @@ namespace API.Repository.Data
                 };
                 context.Add(attachment);
                 result = context.SaveChanges();
-            }
             return result;
         }
     }
