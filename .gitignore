@@ -19,3 +19,5 @@ Web/obj/project.assets.json
 Web/obj/project.nuget.cache
 Web/obj/Web.csproj.nuget.dgspec.json
 Web/obj/Web.csproj.nuget.g.props
+API/obj/Debug/netcoreapp3.1/API.csproj.AssemblyReference.cache
+Web/obj/Debug/netcoreapp3.1/Web.csproj.AssemblyReference.cache
