@@ -29,7 +29,9 @@ namespace API.Repository.Data
                     Description = ticketVM.Description,
                     StartDateTime = ticketVM.StartDateTime,
                     EndDateTime = ticketVM.EndDateTime,
-                    Review = ticketVM.Review
+                    Review = ticketVM.Review,
+                    PriorityId = 1,
+                    CategoryId = ticketVM.CategoryId
                 };
                 context.Add(cases);
                 result = context.SaveChanges();
