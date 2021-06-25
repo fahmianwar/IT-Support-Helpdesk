@@ -16,7 +16,7 @@ namespace API.Models
         public string FileType { get; set; }
         public string Extension { get; set; }
         public string Description { get; set; }
-        public string CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
         public int ConvertationId { get; set; }
         public virtual Convertation Convertation { get; set; }
     }

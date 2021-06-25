@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     public class UsersController : BaseController<User, UserRepository, int>
     {
         private readonly UserRepository userRepository;
@@ -17,7 +18,8 @@ namespace API.Controllers
         {
             this.userRepository = userRepository;
         }
-        [HttpPost("Register")]
+        [Route("Register")]
+        [HttpPost]
         public ActionResult Register (RegisterVM registerVM)
         {
             var register = userRepository.Register(registerVM);
@@ -30,8 +32,8 @@ namespace API.Controllers
                 return BadRequest("Register Gagal");
             }
         }
-
-        [HttpPost("Login")]
+        [Route("Login")]
+        [HttpPost]
         public ActionResult Login(LoginVM loginVM)
         {
             var post = userRepository.Login(loginVM);
@@ -44,5 +46,94 @@ namespace API.Controllers
                 return BadRequest("Gagal Login");
             }
         }
+        [Route("GetCLient")]
+        [HttpGet]
+        public ActionResult GetAllClient()
+        {
+            var get = userRepository.GetClients();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+        [Route("GetClientbyId/{id}")]
+        [HttpGet]
+        public ActionResult GetClientbyId(int id)
+        {
+            var get = userRepository.GetClientById(id);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+        [Route("DeleteClientById/{id}")]
+        [HttpPost]
+        public ActionResult DeleteClientById(int id)
+        {
+            var get = userRepository.DeleteClientById(id);
+            if (get != 0)
+            {
+                return Ok("Data Berhasil Dihapus");
+            }
+            else
+            {
+                return BadRequest("Data Gagal Dihapus");
+            }
+        }
+        [Route("GetStaff")]
+        [HttpGet]
+        public ActionResult GetAllStaff()
+        {
+            var get = userRepository.GetStaffs();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+        [Route("GetStaffbyId/{id}")]
+        [HttpGet]
+        public ActionResult GetStaffbyId(int id)
+        {
+            var get = userRepository.GetStaffById(id);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+        [Route("DeleteStaffById/{id}")]
+        [HttpPost]
+        public ActionResult DeleteStaffById(int id)
+        {
+            var get = userRepository.DeleteStaffById(id);
+            if (get != 0)
+            {
+                return Ok("Data Berhasil Dihapus");
+            }
+            else
+            {
+                return BadRequest("Data Gagal Dihapus");
+            }
+        }
+
     }
 }

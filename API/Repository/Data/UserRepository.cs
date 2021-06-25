@@ -35,7 +35,7 @@ namespace API.Repository.Data
                 {
                     Name = registerVM.Name,
                     Email = registerVM.Email,
-                    Password = HashPassword(registerVM.Password),
+                    Password = BCrypt.Net.BCrypt.HashPassword(registerVM.Password),
                     BirthDate = registerVM.BirthDate,
                     RoleId = registerVM.RoleId,
                     Phone = registerVM.Phone,
@@ -47,21 +47,6 @@ namespace API.Repository.Data
                 result = context.SaveChanges();
             }
             return result;
-        }
-
-        private static string GetRandomSalt()
-        {
-            return BCrypt.Net.BCrypt.GenerateSalt(12);
-        }
-
-        private static string HashPassword(string password)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(password, GetRandomSalt());
-        }
-
-        private static bool ValidatePassword(string password, string hashPassword)
-        {
-            return BCrypt.Net.BCrypt.Verify(password, hashPassword);
         }
         public string GenerateTokenLogin(LoginVM loginVM)
         {
@@ -93,7 +78,7 @@ namespace API.Repository.Data
         public int Login(LoginVM loginVM)
         {
             var cek = context.Users.FirstOrDefault(u => u.Email == loginVM.Email);
-            if (ValidatePassword(loginVM.Password, cek.Password))
+            if (BCrypt.Net.BCrypt.Verify(loginVM.Password, cek.Password))
             {
                 return 1;
             }
@@ -104,32 +89,118 @@ namespace API.Repository.Data
         }
 
         // Clients
-        public ProfileVM GetClients()
+        public IEnumerable<ProfileVM> GetClients()
         {
-            return new ProfileVM();
+            User user = new User();
+            var all = (
+                from u in context.Users
+                join r in context.Roles on u.RoleId equals r.Id
+                select new ProfileVM
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    BirthDate = u.BirthDate,
+                    RoleName = r.Name,
+                    Phone = u.Phone,
+                    Address = u.Address,
+                    Department = u.Department,
+                    Company = u.Company,
+                    Detail = u.Detail
+                }).ToList();
+            return all;
         }
-        public int GetClientById(int id)
+        public ProfileVM GetClientById(int id)
         {
-            return 0;
+            var all = (
+                from u in context.Users
+                join r in context.Roles on u.RoleId equals r.Id
+                select new ProfileVM
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    BirthDate = u.BirthDate,
+                    RoleName = r.Name,
+                    Phone = u.Phone,
+                    Address = u.Address,
+                    Department = u.Department,
+                    Company = u.Company,
+                    Detail = u.Detail
+                }).ToList();
+            return all.FirstOrDefault(u => u.Id == id);
         }
         public int DeleteClientById(int id)
         {
-            return 0;
+            var user = context.Users.Find(id);
+            if (user != null)
+            {
+                context.Remove(user);
+                context.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         // Staffs
-        public List<ProfileVM> GetStaffs()
+        public IEnumerable<ProfileVM> GetStaffs()
         {
-            return new List<ProfileVM>();
+            User user = new User();
+            var all = (
+                from u in context.Users
+                join r in context.Roles on u.RoleId equals r.Id
+                select new ProfileVM
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    BirthDate = u.BirthDate,
+                    RoleName = r.Name,
+                    Phone = u.Phone,
+                    Address = u.Address,
+                    Department = u.Department,
+                    Company = u.Company,
+                    Detail = u.Detail
+                }).ToList();
+            return all;
         }
         public ProfileVM GetStaffById(int id)
         {
-            return new ProfileVM();
+            var all = (
+               from u in context.Users
+               join r in context.Roles on u.RoleId equals r.Id
+               select new ProfileVM
+               {
+                   Id = u.Id,
+                   Name = u.Name,
+                   Email = u.Email,
+                   BirthDate = u.BirthDate,
+                   RoleName = r.Name,
+                   Phone = u.Phone,
+                   Address = u.Address,
+                   Department = u.Department,
+                   Company = u.Company,
+                   Detail = u.Detail
+               }).ToList();
+            return all.FirstOrDefault(u => u.Id == id);
         }
 
         public int DeleteStaffById(int id)
         {
-            return 0;
+            var user = context.Users.Find(id);
+            if (user != null)
+            {
+                context.Remove(user);
+                context.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         // Users
