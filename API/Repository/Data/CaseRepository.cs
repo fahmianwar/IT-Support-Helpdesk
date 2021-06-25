@@ -41,6 +41,7 @@ namespace API.Repository.Data
                     DateTime = ticketVM.DateTime,
                     Message = ticketVM.Message,
                     CaseId = cases.Id,
+                    UserId = ticketVM.UserId
                 };
                 context.Add(convertation);
                 result = context.SaveChanges();
