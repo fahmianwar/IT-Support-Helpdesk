@@ -21,8 +21,6 @@ namespace API.Repository.Data
         public int CreateTicket(TicketVM ticketVM)
         {
             var result = 0;
-            var cek = context.Cases.FirstOrDefault(cs => cs.Description == ticketVM.Description);
-            if (cek == null)
             {
                 Case cases = new Case()
                 {
