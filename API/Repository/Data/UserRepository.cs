@@ -71,7 +71,7 @@ namespace API.Repository.Data
                     new Claim(JwtRegisteredClaimNames.Sub, Configuration["Jwt:Subject"]),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                    new Claim("NIK", user.Id.ToString()),
+                    new Claim("Id", user.Id.ToString()),
                     new Claim("Email", user.Email),
                     new Claim("role",ar.Name)
                     //new Claim(ClaimTypes.Role,ar.Role.RoleName)
@@ -101,6 +101,57 @@ namespace API.Repository.Data
             {
                 return 0;
             }
+        }
+
+        // Clients
+        public ProfileVM GetClients()
+        {
+            return new ProfileVM();
+        }
+        public int GetClientById(int id)
+        {
+            return 0;
+        }
+        public int DeleteClientById(int id)
+        {
+            return 0;
+        }
+
+        // Staffs
+        public List<ProfileVM> GetStaffs()
+        {
+            return new List<ProfileVM>();
+        }
+        public ProfileVM GetStaffById(int id)
+        {
+            return new ProfileVM();
+        }
+
+        public int DeleteStaffById(int id)
+        {
+            return 0;
+        }
+
+        // Users
+        public int UpdateProfile(ProfileVM profile)
+        {
+            return 0;
+        }
+        public List<User> GetUsers()
+        {
+            return new List<User>();
+        }
+        public User GetUserById(int id)
+        {
+            return new User();
+        }
+        public int UpdateUser(User user)
+        {
+            return 0;
+        }
+        public int DeleteUserById(int id)
+        {
+            return 0;
         }
     }
 }
