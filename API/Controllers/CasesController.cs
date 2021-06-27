@@ -17,8 +17,8 @@ namespace API.Controllers
         {
             this.caseRepository = caseRepository;
         }
-
-        [HttpPost("CreateTicket")]
+        [Route("CreateTicket")]
+        [HttpPost]
         public ActionResult CreateTicket(TicketVM ticketVM)
         {
             var create = caseRepository.CreateTicket(ticketVM);
