@@ -78,3 +78,5 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Inde
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Cases.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Users.cshtml.g.cs

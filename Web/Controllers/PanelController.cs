@@ -9,6 +9,11 @@ namespace Web.Controllers
 {
     public class PanelController : Controller
     {
+        public ActionResult Users()
+        {
+            return View();
+        }
+
         // GET: PanelController
         public ActionResult Index()
         {
