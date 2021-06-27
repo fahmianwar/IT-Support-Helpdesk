@@ -14,8 +14,8 @@ namespace API.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-        public int Review { get; set; }
+        public DateTime? EndDateTime { get; set; }
+        public int? Review { get; set; }
         public int PriorityId { get; set; }
         public int CategoryId { get; set; }
         public virtual ICollection<History> History { get; set; }

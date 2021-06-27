@@ -14,9 +14,11 @@ namespace API.Models
         public int Id { get; set; }
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
         public int CaseId { get; set; }
-        public int StatusCodeId { get; set; }
         public virtual Case Case { get; set; }
+        public int StatusCodeId { get; set; }
         public virtual StatusCode StatusCode { get; set; }
     }
 }
