@@ -20,8 +20,9 @@ namespace API.Repository.Data
             Configuration = configuration;
         }
 
-        public int UploadToFileSystem(List<IFormFile> files)
+        public int UploadToFileSystem(List<IFormFile> files, int convertationId, string description)
         {
+            int result = 0;
             foreach (var file in files)
             {
                 var guid = Guid.NewGuid().ToString();
@@ -33,23 +34,22 @@ namespace API.Repository.Data
                 var extension = Path.GetExtension(file.FileName);
                 if (!System.IO.File.Exists(filePath))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        file.CopyToAsync(stream);
-                    }
+                    var stream = new FileStream(filePath, FileMode.Create);
+                    file.CopyToAsync(stream);
                     var fileModel = new Attachment
                     {
                         CreatedOn = DateTime.Now,
                         FileType = file.ContentType,
                         Extension = extension,
                         Name = guid,
-                        Description = ""
+                        Description = description,
+                        ConvertationId = convertationId
                     };
-                    context.Attachments.Add(fileModel);
-                    context.SaveChanges();
+                    context.Add(fileModel);
+                    result = context.SaveChanges();
                 }
             }
-            return context.SaveChanges();
+            return result;
         }
 
     }
