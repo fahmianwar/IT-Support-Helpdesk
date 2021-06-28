@@ -1,6 +1,8 @@
 ﻿using API.Base;
 using API.Models;
 using API.Repository.Data;
+using API.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,11 @@ namespace API.Controllers
     public class ConvertationsController : BaseController<Convertation, ConvertationRepository, int>
     {
         private readonly ConvertationRepository convertationRepository;
-        public ConvertationsController(ConvertationRepository convertationRepository) : base(convertationRepository)
+        private readonly AttachmentRepository attachmentRepository;
+        public ConvertationsController(ConvertationRepository convertationRepository, AttachmentRepository attachmentRepository) : base(convertationRepository)
         {
             this.convertationRepository = convertationRepository;
+            this.attachmentRepository = attachmentRepository;
         }
 
         [HttpGet("ViewConvertations")]
@@ -28,6 +32,38 @@ namespace API.Controllers
             else
             {
                 return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+
+        [HttpPost("CreateConvertations")]
+        public ActionResult CreateConvertation(int userId, int caseId, string message, List<IFormFile> attachments)
+        {
+            var createConvertationVM = new CreateConvertationVM()
+            {
+                UserId = userId,
+                CaseId = caseId,
+                Message = message
+            };
+            var post = convertationRepository.CreateConvertation(createConvertationVM);
+            if (post > 0)
+            {
+                var convertationId = post;
+                var description = createConvertationVM.Message;
+                var upload = attachmentRepository.UploadToFileSystem(attachments, convertationId, description);
+                if (upload > 0)
+                {
+                    return Ok("Berhasil membuat Tiket & Attachment");
+                }
+                else
+                {
+                    return BadRequest("Gagal mengunggah Attachment Tiket");
+                }
+            }
+
+            else
+            {
+                return BadRequest("Gagal membuat Tiket");
             }
 
         }

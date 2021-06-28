@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Models;
+using API.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,18 @@ namespace API.Repository.Data
             this.context = myContext;
         }
 
-        public int CreateConvertation(Convertation convertation)
+        public int CreateConvertation(CreateConvertationVM createConvertationVM)
         {
+            var convertation = new Convertation()
+            {
+                DateTime = DateTime.Now,
+                Message = createConvertationVM.Message,
+                UserId = createConvertationVM.UserId,
+                CaseId = createConvertationVM.CaseId
+            };
             context.Convertations.Add(convertation);
-            return context.SaveChanges();
+            context.SaveChanges();
+            return convertation.Id;
         }
 
         public IEnumerable<Convertation> ViewConvertations()
