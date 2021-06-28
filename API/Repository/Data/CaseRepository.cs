@@ -76,13 +76,32 @@ namespace API.Repository.Data
             return all;
         }
 
-        public IEnumerable<Case> ViewTicketsByLevel(int level)
+        public IEnumerable<Case>  ViewTicketsByLevel(int level)
         {
             // Cases sama HIstory, dapetin caseId di History yang levelnya sesuai parameter
-            var all = context.Cases.ToList();
-            var allHistory = context.Histories;
-            var history = allHistory.Where(x => x.Level == level);
-            return all;
+            //var all = context.Cases.ToList();
+            //var allHistory = context.Histories;
+            //var history = allHistory.Where(x => x.Level == level);
+            //return all;
+            //var result = (from h in context.Histories
+            //              join c in context.Cases on h.CaseId equals c.Id
+            //              select new TicketByLevelVM
+            //              {
+            //                  RoleId = h.Level,
+            //                  CaseId = c.Id,
+            //                  UserId = h.UserId
+
+            //              }).ToList();
+            //var result = from blabla in context.cases
+            //             select blabla.caseId;
+
+            var result = (from h in context.Histories
+                          join c in context.Cases on h.CaseId equals c.Id
+                          where h.Level == level
+                          select h.CaseId);
+            List<int> caseList = result.ToList();
+            var cases = context.Cases.Where(x => caseList.Contains(x.Id));
+            return cases;
         }
         
         public int AskNextLevel(int caseId)
