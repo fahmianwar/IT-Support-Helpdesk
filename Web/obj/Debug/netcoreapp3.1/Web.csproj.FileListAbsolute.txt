@@ -78,3 +78,9 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Inde
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\_LoginLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
