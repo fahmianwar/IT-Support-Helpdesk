@@ -19,10 +19,10 @@ namespace API.Controllers
             this.attachmentRepository = attachmentRepository;
         }
         
-        [HttpPost("Upload/{files}")]
-        public ActionResult UploadToFileSystem(List<IFormFile> files)
+        [HttpPost("Upload")]
+        public ActionResult UploadToFileSystem(List<IFormFile> files, int convertationId, string description)
         {
-            var upload = attachmentRepository.UploadToFileSystem(files);
+            var upload = attachmentRepository.UploadToFileSystem(files, convertationId, description);
             if (upload > 0)
             {
                 return Ok("Berkas berhasil diunggah");
@@ -34,17 +34,23 @@ namespace API.Controllers
         }
 
         [HttpGet("Download/{id}")]
-        public async Task<IActionResult> DownloadFileFromFileSystem(int id)
+        public IActionResult DownloadFileFromFileSystem(int id)
         {
             var file = attachmentRepository.Get(id);
             if (file == null) return BadRequest();
+            /*
             var memory = new MemoryStream();
-            using (var stream = new FileStream(file.Name, FileMode.Open))
+            var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\Files\\");
+            var filePath = Path.Combine(basePath, file.Name);
+            using (var stream = new FileStream(filePath, FileMode.Open))
             {
                 await stream.CopyToAsync(memory);
             }
             memory.Position = 0;
             return File(memory, file.FileType, file.Name + file.Extension);
+            */
+            var stream = new FileStream(Directory.GetCurrentDirectory() + "\\Files\\" + file.Name, FileMode.Open);
+            return new FileStreamResult(stream, file.FileType);
         }
 
     }

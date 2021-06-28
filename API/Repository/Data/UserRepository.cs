@@ -108,7 +108,7 @@ namespace API.Repository.Data
                     Company = u.Company,
                     Detail = u.Detail
                 }).ToList();
-            return all;
+            return all.Where(x => x.RoleName == "Client");
         }
         public ProfileVM GetClientById(int id)
         {
@@ -165,7 +165,7 @@ namespace API.Repository.Data
                     Company = u.Company,
                     Detail = u.Detail
                 }).ToList();
-            return all;
+            return all.Where(x => x.RoleName != "Client");
         }
         public ProfileVM GetStaffById(int id)
         {

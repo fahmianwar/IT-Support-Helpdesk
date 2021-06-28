@@ -64,13 +64,13 @@ namespace API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDateTime")
+                    b.Property<DateTime?>("EndDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PriorityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Review")
+                    b.Property<int?>("Review")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDateTime")
@@ -150,11 +150,16 @@ namespace API.Migrations
                     b.Property<int>("StatusCodeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CaseId");
 
                     b.HasIndex("StatusCodeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TB_M_Histories");
                 });
@@ -323,9 +328,17 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("API.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Case");
 
                     b.Navigation("StatusCode");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>

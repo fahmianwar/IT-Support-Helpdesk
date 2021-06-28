@@ -20,35 +20,36 @@ namespace API.Repository.Data
             Configuration = configuration;
         }
 
-        public int UploadToFileSystem(List<IFormFile> files)
+        public int UploadToFileSystem(List<IFormFile> files, int convertationId, string description)
         {
+            int result = 0;
             foreach (var file in files)
             {
+                var guid = Guid.NewGuid().ToString();
                 var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\Files\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
-                var fileName = Path.GetFileNameWithoutExtension(file.Name);
-                var filePath = Path.Combine(basePath, file.Name);
-                var extension = Path.GetExtension(file.Name);
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var filePath = Path.Combine(basePath, guid);
+                var extension = Path.GetExtension(file.FileName);
                 if (!System.IO.File.Exists(filePath))
                 {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        file.CopyToAsync(stream);
-                    }
+                    var stream = new FileStream(filePath, FileMode.Create);
+                    file.CopyToAsync(stream);
                     var fileModel = new Attachment
                     {
                         CreatedOn = DateTime.Now,
                         FileType = file.ContentType,
                         Extension = extension,
-                        Name = fileName,
-                        Description = ""
+                        Name = guid,
+                        Description = description,
+                        ConvertationId = convertationId
                     };
-                    context.Attachments.Add(fileModel);
-                    context.SaveChanges();
+                    context.Add(fileModel);
+                    result = context.SaveChanges();
                 }
             }
-            return context.SaveChanges();
+            return result;
         }
 
     }

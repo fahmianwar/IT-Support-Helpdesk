@@ -18,8 +18,8 @@ namespace API.Controllers
         {
             this.userRepository = userRepository;
         }
-        [Route("Register")]
-        [HttpPost]
+
+        [HttpPost("Register")]
         public ActionResult Register (RegisterVM registerVM)
         {
             var register = userRepository.Register(registerVM);
@@ -32,8 +32,8 @@ namespace API.Controllers
                 return BadRequest("Register Gagal");
             }
         }
-        [Route("Login")]
-        [HttpPost]
+
+        [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)
         {
             var post = userRepository.Login(loginVM);
@@ -46,9 +46,9 @@ namespace API.Controllers
                 return BadRequest("Gagal Login");
             }
         }
-        [Route("GetCLient")]
-        [HttpGet]
-        public ActionResult GetAllClient()
+
+        [HttpGet("GetClients")]
+        public ActionResult GetClients()
         {
             var get = userRepository.GetClients();
             if (get != null)
@@ -61,8 +61,8 @@ namespace API.Controllers
             }
 
         }
-        [Route("GetClientbyId/{id}")]
-        [HttpGet]
+
+        [HttpGet("GetClientbyId/{id}")]
         public ActionResult GetClientbyId(int id)
         {
             var get = userRepository.GetClientById(id);
@@ -76,8 +76,8 @@ namespace API.Controllers
             }
 
         }
-        [Route("DeleteClientById/{id}")]
-        [HttpPost]
+
+        [HttpPost("DeleteClientById/{id}")]
         public ActionResult DeleteClientById(int id)
         {
             var get = userRepository.DeleteClientById(id);
@@ -90,9 +90,9 @@ namespace API.Controllers
                 return BadRequest("Data Gagal Dihapus");
             }
         }
-        [Route("GetStaff")]
-        [HttpGet]
-        public ActionResult GetAllStaff()
+
+        [HttpGet("GetStaffs")]
+        public ActionResult GetStaffs()
         {
             var get = userRepository.GetStaffs();
             if (get != null)
@@ -105,8 +105,8 @@ namespace API.Controllers
             }
 
         }
-        [Route("GetStaffbyId/{id}")]
-        [HttpGet]
+
+        [HttpGet("GetStaffbyId/{id}")]
         public ActionResult GetStaffbyId(int id)
         {
             var get = userRepository.GetStaffById(id);
@@ -120,8 +120,8 @@ namespace API.Controllers
             }
 
         }
-        [Route("DeleteStaffById/{id}")]
-        [HttpPost]
+
+        [HttpPost("DeleteStaffById/{id}")]
         public ActionResult DeleteStaffById(int id)
         {
             var get = userRepository.DeleteStaffById(id);
