@@ -35,6 +35,10 @@ namespace API.Context
             .HasMany(u => u.Convertation)
             .WithOne(cv => cv.User);
 
+            //modelBuilder.Entity<User>()
+            //.HasMany(cs => cs.Case)
+            //.WithOne(u => u.User);
+
             modelBuilder.Entity<Convertation>()
             .HasMany(cv => cv.Attachment)
             .WithOne(a => a.Convertation);

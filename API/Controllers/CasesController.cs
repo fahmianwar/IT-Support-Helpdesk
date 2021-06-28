@@ -17,8 +17,8 @@ namespace API.Controllers
         {
             this.caseRepository = caseRepository;
         }
-        [Route("CreateTicket")]
-        [HttpPost]
+
+        [HttpPost("CreateTicket")]
         public ActionResult CreateTicket(TicketVM ticketVM)
         {
             var create = caseRepository.CreateTicket(ticketVM);
@@ -29,6 +29,34 @@ namespace API.Controllers
             else
             {
                 return BadRequest("Tiket Gagal Ditambahkan");
+            }
+        }
+
+        [HttpPost("CloseTicket")]
+        public ActionResult CloseTicketById(CloseTicketVM closeTicketVM)
+        {
+            var create = caseRepository.CloseTicketById(closeTicketVM);
+            if (create > 0)
+            {
+                return Ok("Tiket Berhasil Ditutup");
+            }
+            else
+            {
+                return BadRequest("Tiket Gagal Ditutup");
+            }
+        }
+
+        [HttpPost("ReviewTicket")]
+        public ActionResult CloseTicketById(ReviewTicketVM reviewTicketVM)
+        {
+            var create = caseRepository.ReviewTicket(reviewTicketVM);
+            if (create > 0)
+            {
+                return Ok("Tiket Berhasil Ditutup");
+            }
+            else
+            {
+                return BadRequest("Tiket Gagal Ditutup");
             }
         }
     }

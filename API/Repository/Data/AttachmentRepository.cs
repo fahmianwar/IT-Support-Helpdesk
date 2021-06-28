@@ -45,6 +45,7 @@ namespace API.Repository.Data
                         Description = description,
                         ConvertationId = convertationId
                     };
+                    stream.Close();
                     context.Add(fileModel);
                     result = context.SaveChanges();
                 }
