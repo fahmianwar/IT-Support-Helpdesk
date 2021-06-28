@@ -45,7 +45,6 @@ D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Web.Views.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Web.Views.pdb
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
@@ -60,14 +59,6 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.TagHelpers.output.
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.RazorCoreGenerate.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\_LoginLayout.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Cases.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Users.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -80,3 +71,16 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplete
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\_LoginLayout.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Login\_LoginLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
+C:\Users\Nabila\Documents\GitHub\IT-Support-Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\Index.cshtml.g.cs
