@@ -82,5 +82,20 @@ namespace API.Controllers
             }
 
         }
+
+        [HttpGet("ViewConvertationsByUserId/{id}")]
+        public ActionResult ViewConvertationsByUserId(int id)
+        {
+            var get = convertationRepository.ViewConvertationsByUserId(id);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
     }
 }

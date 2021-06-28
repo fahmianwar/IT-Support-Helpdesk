@@ -42,9 +42,9 @@ namespace API.Repository.Data
             return find;
         }
 
-        public IEnumerable<Convertation> ViewConvertationsByUserIdAndCaseId(int userId, int caseId)
+        public IEnumerable<Convertation> ViewConvertationsByUserId(int userId)
         {
-            var find = context.Convertations.Where(x => x.UserId == userId && x.CaseId == caseId);
+            var find = context.Convertations.Where(x => x.UserId == userId);
             return find;
         }
     }

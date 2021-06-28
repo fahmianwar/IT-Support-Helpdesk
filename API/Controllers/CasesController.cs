@@ -32,6 +32,48 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("ViewTicketsByUserId/{userId}")]
+        public ActionResult ViewTicketsByUserId(int userId)
+        {
+            var get = caseRepository.ViewTicketsByUserId(userId);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data tidak ditemukan");
+            }
+        }
+
+        [HttpGet("ViewTicketsByLevel/{level}")]
+        public ActionResult ViewTicketsByLevel(int level)
+        {
+            var get = caseRepository.ViewTicketsByLevel(level);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Tiket Gagal Ditutup");
+            }
+        }
+
+        [HttpPost("AskNextLevel")]
+        public ActionResult AskNextLevel(int caseId)
+        {
+            var ask = caseRepository.AskNextLevel(caseId);
+            if (ask > 0)
+            {
+                return Ok("Berhasil meminta bantuan");
+            }
+            else
+            {
+                return BadRequest("Gagal meminta bantuan");
+            }
+        }
+
         [HttpPost("CloseTicket")]
         public ActionResult CloseTicketById(CloseTicketVM closeTicketVM)
         {

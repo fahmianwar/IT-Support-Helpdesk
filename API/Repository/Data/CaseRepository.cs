@@ -72,11 +72,42 @@ namespace API.Repository.Data
 
         public IEnumerable<Case> ViewTicketsByUserId(int userId)
         {
-            var all = context.Cases.ToList();
-            return all.Where(x => x.UserId == userId);
+            var all = context.Cases.Where(x => x.UserId == userId);
+            return all;
         }
 
-        public int CloseTicketById(CloseTicketVM closeTicketVM)
+        public IEnumerable<Case> ViewTicketsByLevel(int level)
+        {
+            // Cases sama HIstory, dapetin caseId di History yang levelnya sesuai parameter
+            var all = context.Cases.ToList();
+            var allHistory = context.Histories;
+            var history = allHistory.Where(x => x.Level == level);
+            return all;
+        }
+        
+        public int AskNextLevel(int caseId)
+        {
+            int result = 0;
+
+            var get = context.Histories.OrderByDescending(e => e.DateTime).FirstOrDefault(x => x.CaseId == caseId);
+            if(get.Level < 3) {
+                var history = new History()
+                {
+                    DateTime = DateTime.Now,
+                    Level = get.Level + 1,
+                    Description = $"[STAFF] UserId #{get.UserId} Ask Help CaseId #{caseId} to Level #{get.Level + 1}",
+                    UserId = get.UserId,
+                    CaseId = get.CaseId,
+                    StatusCodeId = get.StatusCodeId
+                };
+
+                context.Histories.Add(history);
+                result = context.SaveChanges();
+            }
+            return result;
+        }
+
+            public int CloseTicketById(CloseTicketVM closeTicketVM)
         {
             var cases = context.Cases.Find(closeTicketVM.CaseId);
             if (cases.EndDateTime == null)
@@ -85,7 +116,7 @@ namespace API.Repository.Data
                 context.Cases.Update(cases);
                 context.SaveChanges();
 
-                var lastHistory = context.Histories.OrderByDescending(e => e.DateTime).FirstOrDefault();
+                var lastHistory = context.Histories.OrderByDescending(e => e.DateTime).FirstOrDefault(x => x.CaseId == closeTicketVM.CaseId);
                 History newHistory = new History()
                 {
                     CaseId = cases.Id,
