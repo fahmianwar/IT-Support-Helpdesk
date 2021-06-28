@@ -37,7 +37,7 @@ namespace API.Repository.Data
                     Email = registerVM.Email,
                     Password = BCrypt.Net.BCrypt.HashPassword(registerVM.Password),
                     BirthDate = registerVM.BirthDate,
-                    RoleId = registerVM.RoleId,
+                    RoleId = 5,
                     Phone = registerVM.Phone,
                     Address = registerVM.Address,
                     Department = registerVM.Department,
