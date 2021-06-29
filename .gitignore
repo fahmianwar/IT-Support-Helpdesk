@@ -21,3 +21,14 @@ Web/obj/Web.csproj.nuget.dgspec.json
 Web/obj/Web.csproj.nuget.g.props
 API/obj/Debug/netcoreapp3.1/API.csproj.AssemblyReference.cache
 Web/obj/Debug/netcoreapp3.1/Web.csproj.AssemblyReference.cache
+API/obj/Debug/netcoreapp3.1/API.assets.cache
+Web/obj/Debug/netcoreapp3.1/apphost.exe
+Web/obj/Debug/netcoreapp3.1/Web.assets.cache
+API/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+API/obj/Debug/netcoreapp3.1/API.AssemblyInfo.cs
+API/obj/Debug/netcoreapp3.1/API.AssemblyInfoInputs.cache
+Web/obj/Debug/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+Web/obj/Debug/netcoreapp3.1/Web.AssemblyInfo.cs
+Web/obj/Debug/netcoreapp3.1/Web.AssemblyInfoInputs.cache
+Web/obj/Debug/netcoreapp3.1/Web.RazorAssemblyInfo.cache
+Web/obj/Debug/netcoreapp3.1/Web.RazorAssemblyInfo.cs
