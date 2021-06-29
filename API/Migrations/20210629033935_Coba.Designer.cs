@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210628015132_Table")]
-    partial class Table
+    [Migration("20210629033935_Coba")]
+    partial class Coba
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,17 +66,23 @@ namespace API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDateTime")
+                    b.Property<DateTime?>("EndDateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
 
                     b.Property<int>("PriorityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Review")
+                    b.Property<int?>("Review")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDateTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -149,7 +155,13 @@ namespace API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
                     b.Property<int>("StatusCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -157,6 +169,8 @@ namespace API.Migrations
                     b.HasIndex("CaseId");
 
                     b.HasIndex("StatusCodeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TB_M_Histories");
                 });
@@ -325,9 +339,17 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("API.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Case");
 
                     b.Navigation("StatusCode");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("API.Models.User", b =>

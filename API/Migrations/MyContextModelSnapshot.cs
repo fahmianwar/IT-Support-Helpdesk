@@ -67,6 +67,9 @@ namespace API.Migrations
                     b.Property<DateTime?>("EndDateTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Level")
+                        .HasColumnType("int");
+
                     b.Property<int>("PriorityId")
                         .HasColumnType("int");
 

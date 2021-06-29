@@ -79,12 +79,40 @@ namespace API.Repository.Data
         public IEnumerable<Case> ViewTicketsByLevel(int level)
         {
             // Cases sama HIstory, dapetin caseId di History yang levelnya sesuai parameter
-            var all = context.Cases.ToList();
-            var allHistory = context.Histories;
-            var history = allHistory.Where(x => x.Level == level);
-            return all;
+            //var all = context.Cases.ToList();
+            //var allHistory = context.Histories;
+            //var history = allHistory.Where(x => x.Level == level);
+            //return all;
+            //var result = (from h in context.Histories
+            //              join c in context.Cases on h.CaseId equals c.Id
+            //              select new TicketByLevelVM
+            //              {
+            //                  RoleId = h.Level,
+            //                  CaseId = c.Id,
+            //                  UserId = h.UserId
+
+            //              }).ToList();
+            //var result = from blabla in context.cases
+            //             select blabla.caseId;
+
+            //var result = (from h in context.Histories
+            //              join c in context.Cases on h.CaseId equals c.Id
+            //              where (from h1 in context.Histories
+            //                     join c1 in context.Cases on h1.CaseId equals c1.Id
+            //                     orderby h.DateTime descending
+            //                     select h.Level).FirstOrDefault(x => x.Id ==) == level
+            //              select h.CaseId);
+
+            //var getLatest = (from h in context.Histories
+            //                 join c in context.Cases on h.CaseId equals c.Id
+            //                 orderby h.DateTime descending
+            //                 select h.CaseId);
+            var getLatest = context.Cases.Where(x => x.Level == level);
+            //List<int> caseList = result.ToList();
+
+            return getLatest;
         }
-        
+
         public int AskNextLevel(int caseId)
         {
             int result = 0;
