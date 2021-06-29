@@ -1,26 +1,24 @@
-﻿using API.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using API.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Web.Base;
 using Web.Repository.Data;
 
 namespace Web.Controllers
 {
-    [Authorize]
-    public class PanelController : BaseController<User, UserRepository, int>
+    public class PanelController : Controller
     {
-        private readonly UserRepository userRepository;
+        UserRepository userRepository;
 
-        public PanelController(UserRepository userRepository) : base(userRepository)
+        public PanelController(UserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
-        public ActionResult Users()
+        public IActionResult Users()
         {
             return View();
         }
@@ -31,8 +29,21 @@ namespace Web.Controllers
             return Json(result);
         }
 
+        //[HttpPost]
+        //public async Task<IActionResult> Auth(LoginVM loginVM)
+        //{
+        //    var jwToken = userRepository.Auth(loginVM);
+        //    if (jwToken == null)
+        //    {
+        //        return RedirectToAction("index");
+        //    }
+        //    HttpContext.Session.SetString("JWToken", jwToken.Token);
+        //    return RedirectToAction("Index", "Panel");
+        //}
+
+
         // GET: PanelController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }

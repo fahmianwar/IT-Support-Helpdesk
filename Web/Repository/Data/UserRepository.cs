@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +56,13 @@ namespace Web.Repository.Data
                 data = JsonConvert.DeserializeObject<List<User>>(apiResponse);
             }
             return data;
+        }
+
+        public HttpStatusCode InsertUser(User user)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+            var result = httpClient.PostAsync(address.link + request, content).Result;
+            return result.StatusCode;
         }
 
         public async Task<RegisterVM> GetProfileById(int id)
