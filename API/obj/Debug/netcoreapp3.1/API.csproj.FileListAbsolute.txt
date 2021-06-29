@@ -159,3 +159,4 @@ D:\Github\IT Support Helpdesk\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplet
 D:\Github\IT Support Helpdesk\API\obj\Debug\netcoreapp3.1\API.dll
 D:\Github\IT Support Helpdesk\API\obj\Debug\netcoreapp3.1\API.pdb
 D:\Github\IT Support Helpdesk\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+D:\Github\IT Support Helpdesk\API\obj\Debug\netcoreapp3.1\API.csproj.AssemblyReference.cache
