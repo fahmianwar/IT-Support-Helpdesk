@@ -9,7 +9,9 @@ namespace API.Base
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<Entity, Repository, Key> : ControllerBase where Entity : class where Repository : IRepository<Entity, Key>
+    public class BaseController<Entity, Repository, Key> : ControllerBase 
+        where Entity : class 
+        where Repository : IRepository<Entity, Key>
     {
         private readonly Repository repository;
 

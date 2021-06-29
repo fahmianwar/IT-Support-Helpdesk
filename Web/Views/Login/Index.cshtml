@@ -1,8 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Login";
-    Layout = "_LoginLayout";
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-
+<link href="~/lib/adminlte/plugins/toastr.min.css" rel="stylesheet" />
 <div class="login-box">
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
@@ -12,7 +13,7 @@
         <div class="card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="/Login/Auth" method="post">
+            <form action="/Login/" method="post">
                 <div class="input-group mb-3">
                     <input type="email" name="Email" class="form-control" placeholder="Email">
                     <div class="input-group-append">
@@ -50,7 +51,7 @@
                 <a href="forgot-password.html">I forgot my password</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="/Login/register" class="text-center">Register a new membership</a>
             </p>
         </div>
         <!-- /.card-body -->
@@ -58,3 +59,8 @@
     <!-- /.card -->
 </div>
 <!-- /.login-box -->
+@section scriptLogin{
+    <script src="~/js/Login.js" asp-append-version="true"></script>
+    <script src="~/lib/adminlte/plugins/toastr.min.js"></script>
+}
+
