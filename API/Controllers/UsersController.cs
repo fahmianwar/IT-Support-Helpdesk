@@ -36,14 +36,29 @@ namespace API.Controllers
         [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)
         {
-            var post = userRepository.Login(loginVM);
-            if (post > 0)
+            var login = userRepository.Login(loginVM);
+            if (login == 404)
             {
-                return Ok("Berhasil Login");
+                return BadRequest("Email tidak ditemukan, Silakan gunakan email lain");
+            }
+            else if (login == 401)
+            {
+                return BadRequest("Password salah");
+            }
+            else if (login == 1)
+            {
+                return Ok(
+                    new JWTokenVM
+                    {
+                        Token = userRepository.GenerateTokenLogin(loginVM),
+                        Messages = "Login Success"
+                    }
+                    );
+
             }
             else
             {
-                return BadRequest("Gagal Login");
+                return BadRequest("Gagal login");
             }
         }
 
