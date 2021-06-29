@@ -84,7 +84,7 @@ namespace Web
                 await next();
             });
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

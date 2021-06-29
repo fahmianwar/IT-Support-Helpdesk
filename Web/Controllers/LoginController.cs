@@ -37,9 +37,9 @@ namespace Web.Controllers
         //    }
         //    return View();
         //}
-        [HttpPost("Auth")]
+        [HttpPost]
         // GET: LoginController/Details/5
-        public async Task<IActionResult> Login(LoginVM loginVM)
+        public async Task<IActionResult> Auth(LoginVM loginVM)
         {
             var jwToken = await repository.Auth(loginVM);
             if (jwToken == null)
@@ -47,13 +47,8 @@ namespace Web.Controllers
                 return RedirectToAction("index");
             }
             HttpContext.Session.SetString("JWToken", jwToken.Token);
-            return RedirectToAction("index", "home");
+            return RedirectToAction("Index", "Panel");
         }
 
-        public IActionResult Logout()
-        {
-            HttpContext.Session.Clear();
-            return RedirectToAction("index", "home");
-        }
     }
 }

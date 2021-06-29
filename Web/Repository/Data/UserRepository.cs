@@ -45,14 +45,14 @@ namespace Web.Repository.Data
             return token;
         }
 
-        public async Task<List<RegisterVM>> GetAllProfile()
+        public async Task<List<User>> GetUsers()
         {
-            List<RegisterVM> data = new List<RegisterVM>();
+            List<User> data = new List<User>();
 
-            using (var response = await httpClient.GetAsync(request + "GetAllProfile"))
+            using (var response = await httpClient.GetAsync(request))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<RegisterVM>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<User>>(apiResponse);
             }
             return data;
         }

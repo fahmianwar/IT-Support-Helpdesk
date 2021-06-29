@@ -1,17 +1,34 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using API.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Base;
+using Web.Repository.Data;
 
 namespace Web.Controllers
 {
-    public class PanelController : Controller
+    [Authorize]
+    public class PanelController : BaseController<User, UserRepository, int>
     {
+        private readonly UserRepository userRepository;
+
+        public PanelController(UserRepository userRepository) : base(userRepository)
+        {
+            this.userRepository = userRepository;
+        }
         public ActionResult Users()
         {
             return View();
+        }
+
+        public async Task<JsonResult> GetUsers()
+        {
+            var result = await userRepository.GetUsers();
+            return Json(result);
         }
 
         // GET: PanelController
@@ -20,73 +37,11 @@ namespace Web.Controllers
             return View();
         }
 
-        // GET: PanelController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Logout()
         {
-            return View();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: PanelController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: PanelController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PanelController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PanelController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PanelController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: PanelController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
