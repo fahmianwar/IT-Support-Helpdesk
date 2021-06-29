@@ -20,10 +20,10 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("index", "login");
-            }
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("index", "login");
+            //}
             return View();
         }
 
