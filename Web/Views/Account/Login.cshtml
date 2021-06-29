@@ -1,8 +1,9 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
+
 <link href="~/lib/adminlte/plugins/toastr.min.css" rel="stylesheet" />
 <div class="login-box">
     <!-- /.login-logo -->
@@ -26,7 +27,7 @@
                     <input type="password" name="Password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                            <span toggle="#password-field" class="fas fa-lock field-icon toggle-password"></span>
                         </div>
                     </div>
                 </div>
@@ -41,7 +42,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" name="submit" class="btn btn-primary btn-block" id="login" onclick="myLogin()">Sign In</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -51,7 +52,7 @@
                 <a href="forgot-password.html">I forgot my password</a>
             </p>
             <p class="mb-0">
-                <a href="/Login/register" class="text-center">Register a new membership</a>
+                <a href="/Register" class="text-center">Register a new membership</a>
             </p>
         </div>
         <!-- /.card-body -->
@@ -63,4 +64,5 @@
     <script src="~/js/Login.js" asp-append-version="true"></script>
     <script src="~/lib/adminlte/plugins/toastr.min.js"></script>
 }
+
 

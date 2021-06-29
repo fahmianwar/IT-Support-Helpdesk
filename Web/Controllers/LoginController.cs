@@ -38,7 +38,6 @@ namespace Web.Controllers
         //    return View();
         //}
         [HttpPost]
-        // GET: LoginController/Details/5
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
             var jwToken = await repository.Auth(loginVM);
