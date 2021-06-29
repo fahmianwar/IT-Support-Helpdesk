@@ -52,7 +52,8 @@ namespace API
             services.AddCors(c =>
             {
                 //c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44300"));
-                c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44300").AllowAnyMethod().AllowCredentials().AllowAnyHeader());
+                //c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44300").AllowAnyMethod().AllowCredentials().AllowAnyHeader());
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

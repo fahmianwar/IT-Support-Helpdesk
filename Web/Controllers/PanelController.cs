@@ -48,6 +48,11 @@ namespace Web.Controllers
             return View();
         }
 
+        public IActionResult CreateTicket()
+        {
+            return View();
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();

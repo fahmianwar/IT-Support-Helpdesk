@@ -98,7 +98,7 @@ function insertUser() {
         });
     } else {
         $.ajax({
-            url: 'https://localhost:44357/api/Users',
+            url: 'https://localhost:44357/api/Users/Register',
             type: "POST",
             headers: {
                 'Accept': 'application/json',
