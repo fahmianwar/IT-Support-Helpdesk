@@ -35,6 +35,20 @@ namespace API.Controllers
             }
         }
 
+        [HttpPost("CreateUser")]
+        public ActionResult CreateUser(User user)
+        {
+            var create = userRepository.CreateUser(user);
+            if (create > 0)
+            {
+                return Ok("Register Berhasil");
+            }
+            else
+            {
+                return BadRequest("Register Gagal");
+            }
+        }
+
         [AllowAnonymous]
         [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)

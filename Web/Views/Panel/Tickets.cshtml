@@ -144,6 +144,72 @@
         </div>
     </div>
 </div>
+
+
+<div id="viewConvertationModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cases</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="direct-chat-messages" id="chatMessages">
+                    <!-- Message. Default to the left -->
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-left">Alexander Pierce</span>
+                            <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                        </div>
+                        <!-- /.direct-chat-infos -->
+                        <img class="direct-chat-img" src="~/lib/adminlte/img/user1-128x128.jpg" alt="message user image">
+                        <!-- /.direct-chat-img -->
+                        <div class="direct-chat-text">
+                            Is this template really for free? That's unbelievable!
+                        </div>
+                        <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-right">Sarah Bullock</span>
+                            <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                        </div>
+                        <!-- /.direct-chat-infos -->
+                        <img class="direct-chat-img" src="~/lib/adminlte/img/user3-128x128.jpg" alt="message user image">
+                        <!-- /.direct-chat-img -->
+                        <div class="direct-chat-text">
+                            You better believe it!
+                        </div>
+                        <!-- /.direct-chat-text -->
+                    </div>
+                </div>
+                <form class="needs-validation" novalidate id="formCreateConvertation" action="javascript:createConvertation()">
+
+                    <div class="form-row">
+                        <input type="number" class="form-control" id="inputConvertationUserId" value="@ViewBag.UserId" hidden required>
+                        <input type="number" class="form-control" id="inputConvertationCaseId" value="" hidden required>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputConvertationMessage">Message</label>
+                            <textarea class="form-control" id="inputConvertationMessage" placeholder="Message" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Send</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 @section scripts {
     <script src="~/js/ticket.js" asp-append-version="true"></script>
 }

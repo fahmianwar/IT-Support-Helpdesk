@@ -48,6 +48,20 @@ namespace API.Repository.Data
             }
             return result;
         }
+
+        public int CreateUser(User user)
+        {
+            var cek = context.Users.FirstOrDefault(u => u.Email == user.Email);
+            if(cek == null)
+            {
+                context.Add(user);
+                return context.SaveChanges();
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public string GenerateTokenLogin(LoginVM loginVM)
         {
             var user = context.Users.Single(p => p.Email == loginVM.Email);

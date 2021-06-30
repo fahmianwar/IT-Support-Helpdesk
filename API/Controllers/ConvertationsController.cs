@@ -37,28 +37,28 @@ namespace API.Controllers
         }
 
         [HttpPost("CreateConvertations")]
-        public ActionResult CreateConvertation(int userId, int caseId, string message, List<IFormFile> attachments)
+        public ActionResult CreateConvertation(CreateConvertationVM createConvertationVM)
         {
-            var createConvertationVM = new CreateConvertationVM()
-            {
-                UserId = userId,
-                CaseId = caseId,
-                Message = message
-            };
+            //var createConvertationVM = new CreateConvertationVM()
+            //{
+            //    UserId = userId,
+            //    CaseId = caseId,
+            //    Message = message
+            //};
             var post = convertationRepository.CreateConvertation(createConvertationVM);
             if (post > 0)
             {
-                var convertationId = post;
-                var description = createConvertationVM.Message;
-                var upload = attachmentRepository.UploadToFileSystem(attachments, convertationId, description);
-                if (upload > 0)
-                {
-                    return Ok("Berhasil membuat Tiket & Attachment");
-                }
-                else
-                {
-                    return BadRequest("Gagal mengunggah Attachment Tiket");
-                }
+                //var convertationId = post;
+                //var description = createConvertationVM.Message;
+                //var upload = attachmentRepository.UploadToFileSystem(createConvertationVM.Files, convertationId, description);
+                //if (upload > 0)
+                //{
+                    return Ok("Berhasil membuat Tiket");
+                //}
+                //else
+                //{
+                //    return BadRequest("Gagal mengunggah Attachment Tiket");
+                //}
             }
 
             else

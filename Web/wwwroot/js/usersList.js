@@ -98,8 +98,9 @@ function insertUser() {
         });
     } else {
         $.ajax({
-            url: 'https://localhost:44357/api/Users/Register',
+            url: 'https://localhost:44357/api/Users/CreateUser',
             type: "POST",
+            dataType: "json",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -122,7 +123,7 @@ function insertUser() {
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Ok'
             });
             console.log(error);
         });
