@@ -1,4 +1,6 @@
-﻿using API.ViewModels;
+﻿using API.Models;
+using API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -6,18 +8,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Web.Base;
 using Web.Repository.Data;
 
 namespace Web.Controllers
 {
-    public class PanelController : Controller
+    public class PanelController : BaseController<User, UserRepository, int>
     {
-        UserRepository userRepository;
-
-        public PanelController(UserRepository userRepository)
+        private readonly UserRepository userRepository;
+        public PanelController(UserRepository userRepository) : base(userRepository)
         {
             this.userRepository = userRepository;
         }
+
         public IActionResult Users()
         {
             return View();
@@ -85,6 +88,15 @@ namespace Web.Controllers
 
         public IActionResult CreateTicket()
         {
+            return View();
+        }
+
+        //[AllowAnonymous]
+        //[Route("ViewConvertationByCaseId")]
+        //[HttpGet("ViewConvertationByCaseId/{caseId}")]
+        public IActionResult ViewConvertationByCaseId(int caseId)
+        {
+            ViewBag.CaseId = caseId;
             return View();
         }
 

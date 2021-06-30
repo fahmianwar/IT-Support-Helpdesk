@@ -1,85 +1,81 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
+﻿@{
+    ViewData["Title"] = "List Users";
+    Layout = "_PanelLayout";
+}
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="~/lib/adminlte/plugins/fontawesome-free/css/all.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="~/lib/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="~/lib/adminlte/dist/css/adminlte.min.css">
-</head>
-<body class="hold-transition register-page">
-    <div class="register-box">
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Ticket</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="/Panel/">Panel</a></li>
+                        <li class="breadcrumb-item active">Ticket</li>
+                    </ol>
+                </div>
             </div>
-            <div class="card-body">
-                <p class="login-box-msg">Create Ticket</p>
+        </div><!-- /.container-fluid -->
+    </section>
 
-                <form action="../../index.html" method="post">
-                    <div class="input-group mb-3">
-                        <label>Description</label>
-                        <input type="text" class="form-control" placeholder="Description">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-sort-desc"></span>
-                            </div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Create Ticket</h3>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label>Category</label>
-                        <input type="text" class="form-control" placeholder="Select Category">
-                        <select class="form-control select2" style="width: 100%;">
-                            <option selected="selected">Login</option>
-                            <option>Register</option>
-                            <option>Menu</option>
-                            <option>Aplication</option>
-                            <option>etc.</option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label>Message</label>
-                        <input type="text" class="form-control" placeholder="Message">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-comment"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <label>User Id</label>
-                        <input type="number" class="form-control" placeholder="User Id">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                        </div>
-                    </div>
-                </form>
+                        <div class="card-body">
+                            <form class="needs-validation" novalidate id="formCreate" action="javascript:insertTicket()">
+                                <div class="form-row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="inputCreateDescription">Description</label>
+                                        <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
+                                        <div class="invalid-feedback">
+                                            Please enter right string format.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="inputCreateCategory">Category</label>
+                                        <select class="form-control" id="inputCreateCategory" placeholder="Category" required>
+                                            <option value="1">Login</option>
+                                            <option value="2">Register</option>
+                                            <option value="3">Menu</option>
+                                            <option value="4">Aplikasi</option>
+                                            <option value="5">Lainnya</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please enter right category option.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="inputCreateMessage">Message</label>
+                                        @*<input type="text" class="form-control" id="inputCreateMessage" placeholder="Message" required>*@
+                                        <textarea class="textarea" id="inputCreateMessage" placeholder="Message"
+                                                  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        <div class="invalid-feedback">
+                                            Please enter right text format.
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary">Create</button>
 
-                <a href="login.html" class="text-center">I already have Account</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.form-box -->
-        </div><!-- /.card -->
-    </div>
-    <!-- /.register-box -->
-    <!-- jQuery -->
-    <script src="~/lib/adminlte/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="~/lib/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="~/lib/adminlte/dist/js/adminlte.min.js"></script>
-</body>
-</html>
+        </div>
+    </section>
+</div>
+@section scripts {
+    <script src="~/lib/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+}
