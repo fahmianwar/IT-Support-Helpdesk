@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('#tableCategories').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/Categories',
+            url: 'https://localhost:44357/Panel/GetCategories',
             dataSrc: ''
         },
         columns: [

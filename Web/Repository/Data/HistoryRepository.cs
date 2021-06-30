@@ -10,14 +10,14 @@ using Web.Base;
 
 namespace Web.Repository.Data
 {
-    public class CaseRepository : GeneralRepository<Case, int>
+    public class HistoryRepository : GeneralRepository<History, int>
     {
         private readonly Address address;
         private readonly HttpClient httpClient;
         private readonly string request;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public CaseRepository(Address address, string request = "Cases/") : base(address, request)
+        public HistoryRepository(Address address, string request = "Histories/") : base(address, request)
         {
             this.address = address;
             this.request = request;
@@ -28,14 +28,14 @@ namespace Web.Repository.Data
             };
         }
 
-        public async Task<List<Case>> GetCases()
+        public async Task<List<History>> GetHistories()
         {
-            List<Case> data = new List<Case>();
+            List<History> data = new List<History>();
 
             using (var response = await httpClient.GetAsync(request))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<History>>(apiResponse);
             }
             return data;
         }

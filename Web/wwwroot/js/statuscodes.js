@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableStatusCodes').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/StatusCodes',
+            url: 'https://localhost:44357/Panel/GetStatusCodes',
             dataSrc: ''
         },
         columns: [

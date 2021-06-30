@@ -34,18 +34,16 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="tableUsers" class="table table-striped">
+                            <table id="tableHistories" class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>BirthDate</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Department</th>
-                                        <th>Company</th>
-                                        <th>RoleName</th>
+                                        <th>Description</th>
+                                        <th>DateTime</th>
+                                        <th>Level</th>
+                                        <th>UserId</th>
+                                        <th>CaseId</th>
+                                        <th>StatusCodeId</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -159,5 +157,5 @@
     </div>
 </div>
 @section scripts {
-    <script src="~/js/convertations.js" asp-append-version="true"></script>
+    <script src="~/js/histories.js" asp-append-version="true"></script>
 }

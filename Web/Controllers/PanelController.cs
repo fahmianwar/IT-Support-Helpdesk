@@ -16,9 +16,35 @@ namespace Web.Controllers
     public class PanelController : BaseController<User, UserRepository, int>
     {
         private readonly UserRepository userRepository;
-        public PanelController(UserRepository userRepository) : base(userRepository)
+        private readonly CaseRepository caseRepository;
+        private readonly ConvertationRepository convertationRepository;
+        private readonly CategoryRepository categoryRepository;
+        private readonly HistoryRepository historyRepository;
+        private readonly PriorityRepository priorityRepository;
+        private readonly RoleRepository roleRepository;
+        private readonly StatusCodeRepository statusCodeRepository;
+        private readonly AttachmentRepository attachmentRepository;
+        public PanelController(
+            UserRepository userRepository,
+            CaseRepository caseRepository,
+            ConvertationRepository convertationRepository,
+            CategoryRepository categoryRepository,
+            HistoryRepository historyRepository,
+            PriorityRepository priorityRepository,
+            RoleRepository roleRepository,
+            StatusCodeRepository statusCodeRepository,
+            AttachmentRepository attachmentRepository
+            ) : base(userRepository)
         {
             this.userRepository = userRepository;
+            this.caseRepository = caseRepository;
+            this.convertationRepository = convertationRepository;
+            this.categoryRepository = categoryRepository;
+            this.historyRepository = historyRepository;
+            this.priorityRepository = priorityRepository;
+            this.roleRepository = roleRepository;
+            this.statusCodeRepository = statusCodeRepository;
+            this.attachmentRepository = attachmentRepository;
         }
 
         public IActionResult Users()
@@ -29,6 +55,48 @@ namespace Web.Controllers
         public async Task<JsonResult> GetUsers()
         {
             var result = await userRepository.GetUsers();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetCases()
+        {
+            var result = await caseRepository.GetCases();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetConvertations()
+        {
+            var result = await convertationRepository.GetConvertations();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetCategories()
+        {
+            var result = await categoryRepository.GetCategories();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetHistories()
+        {
+            var result = await historyRepository.GetHistories();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetPriorities()
+        {
+            var result = await priorityRepository.GetPriorities();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetRoles()
+        {
+            var result = await roleRepository.GetRoles();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetStatusCodes()
+        {
+            var result = await statusCodeRepository.GetStatusCodes();
             return Json(result);
         }
 
@@ -77,6 +145,11 @@ namespace Web.Controllers
         }
 
         public IActionResult StatusCodes()
+        {
+            return View();
+        }
+
+        public IActionResult Priorities()
         {
             return View();
         }

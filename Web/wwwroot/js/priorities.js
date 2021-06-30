@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tablePriorities').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/Priorities',
+            url: 'https://localhost:44357/Panel/GetPriorities',
             dataSrc: ''
         },
         columns: [

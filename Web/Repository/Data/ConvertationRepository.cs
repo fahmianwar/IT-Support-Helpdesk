@@ -10,14 +10,14 @@ using Web.Base;
 
 namespace Web.Repository.Data
 {
-    public class CaseRepository : GeneralRepository<Case, int>
+    public class ConvertationRepository : GeneralRepository<Convertation, int>
     {
         private readonly Address address;
         private readonly HttpClient httpClient;
         private readonly string request;
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public CaseRepository(Address address, string request = "Cases/") : base(address, request)
+        public ConvertationRepository(Address address, string request = "Convertations/") : base(address, request)
         {
             this.address = address;
             this.request = request;
@@ -28,14 +28,14 @@ namespace Web.Repository.Data
             };
         }
 
-        public async Task<List<Case>> GetCases()
+        public async Task<List<Convertation>> GetConvertations()
         {
-            List<Case> data = new List<Case>();
+            List<Convertation> data = new List<Convertation>();
 
             using (var response = await httpClient.GetAsync(request))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<Convertation>>(apiResponse);
             }
             return data;
         }

@@ -1,9 +1,9 @@
 ﻿$(document).ready(function () {
     var i = 1;
     console.log("Coba");
-    $('#tableUsers').DataTable({
+    $('#tableHistories').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetUsers',
+            url: 'https://localhost:44357/Panel/GetHistories',
             dataSrc: ''
         },
         columns: [
@@ -15,37 +15,22 @@
                 }
             },
             {
-                "data": "name"
+                "data": "description"
             },
             {
-                "data": "email"
+                "data": "dateTime"
             },
             {
-                "render": function (data, type, row) {
-                    var date = new Date(row['birthDate']);
-                    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
-                }
+                "data": "level"
             },
             {
-                "render": function (data, type, row) {
-                    if (row['phone'].charAt(0) == 0) {
-                        return "+62" + row['phone'].substring(1);
-                    } else {
-                        return row['phone'];
-                    }
-                }
+                "data": "userId"
             },
             {
-                "data": "address"
+                "data": "caseId"
             },
             {
-                "data": "department"
-            },
-            {
-                "data": "company"
-            },
-            {
-                "data": "roleId"
+                "data": "statusCodeId"
             },
             {
                 "render": function (data, type, row) {

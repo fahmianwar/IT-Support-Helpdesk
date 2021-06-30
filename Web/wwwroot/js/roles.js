@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableRoles').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/Roles',
+            url: 'https://localhost:44357/Panel/GetRoles',
             dataSrc: ''
         },
         columns: [

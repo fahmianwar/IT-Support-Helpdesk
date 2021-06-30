@@ -89,7 +89,7 @@ namespace API.Controllers
         }
 
         [HttpPost("ReviewTicket")]
-        public ActionResult CloseTicketById(ReviewTicketVM reviewTicketVM)
+        public ActionResult ReviewTicket(ReviewTicketVM reviewTicketVM)
         {
             var create = caseRepository.ReviewTicket(reviewTicketVM);
             if (create > 0)

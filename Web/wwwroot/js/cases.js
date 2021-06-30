@@ -1,9 +1,9 @@
 ﻿$(document).ready(function () {
     var i = 1;
     console.log("Coba");
-    $('#tableUsers').DataTable({
+    $('#tableCases').DataTable({
         ajax: {
-            url: 'https://localhost:44381/api/cases',
+            url: 'https://localhost:44357/Panel/GetCases',
             dataSrc: ''
         },
         columns: [
@@ -18,10 +18,10 @@
                 "data": "description"
             },
             {
-                "data": "startdatetime"
+                "data": "startDateTime"
             },
             {
-                "data": "enddatetime"
+                "data": "endDateTime"
             },
             {
                 "data": "review"
@@ -30,13 +30,13 @@
                 "data": "level"
             },
             {
-                "data": "userid"
+                "data": "userId"
             },
             {
-                "data": "priorityid"
+                "data": "priorityId"
             },
             {
-                "data": "categoryid"
+                "data": "categoryId"
             },
             {
                 "render": function (data, type, row) {

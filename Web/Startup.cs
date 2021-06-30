@@ -49,8 +49,15 @@ namespace Web
                 };
             });
 
+            services.AddScoped<AttachmentRepository>();
             services.AddScoped<UserRepository>();
             services.AddScoped<CaseRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<ConvertationRepository>();
+            services.AddScoped<HistoryRepository>();
+            services.AddScoped<PriorityRepository>();
+            services.AddScoped<RoleRepository>();
+            services.AddScoped<StatusCodeRepository>();
             services.AddScoped<Address>();
         }
 
