@@ -13,8 +13,4 @@
     <ProjectReference Include="..\API\API.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Create Ticket\" />
-  </ItemGroup>
-
 </Project>

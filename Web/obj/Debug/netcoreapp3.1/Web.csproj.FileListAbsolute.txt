@@ -192,3 +192,4 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Prio
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCodes.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewConvertationByCaseId.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\_RegisterLayout.cshtml.g.cs

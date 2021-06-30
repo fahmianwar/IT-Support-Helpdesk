@@ -93,6 +93,12 @@ namespace API.Repository.Data
             }
         }
 
+        public User GetUserByEmail(string email)
+        {
+            var cek = context.Users.FirstOrDefault(u => u.Email == email);
+            return cek;
+        }
+
         // Clients
         public IEnumerable<ProfileVM> GetClients()
         {

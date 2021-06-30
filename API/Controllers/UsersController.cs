@@ -65,6 +65,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("GetUserByEmail/{email}")]
+        public ActionResult GetUserByEmail(string email)
+        {
+            var get = userRepository.GetUserByEmail(email);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpGet("GetClients")]
         public ActionResult GetClients()

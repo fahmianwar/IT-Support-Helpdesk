@@ -47,55 +47,72 @@ namespace Web.Controllers
             this.attachmentRepository = attachmentRepository;
         }
 
+        public void GetSession()
+        {
+            ViewBag.UserId = HttpContext.Session.GetString("UserId");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            ViewBag.Name = HttpContext.Session.GetString("Name");
+            ViewBag.Role = HttpContext.Session.GetString("Role");
+        }
+
         public IActionResult Users()
         {
+            GetSession();
             return View();
         }
 
         public async Task<JsonResult> GetUsers()
         {
+            GetSession();
             var result = await userRepository.GetUsers();
             return Json(result);
         }
 
         public async Task<JsonResult> GetCases()
         {
+            GetSession();
             var result = await caseRepository.GetCases();
             return Json(result);
         }
 
         public async Task<JsonResult> GetConvertations()
         {
+            GetSession();
             var result = await convertationRepository.GetConvertations();
             return Json(result);
         }
 
         public async Task<JsonResult> GetCategories()
         {
+            GetSession();
             var result = await categoryRepository.GetCategories();
             return Json(result);
         }
 
         public async Task<JsonResult> GetHistories()
         {
+            GetSession();
             var result = await historyRepository.GetHistories();
             return Json(result);
         }
 
         public async Task<JsonResult> GetPriorities()
         {
+            GetSession();
             var result = await priorityRepository.GetPriorities();
             return Json(result);
         }
 
         public async Task<JsonResult> GetRoles()
         {
+            GetSession();
             var result = await roleRepository.GetRoles();
             return Json(result);
         }
 
         public async Task<JsonResult> GetStatusCodes()
         {
+            GetSession();
             var result = await statusCodeRepository.GetStatusCodes();
             return Json(result);
         }
@@ -116,51 +133,61 @@ namespace Web.Controllers
         // GET: PanelController
         public IActionResult Index()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Cases()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Convertations()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Attachments()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Histories()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Categories()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult StatusCodes()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Priorities()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult Roles()
         {
+            GetSession();
             return View();
         }
 
         public IActionResult CreateTicket()
         {
+            GetSession();
             return View();
         }
 

@@ -32,8 +32,11 @@
                             <h3 class="card-title">Create Ticket</h3>
                         </div>
                         <div class="card-body">
-                            <form class="needs-validation" novalidate id="formCreate" action="javascript:insertTicket()">
+                            <form class="needs-validation" novalidate id="formCreate" action="javascript:createTicket()">
                                 <div class="form-row">
+                                    <div class="col-md-8 mb-3">
+                                        <input type="number" class="form-control" id="inputCreateUserId" placeholder="UserId" value="@ViewBag.UserId" hidden required>
+                                    </div>
                                     <div class="col-md-8 mb-3">
                                         <label for="inputCreateDescription">Description</label>
                                         <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
@@ -43,7 +46,7 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="inputCreateCategory">Category</label>
-                                        <select class="form-control" id="inputCreateCategory" placeholder="Category" required>
+                                        <select class="form-control" id="inputCreateCategoryId" placeholder="Category" required>
                                             <option value="1">Login</option>
                                             <option value="2">Register</option>
                                             <option value="3">Menu</option>
@@ -77,5 +80,6 @@
     </section>
 </div>
 @section scripts {
+    <script src="~/js/ticket.js" asp-append-version="true"></script>
     <script src="~/lib/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 }

@@ -28,20 +28,22 @@ namespace API.Repository.Data
                     StartDateTime = DateTime.Now,
                     Review = 0,
                     PriorityId = 1,
+                    Level = 1,
+                    UserId = ticketVM.UserId,
                     CategoryId = ticketVM.CategoryId
                 };
                 context.Add(cases);
                 result = context.SaveChanges();
 
-                //Convertation convertation = new Convertation()
-                //{
-                //    DateTime = DateTime.Now,
-                //    Message = ticketVM.Message,
-                //    CaseId = cases.Id,
-                //    UserId = ticketVM.UserId
-                //};
-                //context.Add(convertation);
-                //result = context.SaveChanges();
+                Convertation convertation = new Convertation()
+                {
+                    DateTime = DateTime.Now,
+                    Message = ticketVM.Message,
+                    CaseId = cases.Id,
+                    UserId = ticketVM.UserId
+                };
+                context.Add(convertation);
+                result = context.SaveChanges();
 
                 History history = new History()
                 {

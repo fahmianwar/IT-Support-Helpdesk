@@ -27,11 +27,16 @@ namespace Web.Controllers
         public async Task<IActionResult> Auth(LoginVM loginVM)
         {
             var jwToken = await repository.Auth(loginVM);
+            var user = await repository.GetUserByEmail(loginVM.Email);
             if (jwToken == null)
             {
                 return RedirectToAction("index");
             }
             HttpContext.Session.SetString("JWToken", jwToken.Token);
+            HttpContext.Session.SetString("UserId", user.Id.ToString());
+            HttpContext.Session.SetString("Email", user.Email);
+            HttpContext.Session.SetString("Name", user.Name);
+            HttpContext.Session.SetString("Role", user.Role.Name);
             return RedirectToAction("Index", "Panel");
         }
 
