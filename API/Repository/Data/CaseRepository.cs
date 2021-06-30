@@ -1,6 +1,7 @@
 ﻿using API.Context;
 using API.Models;
 using API.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -35,15 +36,15 @@ namespace API.Repository.Data
                 context.Add(cases);
                 result = context.SaveChanges();
 
-                Convertation convertation = new Convertation()
-                {
-                    DateTime = DateTime.Now,
-                    Message = ticketVM.Message,
-                    CaseId = cases.Id,
-                    UserId = ticketVM.UserId
-                };
-                context.Add(convertation);
-                result = context.SaveChanges();
+                //Convertation convertation = new Convertation()
+                //{
+                //    DateTime = DateTime.Now,
+                //    Message = ticketVM.Message,
+                //    CaseId = cases.Id,
+                //    UserId = ticketVM.UserId
+                //};
+                //context.Add(convertation);
+                //result = context.SaveChanges();
 
                 History history = new History()
                 {
@@ -56,7 +57,6 @@ namespace API.Repository.Data
                 };
                 context.Add(history);
                 result = context.SaveChanges();
-
                 //Attachment attachment = new Attachment()
                 //{
                 //    Name = ticketVM.Name,

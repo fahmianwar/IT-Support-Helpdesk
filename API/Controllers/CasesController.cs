@@ -13,9 +13,11 @@ namespace API.Controllers
     public class CasesController : BaseController<Case, CaseRepository, int>
     {
         private readonly CaseRepository caseRepository;
-        public CasesController(CaseRepository caseRepository) : base(caseRepository)
+        private readonly AttachmentRepository attachmentRepository;
+        public CasesController(CaseRepository caseRepository, AttachmentRepository attachmentRepository) : base(caseRepository)
         {
             this.caseRepository = caseRepository;
+            this.attachmentRepository = attachmentRepository;
         }
 
         [HttpPost("CreateTicket")]

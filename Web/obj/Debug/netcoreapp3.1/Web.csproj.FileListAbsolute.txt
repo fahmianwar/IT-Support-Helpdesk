@@ -193,3 +193,4 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Role
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCodes.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewConvertationByCaseId.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Register\_RegisterLayout.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Tickets.cshtml.g.cs

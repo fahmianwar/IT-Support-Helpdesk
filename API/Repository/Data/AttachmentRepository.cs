@@ -20,7 +20,7 @@ namespace API.Repository.Data
             Configuration = configuration;
         }
 
-        public int UploadToFileSystem(List<IFormFile> files, int convertationId, string description)
+        public int UploadToFileSystem(ICollection<IFormFile> files, int convertationId, string description)
         {
             int result = 0;
             foreach (var file in files)

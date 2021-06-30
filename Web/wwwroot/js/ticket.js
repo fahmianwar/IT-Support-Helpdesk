@@ -1,12 +1,59 @@
-﻿function createTicket() {
+﻿$(document).ready(function () {
+    $('#tableTickets').DataTable({
+        ajax: {
+            url: 'https://localhost:44357/Panel/GetTickets',
+            dataSrc: ''
+        },
+        columns: [
+
+            {
+                "data": null, "sortable": false,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            {
+                "data": "description"
+            },
+            {
+                "data": "startDateTime"
+            },
+            {
+                "data": "endDateTime"
+            },
+            {
+                "data": "review"
+            },
+            {
+                "data": "level"
+            },
+            {
+                "data": "userId"
+            },
+            {
+                "data": "priorityId"
+            },
+            {
+                "data": "categoryId"
+            },
+            {
+                "render": function (data, type, row) {
+                    return `<button type="button" class="btn btn-primary" onclick="detailCases('${row['id']}')" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button> | <button type="button" class="btn btn-info" onclick="editCase('${row['id']}')" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCase('${row['id']}')">Delete</button>`;
+                }
+            }
+        ]
+    });
+
+});
+
+function createTicket() {
     var obj = new Object();
     obj.UserId = parseInt($("#inputCreateUserId").val());
     obj.Description = $("#inputCreateDescription").val();
     obj.CategoryId = parseInt($("#inputCreateCategoryId ").val());
-    obj.Message = $("#inputCreateMessage").val();
     //console.log(obj);
     //console.log(JSON.stringify(obj));
-    if (obj.UserId < 0 || obj.Description == "" || obj.CategoryId == "" || obj.Message == "") {
+    if (obj.UserId < 0 || obj.Description == "" || obj.CategoryId == "") {
         Swal.fire({
             title: 'Error!',
             text: 'Failed create user',

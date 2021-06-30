@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace API.ViewModels
         public int CategoryId { get; set; }
         public string Message { get; set; }
         public int UserId { get; set; }
+        public ICollection<IFormFile> Files { get; set; }
 
     }
 }

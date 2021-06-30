@@ -39,5 +39,17 @@ namespace Web.Repository.Data
             }
             return data;
         }
+
+        public async Task<List<Case>> GetTicketsByUserId(int userId)
+        {
+            List<Case> data = new List<Case>();
+
+            using (var response = await httpClient.GetAsync(request + "ViewTicketsByUserId/" + userId))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+            }
+            return data;
+        }
     }
 }

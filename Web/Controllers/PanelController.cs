@@ -75,6 +75,20 @@ namespace Web.Controllers
             return Json(result);
         }
 
+        public async Task<JsonResult> GetTickets()
+        {
+            GetSession();
+            if (ViewBag.UserId != null)
+            {
+                var result = await caseRepository.GetTicketsByUserId(1);
+                return Json(result);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<JsonResult> GetConvertations()
         {
             GetSession();
@@ -138,6 +152,12 @@ namespace Web.Controllers
         }
 
         public IActionResult Cases()
+        {
+            GetSession();
+            return View();
+        }
+
+        public IActionResult Tickets()
         {
             GetSession();
             return View();
