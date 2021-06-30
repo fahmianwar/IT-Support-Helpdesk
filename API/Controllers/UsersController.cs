@@ -2,6 +2,7 @@
 using API.Models;
 using API.Repository.Data;
 using API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace API.Controllers
             this.userRepository = userRepository;
         }
 
+        [AllowAnonymous]
         [HttpPost("Register")]
         public ActionResult Register (RegisterVM registerVM)
         {
@@ -33,6 +35,7 @@ namespace API.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost("Login")]
         public ActionResult Login(LoginVM loginVM)
         {
@@ -62,6 +65,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetClients")]
         public ActionResult GetClients()
         {
@@ -77,6 +81,7 @@ namespace API.Controllers
 
         }
 
+        [Authorize(Roles = "Admin, Software Developer, IT Support, Customer Service")]
         [HttpGet("GetClientbyId/{id}")]
         public ActionResult GetClientbyId(int id)
         {
@@ -92,6 +97,7 @@ namespace API.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("DeleteClientById/{id}")]
         public ActionResult DeleteClientById(int id)
         {
@@ -106,6 +112,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetStaffs")]
         public ActionResult GetStaffs()
         {
@@ -121,6 +128,7 @@ namespace API.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetStaffbyId/{id}")]
         public ActionResult GetStaffbyId(int id)
         {
@@ -136,6 +144,7 @@ namespace API.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("DeleteStaffById/{id}")]
         public ActionResult DeleteStaffById(int id)
         {

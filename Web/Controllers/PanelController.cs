@@ -48,6 +48,41 @@ namespace Web.Controllers
             return View();
         }
 
+        public IActionResult Cases()
+        {
+            return View();
+        }
+
+        public IActionResult Convertations()
+        {
+            return View();
+        }
+
+        public IActionResult Attachments()
+        {
+            return View();
+        }
+
+        public IActionResult Histories()
+        {
+            return View();
+        }
+
+        public IActionResult Categories()
+        {
+            return View();
+        }
+
+        public IActionResult StatusCodes()
+        {
+            return View();
+        }
+
+        public IActionResult Roles()
+        {
+            return View();
+        }
+
         public IActionResult CreateTicket()
         {
             return View();

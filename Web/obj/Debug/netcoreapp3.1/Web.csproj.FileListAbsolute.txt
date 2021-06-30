@@ -189,5 +189,5 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Cate
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Convertations.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Histories.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Priorities.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Role.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCode.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCodes.cshtml.g.cs

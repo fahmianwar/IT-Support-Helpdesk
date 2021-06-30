@@ -1,4 +1,5 @@
 ﻿using API.Repository.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace API.Base
             this.repository = repository;
         }
 
+        [Authorize(Roles="Admin")]
         [HttpGet]
         public ActionResult<Entity> Get()
         {
@@ -34,6 +36,7 @@ namespace API.Base
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Post(Entity entity)
         {
@@ -48,6 +51,7 @@ namespace API.Base
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("{key}")]
         public ActionResult Get(Key key)
         {
@@ -62,6 +66,7 @@ namespace API.Base
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public ActionResult Update(Entity entity)
         {
@@ -76,6 +81,7 @@ namespace API.Base
             }
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{key}")]
         public ActionResult Delete(Key key)
         {
