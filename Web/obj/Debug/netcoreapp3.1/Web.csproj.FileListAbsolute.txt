@@ -184,3 +184,10 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\CreateTicket.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Attachments.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Categories.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Convertations.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Histories.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Priorities.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Role.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCode.cshtml.g.cs
