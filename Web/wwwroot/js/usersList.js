@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableUsers').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetUsers',
+            url: 'https://localhost:44381/api/GetUsers',
             dataSrc: ''
         },
         columns: [
