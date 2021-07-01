@@ -158,6 +158,100 @@
         </div>
     </div>
 </div>
+
+<div id="editModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="javascript:editUser()">
+                <div class="modal-body" id="editModal">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateName">Name</label>
+                            <input type="text" class="form-control" id="inputCreateName" placeholder="Name" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmail">Email</label>
+                            <input type="email" class="form-control" id="inputCreateEmail" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                Please enter right email format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePassword">Password</label>
+                            <input type="password" class="form-control" id="inputCreatePassword" placeholder="Password" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateBirthDate">Birth Date</label>
+                            <input type="date" class="form-control" id="inputCreateBirthDate" placeholder="BirthDate" required>
+                            <div class="invalid-feedback">
+                                Please enter right date format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreatePhone">Phone</label>
+                            <input type="text" class="form-control" id="inputCreatePhone" placeholder="Phone" required>
+                            <div class="invalid-feedback">
+                                Please enter right phone format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateRole">Role</label>
+                            <select class="form-control" id="inputCreateRole" placeholder="Role" required>
+                                <option value="1">Admin</option>
+                                <option value="5" selected>Client</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please enter right role option.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="inputCreateAddress">Address</label>
+                            <input type="text" class="form-control" id="inputCreateAddress" placeholder="Address" required>
+                            <div class="invalid-feedback">
+                                Please enter right address format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateDepartment">Department</label>
+                            <input type="text" class="form-control" id="inputCreateDepartment" placeholder="Department" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateCompany">Company</label>
+                            <input type="text" class="form-control" id="inputCreateCompany" placeholder="Company" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @section scripts {
     <script src="~/js/usersList.js" asp-append-version="true"></script>
 }

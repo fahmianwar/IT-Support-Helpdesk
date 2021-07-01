@@ -1,4 +1,5 @@
 ﻿function register() {
+    debugger
     var obj = new Object();
     obj.Name = $("#inputName").val();
     obj.Email = $("#inputEmail").val();
@@ -30,12 +31,15 @@
             alert(result);
             Swal.fire({
                 title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
+                text: 'Register Berhasil. Redirecting in 5 seconds.',
+                type: 'success',
+                timer: 5000,
+                showConfirmButton: false
+            }).then(function () {
+                window.location.href = "/login";
+            }),
             //$('#tableProfiles').DataTable().ajax.reload();
-            console.log(result);
+            /*console.log(result);*/
             $('#tableUsers').DataTable().ajax.reload();
         }).fail((error) => {
             alert(error);
@@ -43,9 +47,9 @@
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Retry'
             });
-            console.log(error);
+            //console.log(error);
         });
     }
 }
