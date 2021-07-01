@@ -13,6 +13,7 @@ using Web.Repository.Data;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class PanelController : BaseController<User, UserRepository, int>
     {
         private readonly UserRepository userRepository;
@@ -129,6 +130,75 @@ namespace Web.Controllers
             GetSession();
             var result = await statusCodeRepository.GetStatusCodes();
             return Json(result);
+        }
+
+        // Staff
+        public IActionResult ViewTickets()
+        {
+            GetSession();
+            return View();
+        }
+
+        public IActionResult ViewHandleTickets()
+        {
+            GetSession();
+            return View();
+        }
+
+        public async Task<JsonResult> GetTicketsByLevel()
+        {
+            GetSession();
+            if (ViewBag.Role != null) {
+                int level;
+                if(ViewBag.Role == "Software Developer")
+                {
+                    level = 3;
+                }
+                else if(ViewBag.Role == "IT Support")
+                {
+                    level = 2;
+                } else if (ViewBag.Role == "Customer Service")
+                {
+                    level = 1;
+                }
+                else
+                {
+                    level = 0;
+                }
+                var result = await caseRepository.GetTicketsByLevel(level);
+                return Json(result);
+            }
+            else
+            {
+                return Json(null);
+            }
+        }
+
+        public async Task<JsonResult> GetHandleTickets()
+        {
+            GetSession();
+            if(ViewBag.UserId != null)
+            {
+                var result = await caseRepository.GetTicketsByUserId(Int32.Parse(ViewBag.UserId));
+                return Json(result);
+            }
+            else
+            {
+                return Json(null);
+            }
+
+        }
+
+        public IActionResult ViewConvertations()
+        {
+            GetSession();
+            return View();
+        }
+
+        public IActionResult ViewAttachments()
+        {
+            GetSession();
+            return View();
         }
 
         //[HttpPost]

@@ -80,6 +80,7 @@ namespace API.Controllers
         }
 
         //[Authorize]
+        [AllowAnonymous]
         [HttpGet("GetUserByEmail/{email}")]
         public ActionResult GetUserByEmail(string email)
         {

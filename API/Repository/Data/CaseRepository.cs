@@ -78,6 +78,13 @@ namespace API.Repository.Data
             return all;
         }
 
+        public IEnumerable<Case> ViewTicketsByStaffId(int userId)
+        {
+            var history = context.Histories.OrderByDescending(e => e.DateTime).Where(x => x.UserId == userId).Select(c => c.CaseId);
+            var all = context.Cases.Where(x => history.Contains(x.Id));
+            return all;
+        }
+
         public IEnumerable<Case> ViewTicketsByLevel(int level)
         {
             // Cases sama HIstory, dapetin caseId di History yang levelnya sesuai parameter
@@ -137,7 +144,29 @@ namespace API.Repository.Data
             return result;
         }
 
-            public int CloseTicketById(CloseTicketVM closeTicketVM)
+        public int HandleTicket(CloseTicketVM closeTicketVM)
+        {
+            int result = 0;
+
+            var get = context.Histories.OrderByDescending(e => e.DateTime).FirstOrDefault(x => x.CaseId == closeTicketVM.CaseId);
+            if (get.Level < 3)
+            {
+                var history = new History()
+                {
+                    DateTime = DateTime.Now,
+                    Description = $"[STAFF] StaffId #{closeTicketVM.UserId} Handling CaseId #{closeTicketVM.CaseId}",
+                    UserId = closeTicketVM.UserId,
+                    CaseId = get.CaseId,
+                    StatusCodeId = get.StatusCodeId
+                };
+
+                context.Histories.Add(history);
+                result = context.SaveChanges();
+            }
+            return result;
+        }
+
+        public int CloseTicketById(CloseTicketVM closeTicketVM)
         {
             var cases = context.Cases.Find(closeTicketVM.CaseId);
             if (cases.EndDateTime == null)
