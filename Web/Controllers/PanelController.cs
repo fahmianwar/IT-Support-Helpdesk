@@ -80,7 +80,7 @@ namespace Web.Controllers
             GetSession();
             if (ViewBag.UserId != null)
             {
-                var result = await caseRepository.GetTicketsByUserId(1);
+                var result = await caseRepository.GetTicketsByUserId(Int32.Parse(ViewBag.UserId));
                 return Json(result);
             }
             else

@@ -76,12 +76,6 @@ namespace API
             });
             */
 
-
-
-
-
-
-
             services.AddSwaggerGen(swagger =>
             {
                 //This is to generate the Default UI of Swagger Documentation    
