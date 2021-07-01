@@ -130,5 +130,10 @@
     </div>
 </div>
 @section scripts {
+    <script>
+        var userId = '@ViewBag.UserId';
+        var roleId = '@ViewBag.RoleId';
+        console.log(userId);
+    </script>
     <script src="~/js/viewHandleTickets.js" asp-append-version="true"></script>
 }

@@ -176,5 +176,9 @@
     </div>
 </div>
 @section scripts {
+    <script>
+        var userId = '@ViewBag.UserId';
+        console.log(userId);
+    </script>
     <script src="~/js/viewTickets.js" asp-append-version="true"></script>
 }

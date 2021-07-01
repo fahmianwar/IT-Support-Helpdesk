@@ -38,8 +38,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    // UserId belum masuk kedalam handleTicket function
-                    return `<button type="button" class="btn btn-primary" onclick="handleTicket('${row['id']}','3')">Handle</button>`;
+                    return `<button type="button" class="btn btn-primary" onclick="handleTicket('${row['id']}','${userId}')">Handle</button>`;
                 }
             }
         ]
@@ -61,11 +60,10 @@ function handleTicket(caseId, userId) {
         confirmButtonText: 'Ya',
         cancelButtonText: 'Tidak'
     }).then((result) => {
-        if (result.value) {
+        if (result.isConfirmed) {
             $.ajax({
-                url: 'https://localhost:44357/api/Cases/HandleTicket',
+                url: 'https://localhost:44381/api/Cases/HandleTicket',
                 type: "POST",
-                dataType: "json",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'

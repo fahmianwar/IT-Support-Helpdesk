@@ -38,7 +38,14 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-primary" onclick="closeTicket('${row['id']}','3')">Close</button>`;
+                    if (row['endDateTime'] == null) {
+                        if (row['level'] == roleId) {
+
+                        }
+                        return ` <button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Next Level</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${userId}')">Close</button>`;
+                    } else {
+                        return null;
+                    }
                 }
             }
         ]
@@ -121,7 +128,56 @@ function closeTicket(caseId, userId) {
     }).then((result) => {
         if (result.value) {
             $.ajax({
-                url: 'https://localhost:44357/api/Cases/HandleTicket',
+                url: 'https://localhost:44381/api/Cases/CloseTicket',
+                type: "POST",
+                dataType: "json",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(obj)
+            }).done((result) => {
+                console.log(result);
+                console.log(obj);
+                $('#tableViewTickets').DataTable().ajax.reload();
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Berhasil menambahkan Case untuk ditangani Anda',
+                    icon: 'success',
+                    confirmButtonText: 'Oke'
+                });
+            }).fail((error) => {
+                console.log(error);
+                console.log(obj);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Gagal menambahkan Case untuk ditangani Anda',
+                    icon: 'error',
+                    confirmButtonText: 'Oke'
+                });
+            });
+        }
+    });
+
+}
+
+
+function askNextLevel(caseId) {
+    var obj = new Object();
+    obj.CaseId = parseInt(caseId);
+    Swal.fire({
+        title: 'Konfirmasi Meminta Bantuan Ticket',
+        text: 'Apakan Anda yakin meminta bantuan ke Level selanjutnya untuk CaseId #' + caseId + ' oleh StaffId #' + userId + ' ?',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Tidak'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: 'https://localhost:44381/api/Cases/AskNextLevel',
                 type: "POST",
                 dataType: "json",
                 headers: {

@@ -77,9 +77,9 @@ namespace API.Controllers
         }
 
         [HttpPost("AskNextLevel")]
-        public ActionResult AskNextLevel(int caseId)
+        public ActionResult AskNextLevel(CloseTicketVM closeTicketVM)
         {
-            var ask = caseRepository.AskNextLevel(caseId);
+            var ask = caseRepository.AskNextLevel(closeTicketVM.CaseId);
             if (ask > 0)
             {
                 return Ok("Berhasil meminta bantuan");
@@ -90,7 +90,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost("HandleTicket")]
+        [Route("HandleTicket")]
+        [HttpPost]
         public ActionResult HandleTicket(CloseTicketVM closeTicketVM)
         {
             var create = caseRepository.HandleTicket(closeTicketVM);
