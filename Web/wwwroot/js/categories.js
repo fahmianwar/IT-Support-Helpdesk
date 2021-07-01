@@ -21,7 +21,7 @@
             {
                 "data": null,
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="detailCategories('${row['id']}')" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button> | <button type="button" class="btn btn-info" onclick="editCategories('${row['id']}')" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCategories('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-info" onclick="getCategory('${row['id']}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCategory('${row['id']}')">Delete</button>`;
                 }
             }
         ]
@@ -92,4 +92,102 @@ function insertCategory() {
             console.log(error);
         });
     }
+}
+
+function editCategory() {
+    var obj = new Object();
+    obj.Name = $("#inputCreateName").val();
+    obj.Description = $("#inputCreateDescription").val();
+    console.log(obj);
+    console.log(JSON.stringify(obj));
+    if (obj.Name == "" || obj.Description == "") {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Failed edit Category',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    } else {
+        $.ajax({
+            url: 'https://localhost:44381/api/Categories',
+            type: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(obj)
+        }).done((result) => {
+            alert(result);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Berhasil menambahkan data',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+            });
+            //$('#tableProfiles').DataTable().ajax.reload();
+            console.log(result);
+            $('#tableCategories').DataTable().ajax.reload();
+        }).fail((error) => {
+            alert(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal menambahkan data',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            });
+            console.log(error);
+        });
+    }
+}
+
+function getCategory(id) {
+    console.log(id);
+    $.ajax({
+        url: 'https://localhost:44381/api/Categories/' + id,
+        type: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    }).done((result) => {
+        console.log(result);
+        $("#inputCreateName").val();
+        $("#inputCreateDescription").val();
+    }).fail((error) => {
+        alert(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Gagal menampilkan data',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+        console.log(error);
+    });
+}
+
+function deleteCategory(id) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'https://localhost:44381/api/Categories/' + id,
+                type: "DELETE",
+            }).done((result) => {
+                alert(result);
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            });
+            $('#tableCategories').DataTable().ajax.reload();
+        }
+    });
 }

@@ -146,44 +146,54 @@ function editUser() {
     obj.RoleId = parseInt($("#inputCreateRole").val());
     obj.Detail = "";
     console.log(obj);
-    $.ajax({
-        url: 'https://localhost:44381/api/Users/',
-        type: "PUT",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify(obj)
-    }).done((result) => {
-        alert(result);
-        Swal.fire({
-            title: 'Do you want to save the changes?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `Save`,
-            denyButtonText: `Don't save`,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
-            }
-        }).then(function () {
-            window.location.href = "/panel/users";
-        });
-        console.log(result);
-        $('#tableUsers').DataTable().ajax.reload();
-    }).fail((error) => {
-        alert(error);
+    console.log(JSON.stringify(obj));
+    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "" || obj.RoleId < 0) {
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal update data',
+            text: 'Failed create user',
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'OK'
         });
-        console.log(error);
-    });
+    } else {
+        $.ajax({
+            url: 'https://localhost:44381/api/Users/',
+            type: "PUT",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(obj)
+        }).done((result) => {
+            alert(result);
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: `Save`,
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    Swal.fire('Saved!', '', 'success')
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            }).then(function () {
+                window.location.href = "/panel/users";
+            });
+            console.log(result);
+            $('#tableUsers').DataTable().ajax.reload();
+        }).fail((error) => {
+            alert(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal update data',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+            console.log(error);
+        });
+    }
 }
 
 function getUser(id) {
@@ -210,7 +220,7 @@ function getUser(id) {
         alert(error);
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal update data',
+            text: 'Gagal menampilkan data',
             icon: 'error',
             confirmButtonText: 'Ok'
         });

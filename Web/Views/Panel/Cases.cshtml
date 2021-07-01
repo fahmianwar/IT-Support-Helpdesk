@@ -144,6 +144,86 @@
         </div>
     </div>
 </div>
+
+<div id="editModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cases</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" novalidate id="formCreate" action="javascript:editCase()">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateName">Description</label>
+                            <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmail">StartDateTIme</label>
+                            <input type="date" class="form-control" id="inputStartDate" placeholder="StartDateTime" required>
+                            <div class="invalid-feedback">
+                                Please enter right format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateEmail">EndDateTIme</label>
+                            <input type="date" class="form-control" id="inputEndDate" placeholder="EndDateTimr" required>
+                            <div class="invalid-feedback">
+                                Please enter right format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputReview">Review</label>
+                            <input type="number" class="form-control" id="inputReview" placeholder="Review" required>
+                            <div class="invalid-feedback">
+                                Please enter right format.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputLevel">Level</label>
+                            <input type="number" class="form-control" id="inputLevel" placeholder="Level" required>
+                            <div class="invalid-feedback">
+                                Please enter right date format.
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="inputUserId">UserId</label>
+                            <input type="number" class="form-control" id="inputUserId" placeholder="UserId" required>
+                            <div class="invalid-feedback">
+                                Please enter right phone format.
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="inputPriorityId">PriorityId</label>
+                            <input type="number" class="form-control" id="inputPriorityId" placeholder="PriorityId" required>
+                            <div class="invalid-feedback">
+                                Please enter right address format.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateDepartment">CategoryId</label>
+                            <input type="number" class="form-control" id="inputCategoryId" placeholder="CategoryId" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @section scripts {
     <script src="~/js/cases.js" asp-append-version="true"></script>
 }
