@@ -39,7 +39,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-info" onclick="editCase('${row['id']}')" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCase('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
                 }
             }
         ]
@@ -72,7 +72,7 @@ function createTicket() {
             },
             data: JSON.stringify(obj)
         }).done((result) => {
-            alert(result);
+            //alert(result);
             Swal.fire({
                 title: 'Success!',
                 text: 'Berhasil menambahkan data',
@@ -80,23 +80,26 @@ function createTicket() {
                 confirmButtonText: 'Cool'
             });
             //$('#tableProfiles').DataTable().ajax.reload();
-            console.log(result);
+            //console.log(result);
             $('#tableUsers').DataTable().ajax.reload();
+            $('#createModal').modal('toggle');
         }).fail((error) => {
-            alert(error);
+            //alert(error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
                 icon: 'error',
                 confirmButtonText: 'Cool'
             });
-            console.log(error);
+            //console.log(error);
         });
     }
 }
+
 function viewConvertation(caseId) {
     $("#inputConvertationCaseId").val(parseInt(caseId));
 }
+
 function createConvertation() {
     var obj = new Object();
     obj.UserId = parseInt($("#inputConvertationUserId").val());
@@ -135,6 +138,8 @@ function createConvertation() {
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
             $('#tableUsers').DataTable().ajax.reload();
+            $("#inputConvertationMessage").reset();
+            $('#viewConvertationModal').modal().hide();
         }).fail((error) => {
             alert(error);
             Swal.fire({

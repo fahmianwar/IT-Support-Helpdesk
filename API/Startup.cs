@@ -47,6 +47,7 @@ namespace API
             services.AddScoped<UserRepository>();
             services.AddDbContext<MyContext>(options =>
             options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("APIContext")));
+            //options.UseSqlServer(Configuration.GetConnectionString("APIContext")));
 
 
             services.AddCors(c =>
@@ -55,6 +56,11 @@ namespace API
                 //c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44300").AllowAnyMethod().AllowCredentials().AllowAnyHeader());
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
+
+            //services.AddCors(c =>
+            //{
+            //    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            //});
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
@@ -75,12 +81,6 @@ namespace API
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
             */
-
-
-
-
-
-
 
             services.AddSwaggerGen(swagger =>
             {

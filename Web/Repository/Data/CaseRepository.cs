@@ -44,7 +44,19 @@ namespace Web.Repository.Data
         {
             List<Case> data = new List<Case>();
 
-            using (var response = await httpClient.GetAsync(request + "ViewTicketsByUserId/" + userId))
+            using (var response = await httpClient.GetAsync(request + "ViewTicketsByStaffId/" + userId))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+            }
+            return data;
+        }
+
+        public async Task<List<Case>> GetTicketsByLevel(int level)
+        {
+            List<Case> data = new List<Case>();
+
+            using (var response = await httpClient.GetAsync(request + "ViewTicketsByLevel/" + level))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);

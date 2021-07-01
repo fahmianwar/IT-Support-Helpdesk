@@ -10,9 +10,7 @@ namespace API.Base
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<Entity, Repository, Key> : ControllerBase 
-        where Entity : class 
-        where Repository : IRepository<Entity, Key>
+    public class BaseController<Entity, Repository, Key> : ControllerBase where Entity : class where Repository : IRepository<Entity, Key>
     {
         private readonly Repository repository;
 
@@ -21,7 +19,6 @@ namespace API.Base
             this.repository = repository;
         }
 
-        //[Authorize(Roles="Admin")]
         [HttpGet]
         public ActionResult<Entity> Get()
         {
@@ -36,7 +33,6 @@ namespace API.Base
             }
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Post(Entity entity)
         {
@@ -51,7 +47,6 @@ namespace API.Base
             }
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpGet("{key}")]
         public ActionResult Get(Key key)
         {
@@ -66,7 +61,6 @@ namespace API.Base
             }
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpPut]
         public ActionResult Update(Entity entity)
         {
@@ -81,7 +75,6 @@ namespace API.Base
             }
         }
 
-        //[Authorize(Roles = "Admin")]
         [HttpDelete("{key}")]
         public ActionResult Delete(Key key)
         {

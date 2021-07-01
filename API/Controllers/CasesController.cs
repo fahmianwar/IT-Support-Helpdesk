@@ -48,6 +48,20 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("ViewTicketsByStaffId/{userId}")]
+        public ActionResult ViewTicketsByStaffId(int userId)
+        {
+            var get = caseRepository.ViewTicketsByStaffId(userId);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data tidak ditemukan");
+            }
+        }
+
         [HttpGet("ViewTicketsByLevel/{level}")]
         public ActionResult ViewTicketsByLevel(int level)
         {
@@ -63,9 +77,9 @@ namespace API.Controllers
         }
 
         [HttpPost("AskNextLevel")]
-        public ActionResult AskNextLevel(int caseId)
+        public ActionResult AskNextLevel(CloseTicketVM closeTicketVM)
         {
-            var ask = caseRepository.AskNextLevel(caseId);
+            var ask = caseRepository.AskNextLevel(closeTicketVM.CaseId);
             if (ask > 0)
             {
                 return Ok("Berhasil meminta bantuan");
@@ -73,6 +87,21 @@ namespace API.Controllers
             else
             {
                 return BadRequest("Gagal meminta bantuan");
+            }
+        }
+
+        [Route("HandleTicket")]
+        [HttpPost]
+        public ActionResult HandleTicket(CloseTicketVM closeTicketVM)
+        {
+            var create = caseRepository.HandleTicket(closeTicketVM);
+            if (create > 0)
+            {
+                return Ok("Tiket Berhasil Ditangani");
+            }
+            else
+            {
+                return BadRequest("Tiket Gagal Ditangani");
             }
         }
 

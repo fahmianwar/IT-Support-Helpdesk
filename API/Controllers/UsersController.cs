@@ -79,6 +79,8 @@ namespace API.Controllers
             }
         }
 
+        //[Authorize]
+        [AllowAnonymous]
         [HttpGet("GetUserByEmail/{email}")]
         public ActionResult GetUserByEmail(string email)
         {
@@ -94,7 +96,7 @@ namespace API.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet("GetClients")]
         public ActionResult GetClients()
         {
@@ -110,7 +112,8 @@ namespace API.Controllers
 
         }
 
-        [Authorize(Roles = "Admin, Software Developer, IT Support, Customer Service")]
+        //[Authorize(Roles = "Admin, Software Developer, IT Support, Customer Service")]
+        [Authorize]
         [HttpGet("GetClientbyId/{id}")]
         public ActionResult GetClientbyId(int id)
         {
@@ -126,7 +129,8 @@ namespace API.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost("DeleteClientById/{id}")]
         public ActionResult DeleteClientById(int id)
         {
