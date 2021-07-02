@@ -28,15 +28,18 @@ namespace Web.Controllers
         {
             var jwToken = await repository.Auth(loginVM);
             var user = await repository.GetUserByEmail(loginVM.Email);
-            if (jwToken == null)
+            if (jwToken == null || user == null)
             {
-                return RedirectToAction("index");
+                return RedirectToAction("Index", "Login");
             }
+
             HttpContext.Session.SetString("JWToken", jwToken.Token);
             HttpContext.Session.SetString("UserId", user.Id.ToString());
             HttpContext.Session.SetString("Email", user.Email);
             HttpContext.Session.SetString("Name", user.Name);
             HttpContext.Session.SetString("Role", user.Role.Name);
+            HttpContext.Session.SetString("RoleId", user.RoleId.ToString());
+
             return RedirectToAction("Index", "Panel");
         }
 

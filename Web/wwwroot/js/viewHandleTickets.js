@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $('#inputConvertationMessage').summernote();
     $('#tableViewHandleTickets').DataTable({
         ajax: {
             url: 'https://localhost:44357/Panel/GetHandleTickets',
@@ -40,9 +41,11 @@
                 "render": function (data, type, row) {
                     if (row['endDateTime'] == null) {
                         if (row['level'] == roleId) {
-
+                            return `<button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Next Level</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${userId}')">Close</button>`;
+                        } else {
+                            return null;
                         }
-                        return ` <button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Next Level</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${userId}')">Close</button>`;
+                        //return `<button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Next Level</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${userId}')">Close</button>`;
                     } else {
                         return null;
                     }

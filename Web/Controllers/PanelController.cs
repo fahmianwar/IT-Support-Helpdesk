@@ -54,6 +54,7 @@ namespace Web.Controllers
             ViewBag.Email = HttpContext.Session.GetString("Email");
             ViewBag.Name = HttpContext.Session.GetString("Name");
             ViewBag.Role = HttpContext.Session.GetString("Role");
+            ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
         }
 
         public IActionResult Users()
