@@ -22,7 +22,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="detailRoles('${row['id']}')" data-toggle="modal" data-target="#detailModal">Detail</button> | <button type="button" class="btn btn-info" onclick="editRoles('${row['id']}')" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteRoles('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-info" onclick="getRole('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteRole('${row['id']}')">Delete</button>`;
                 }
             }
         ]
@@ -63,7 +63,7 @@ function insertRole() {
         });
     } else {
         $.ajax({
-            url: 'https://localhost:44381/api/Roles',
+            url: 'https://localhost:44381/api/Roles/',
             type: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -71,7 +71,6 @@ function insertRole() {
             },
             data: JSON.stringify(obj)
         }).done((result) => {
-            alert(result);
             Swal.fire({
                 title: 'Success!',
                 text: 'Berhasil menambahkan data',
@@ -82,7 +81,6 @@ function insertRole() {
             console.log(result);
             $('#tableRoles').DataTable().ajax.reload();
         }).fail((error) => {
-            alert(error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
@@ -95,32 +93,25 @@ function insertRole() {
 }
 
 function editRole() {
+    debugger
     var obj = new Object();
-    obj.Name = $("#inputCreateName").val();
-    obj.Description = $("#inputCreateDescription").val();
+    obj.id = $("#Id").val();
+    obj.Name = $("#Name").val();
+    obj.Description = $("#Description").val();
     console.log(obj);
     console.log(JSON.stringify(obj));
-    if (obj.Name == "" || obj.Description == "") {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Failed create Role',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    } else {
         $.ajax({
             url: 'https://localhost:44381/api/Roles',
-            type: "POST",
+            type: "PUT",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             data: JSON.stringify(obj)
         }).done((result) => {
-            alert(result);
             Swal.fire({
                 title: 'Success!',
-                text: 'Berhasil menambahkan data',
+                text: 'Berhasil mengubah data',
                 icon: 'success',
                 confirmButtonText: 'Cool'
             });
@@ -128,7 +119,6 @@ function editRole() {
             console.log(result);
             $('#tableRoles').DataTable().ajax.reload();
         }).fail((error) => {
-            alert(error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
@@ -137,24 +127,24 @@ function editRole() {
             });
             console.log(error);
         });
-    }
 }
 
 function getRole(id) {
     console.log(id);
     $.ajax({
         url: 'https://localhost:44381/api/Roles/' + id,
-        type: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+        dataSrc:''
+        //type: "GET",
+        //headers: {
+        //    'Accept': 'application/json',
+        //    'Content-Type': 'application/json'
+        //},
     }).done((result) => {
         console.log(result);
-        $("#inputCreateName").val();
-        $("#inputCreateDescription").val();
+        $("#Id").val(result.id);
+        $("#Name").val(result.name);
+        $("#Description").val(result.description);
     }).fail((error) => {
-        alert(error);
         Swal.fire({
             title: 'Error!',
             text: 'Gagal menampilkan data',
@@ -180,7 +170,6 @@ function deleteRole(id) {
                 url: 'https://localhost:44381/api/Roles/' + id,
                 type: "DELETE",
             }).done((result) => {
-                alert(result);
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
