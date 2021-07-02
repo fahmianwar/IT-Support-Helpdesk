@@ -78,7 +78,7 @@
                                 Please enter right string format.
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-8 mb-3">
                             <label for="inputCreateEmail">Description</label>
                             <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
                             <div class="invalid-feedback">
@@ -89,6 +89,42 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="editModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Categories</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="needs-validation" novalidate id="formCreate" action="javascript:editCategory()">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="inputCreateName">Name</label>
+                            <input type="text" class="form-control" id="inputCreateName" placeholder="Name" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="inputCreateEmail">Description</label>
+                            <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
+                            <div class="invalid-feedback">
+                                Please enter right format.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Edit</button>
                 </div>
             </form>
         </div>
