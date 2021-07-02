@@ -84,7 +84,7 @@ namespace API.Repository.Data
                 Configuration["Jwt:Issuer"],
                 Configuration["Jwt:Audience"],
                 claims,
-                expires: DateTime.UtcNow.AddMinutes(1),
+                expires: DateTime.UtcNow.AddMinutes(60),
                 signingCredentials: signIn);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

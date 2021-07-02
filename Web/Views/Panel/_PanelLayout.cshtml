@@ -50,141 +50,155 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="/Panel/" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
+                        </li>
+                        @if (ViewBag.Role == "Admin")
+                        {
+                            <li class="nav-item">
+                                <a href="/panel/users" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/panel/cases" class="nav-link">
+                                    <i class="nav-icon fas fa-copy"></i>
+                                    <p>Cases</p>
+                                </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/users" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>Users</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/cases" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>Cases</p>
-                            </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/panel/convertations" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>Convertations</p>
+                                </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/convertations" class="nav-link">
-                                <i class="nav-icon fas fa-chart-pie"></i>
-                                <p>Convertations</p>
-                            </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/panel/histories" class="nav-link">
+                                    <i class="nav-icon fas fa-tree"></i>
+                                    <p>
+                                        Histories
+                                    </p>
+                                </a>
 
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/histories" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Histories
-                                </p>
-                            </a>
+                            </li>
+                            <li class="nav-header">Data</li>
+                            <li class="nav-item">
+                                <a href="/panel/categories" class="nav-link">
+                                    <i class="nav-icon fas fa-table"></i>
+                                    <p>
+                                        Categories
+                                    </p>
+                                </a>
+                            </li>
 
-                        </li>
-                        <li class="nav-header">Client</li>
-                        <li class="nav-item">
-                            <a href="/Panel/CreateTicket" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    CreateTicket
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/Tickets" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    Tickets
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewConvertations" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    View Convertations
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewAttachments" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    View Attachments
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">Staffs</li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewHandleTickets" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    View Handle Ticket
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewTickets" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    View Tickets
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewConvertations" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    View Convertations
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Panel/ViewAttachments" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>
-                                    View Attachments
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">Data</li>
-                        <li class="nav-item">
-                            <a href="/panel/categories" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Categories
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/panel/statuscodes" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    StatusCode
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/priorities" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Priority
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/panel/roles" class="nav-link">
-                                <i class="nav-icon far fa-image"></i>
-                                <p>
-                                    Roles
-                                </p>
+                            <li class="nav-item">
+                                <a href="/panel/statuscodes" class="nav-link">
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>
+                                        StatusCode
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/panel/priorities" class="nav-link">
+                                    <i class="nav-icon far fa-calendar-alt"></i>
+                                    <p>
+                                        Priority
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/panel/roles" class="nav-link">
+                                    <i class="nav-icon far fa-image"></i>
+                                    <p>
+                                        Roles
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else if (ViewBag.Role == "Software Developer" || ViewBag.Role == "IT Support" || ViewBag.Role == "Customer Service")
+                        {
+                            <li class="nav-header">Staffs</li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewHandleTickets" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        View Handle Ticket
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewTickets" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        View Tickets
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewConvertations" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        View Convertations
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewAttachments" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        View Attachments
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-header">Client</li>
+                            <li class="nav-item">
+                                <a href="/Panel/CreateTicket" class="nav-link">
+                                    <i class="nav-icon fas fa-edit"></i>
+                                    <p>
+                                        CreateTicket
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/Tickets" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        Tickets
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewConvertations" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        View Convertations
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Panel/ViewAttachments" class="nav-link">
+                                    <i class="nav-icon fas fa-columns"></i>
+                                    <p>
+                                        View Attachments
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item menu-open">
+                            <a href="/Panel/Logout" class="nav-link active">
+                                <i class="nav-icon fas fa-door-alt"></i>
+                                <p>Logout</p>
                             </a>
                         </li>
                     </ul>
