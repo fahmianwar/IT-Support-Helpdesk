@@ -22,7 +22,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-info" onclick="getPriority('${row['id']}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deletePriority('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-info" onclick="getPriority('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deletePriority('${row['id']}')">Delete</button>`;
                 }
             }
         ]
@@ -95,66 +95,58 @@ function insertPriority() {
 }
 
 function editPriority() {
+    debugger
     var obj = new Object();
-    obj.Name = $("#inputCreateName").val();
-    obj.Description = $("#inputCreateDescription").val();
+    obj.id = $("#Id").val();
+    obj.Name = $("#Name").val();
+    obj.Description = $("#Description").val();
     console.log(obj);
     console.log(JSON.stringify(obj));
-    if (obj.Name == "" || obj.Description == "") {
+    $.ajax({
+        url: 'https://localhost:44381/api/Priorities',
+        type: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(obj)
+    }).done((result) => {
+        Swal.fire({
+            title: 'Success!',
+            text: 'Berhasil mengubah data',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+        });
+        //$('#tableProfiles').DataTable().ajax.reload();
+        console.log(result);
+        $('#tablePriorities').DataTable().ajax.reload();
+    }).fail((error) => {
         Swal.fire({
             title: 'Error!',
-            text: 'Failed edit Priority',
+            text: 'Gagal menambahkan data',
             icon: 'error',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'Cool'
         });
-    } else {
-        $.ajax({
-            url: 'https://localhost:44381/api/Priorities',
-            type: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(obj)
-        }).done((result) => {
-            alert(result);
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
-            //$('#tableProfiles').DataTable().ajax.reload();
-            console.log(result);
-            $('#tablePriorities').DataTable().ajax.reload();
-        }).fail((error) => {
-            alert(error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Gagal menambahkan data',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            });
-            console.log(error);
-        });
-    }
+        console.log(error);
+    });
 }
 
 function getPriority(id) {
     console.log(id);
     $.ajax({
         url: 'https://localhost:44381/api/Priorities/' + id,
-        type: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
+        dataSrc: ''
+        //type: "GET",
+        //headers: {
+        //    'Accept': 'application/json',
+        //    'Content-Type': 'application/json'
+        //},
     }).done((result) => {
         console.log(result);
-        $("#inputCreateName").val();
-        $("#inputCreateDescription").val();
+        $("#Id").val(result.id);
+        $("#Name").val(result.name);
+        $("#Description").val(result.description);
     }).fail((error) => {
-        alert(error);
         Swal.fire({
             title: 'Error!',
             text: 'Gagal menampilkan data',
