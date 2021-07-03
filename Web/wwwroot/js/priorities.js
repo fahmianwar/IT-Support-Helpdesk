@@ -102,30 +102,38 @@ function editPriority() {
     obj.Description = $("#Description").val();
     console.log(obj);
     console.log(JSON.stringify(obj));
-    $.ajax({
-        url: 'https://localhost:44381/api/Priorities',
-        type: "PUT",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify(obj)
-    }).done((result) => {
-        Swal.fire({
-            title: 'Success!',
-            text: 'Berhasil mengubah data',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-        });
-        //$('#tableProfiles').DataTable().ajax.reload();
+    Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+        denyButtonText: `Don't save`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'https://localhost:44381/api/Priorities',
+                type: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(obj),
+            }).done((result) => {
+                Swal.fire('Saved!', '', 'success')
+            })
+        } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+        }
         console.log(result);
         $('#tablePriorities').DataTable().ajax.reload();
     }).fail((error) => {
+        alert(error);
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal menambahkan data',
+            text: 'Gagal update data',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Ok'
         });
         console.log(error);
     });

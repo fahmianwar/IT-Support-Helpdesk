@@ -92,7 +92,7 @@ function insertRole() {
     }
 }
 
-function editRole() {
+function editRoles() {
     debugger
     var obj = new Object();
     obj.id = $("#Id").val();
@@ -100,33 +100,41 @@ function editRole() {
     obj.Description = $("#Description").val();
     console.log(obj);
     console.log(JSON.stringify(obj));
-        $.ajax({
-            url: 'https://localhost:44381/api/Roles',
-            type: "PUT",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(obj)
-        }).done((result) => {
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil mengubah data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
-            //$('#tableProfiles').DataTable().ajax.reload();
-            console.log(result);
-            $('#tableRoles').DataTable().ajax.reload();
-        }).fail((error) => {
-            Swal.fire({
-                title: 'Error!',
-                text: 'Gagal menambahkan data',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            });
-            console.log(error);
+    Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+        denyButtonText: `Don't save`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'https://localhost:44381/api/Roles',
+                type: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(obj),
+            }).done((result) => {
+                Swal.fire('Saved!', '', 'success')
+            })
+        } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+        }
+        console.log(result);
+        $('#tableRoles').DataTable().ajax.reload();
+    }).fail((error) => {
+        alert(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Gagal update data',
+            icon: 'error',
+            confirmButtonText: 'Ok'
         });
+        console.log(error);
+    });
 }
 
 function getRole(id) {

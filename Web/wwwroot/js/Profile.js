@@ -1,61 +1,61 @@
-﻿$(document).ready(function () {
-    var i = 1;
-    console.log("Coba");
-    $('#tableUsers').DataTable({
-        ajax: {
-            url: 'https://localhost:44381/api/Users/',
-            dataSrc: ''
-        },
-        columns: [
+﻿//$(document).ready(function () {
+//    var i = 1;
+//    console.log("Coba");
+//    $('#tableUsers').DataTable({
+//        ajax: {
+//            url: 'https://localhost:44357/Panel/GetUsers',
+//            dataSrc: ''
+//        },
+//        columns: [
 
-            {
-                "data": null, "sortable": false,
-                render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                "data": "name"
-            },
-            {
-                "data": "email"
-            },
-            {
-                "render": function (data, type, row) {
-                    var date = new Date(row['birthDate']);
-                    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
-                }
-            },
-            {
-                "render": function (data, type, row) {
-                    if (row['phone'].charAt(0) == 0) {
-                        return "+62" + row['phone'].substring(1);
-                    } else {
-                        return row['phone'];
-                    }
-                }
-            },
-            {
-                "data": "address"
-            },
-            {
-                "data": "department"
-            },
-            {
-                "data": "company"
-            },
-            {
-                "data": "roleId"
-            },
-            {
-                "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteUser('${row['id']}')">Delete</button>`;
-                }
-            }
-        ]
-    });
+//            {
+//                "data": null, "sortable": false,
+//                render: function (data, type, row, meta) {
+//                    return meta.row + meta.settings._iDisplayStart + 1;
+//                }
+//            },
+//            {
+//                "data": "name"
+//            },
+//            {
+//                "data": "email"
+//            },
+//            {
+//                "render": function (data, type, row) {
+//                    var date = new Date(row['birthDate']);
+//                    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+//                }
+//            },
+//            {
+//                "render": function (data, type, row) {
+//                    if (row['phone'].charAt(0) == 0) {
+//                        return "+62" + row['phone'].substring(1);
+//                    } else {
+//                        return row['phone'];
+//                    }
+//                }
+//            },
+//            {
+//                "data": "address"
+//            },
+//            {
+//                "data": "department"
+//            },
+//            {
+//                "data": "company"
+//            },
+//            {
+//                "data": "roleId"
+//            },
+//            {
+//                "render": function (data, type, row) {
+//                    return `<button type="button" class="btn btn-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteUser('${row['id']}')">Delete</button>`;
+//                }
+//            }
+//        ]
+//    });
 
-});
+//});
 
 (function () {
     'use strict';
@@ -75,7 +75,7 @@
     }, false);
 })();
 
-function insertUser() {
+function insertProfile() {
     debugger
     var obj = new Object();
     obj.Name = $("#inputCreateName").val();
@@ -132,7 +132,7 @@ function insertUser() {
     }
 }
 
-function editUser() {
+function editProfile() {
     debugger
     var obj = new Object();
     obj.Id = $("#Id").val();
@@ -184,7 +184,7 @@ function editUser() {
     });
 }
 
-function getUser(id) {
+function getProfile(id) {
     console.log(id);
     $.ajax({
         url: 'https://localhost:44381/api/Users/' + id,

@@ -104,31 +104,39 @@ function editCategory() {
     obj.Name = $("#Name").val();
     obj.Description = $("#Description").val();
     console.log(obj);
-    $.ajax({
-        url: 'https://localhost:44381/api/Categories',
-        type: "PUT",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify(obj)
-    }).done((result) => {
-        Swal.fire({
-            title: 'Success!',
-            text: 'Berhasil mengubah data',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-        });
-        //$('#tableProfiles').DataTable().ajax.reload();
+    console.log(JSON.stringify(obj));
+    Swal.fire({
+        title: 'Do you want to save the changes?',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: `Save`,
+        denyButtonText: `Don't save`,
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'https://localhost:44381/api/Categories',
+                type: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                data: JSON.stringify(obj),
+            }).done((result) => {
+                Swal.fire('Saved!', '', 'success')
+            })
+        } else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+        }
         console.log(result);
         $('#tableCategories').DataTable().ajax.reload();
-        window.location.reload();
     }).fail((error) => {
+        alert(error);
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal menambahkan data',
+            text: 'Gagal update data',
             icon: 'error',
-            confirmButtonText: 'Cool'
+            confirmButtonText: 'Ok'
         });
         console.log(error);
     });
