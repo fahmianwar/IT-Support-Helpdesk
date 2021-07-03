@@ -56,7 +56,11 @@ namespace Web.Controllers
             ViewBag.Role = HttpContext.Session.GetString("Role");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
         }
-
+        public IActionResult Profile()
+        {
+            GetSession();
+            return View();
+        }
         public IActionResult Users()
         {
             GetSession();

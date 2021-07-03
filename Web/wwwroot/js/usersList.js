@@ -49,7 +49,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-info" onclick="getUser('${row['id']}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteUser('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteUser('${row['id']}')">Delete</button>`;
                 }
             }
         ]
@@ -135,26 +135,18 @@ function insertUser() {
 function editUser() {
     debugger
     var obj = new Object();
-    obj.Name = $("#inputCreateName").val();
-    obj.Email = $("#inputCreateEmail").val();
-    obj.Password = $("#inputCreatePassword").val();
-    obj.BirthDate = $("#inputCreateBirthDate").val();
-    obj.Phone = $("#inputCreatePhone").val();
-    obj.Address = $("#inputCreateAddress").val();
-    obj.Department = $("#inputCreateDepartment").val();
-    obj.Company = $("#inputCreateCompany").val();
-    obj.RoleId = parseInt($("#inputCreateRole").val());
+    obj.Id = $("#Id").val();
+    obj.Name = $("#Name").val();
+    obj.Email = $("#Email").val();
+    obj.Password = $("#Password").val();
+    obj.BirthDate = $("#BirthDate").val();
+    obj.Phone = $("#Phone").val();
+    obj.Address = $("#Address").val();
+    obj.Department = $("#Department").val();
+    obj.Company = $("#Company").val();
+    obj.RoleId = parseInt($("#Role").val());
     obj.Detail = "";
     console.log(obj);
-    console.log(JSON.stringify(obj));
-    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "" || obj.RoleId < 0) {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Failed create user',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    } else {
         $.ajax({
             url: 'https://localhost:44381/api/Users/',
             type: "PUT",
@@ -193,7 +185,6 @@ function editUser() {
             });
             console.log(error);
         });
-    }
 }
 
 function getUser(id) {
@@ -207,15 +198,16 @@ function getUser(id) {
         },
     }).done((result) => {
         console.log(result);
-        $("#inputCreateName").val();
-        $("#inputCreateEmail").val();
-        $("#inputCreatePassword").val();
-        $("#inputCreateBirthDate").val();
-        $("#inputCreatePhone").val();
-        $("#inputCreateAddress").val();
-        $("#inputCreateDepartment").val();
-        $("#inputCreateCompany").val();
-        $("#inputCreateRole").val();
+        $("#Id").val();
+        $("#Name").val();
+        $("#Email").val();
+        $("#Password").val();
+        $("#BirthDate").val();
+        $("#Phone").val();
+        $("#Address").val();
+        $("#Department").val();
+        $("#Company").val();
+        $("#Role").val();
     }).fail((error) => {
         alert(error);
         Swal.fire({

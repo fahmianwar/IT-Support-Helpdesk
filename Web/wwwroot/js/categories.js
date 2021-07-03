@@ -21,6 +21,9 @@
             {
                 "data": null,
                 "render": function (data, type, row) {
+                    var data = data;
+                    var type = type;
+                    var row = row;
                     return `<button type="button" class="btn btn-info" onclick="getCategory('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCategory('${row['id']}')">Delete</button>`;
                 }
             }
@@ -101,7 +104,6 @@ function editCategory() {
     obj.Name = $("#Name").val();
     obj.Description = $("#Description").val();
     console.log(obj);
-    console.log(JSON.stringify(obj));
     $.ajax({
         url: 'https://localhost:44381/api/Categories',
         type: "PUT",
@@ -120,6 +122,7 @@ function editCategory() {
         //$('#tableProfiles').DataTable().ajax.reload();
         console.log(result);
         $('#tableCategories').DataTable().ajax.reload();
+        window.location.reload();
     }).fail((error) => {
         Swal.fire({
             title: 'Error!',

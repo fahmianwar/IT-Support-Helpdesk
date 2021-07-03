@@ -172,22 +172,23 @@
                 <div class="modal-body" id="editModal">
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
+                            <input type="text" hidden class="form-control" id="Id" placeholder="Id">
                             <label for="inputCreateName">Name</label>
-                            <input type="text" class="form-control" id="inputCreateName" placeholder="Name" required>
+                            <input type="text" class="form-control" id="Name" placeholder="Name" required>
                             <div class="invalid-feedback">
                                 Please enter right string format.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="inputCreateEmail">Email</label>
-                            <input type="email" class="form-control" id="inputCreateEmail" placeholder="Email" required>
+                            <input type="email" class="form-control" id="Email" placeholder="Email" required>
                             <div class="invalid-feedback">
                                 Please enter right email format.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="inputCreatePassword">Password</label>
-                            <input type="password" class="form-control" id="inputCreatePassword" placeholder="Password" required>
+                            <input type="password" class="form-control" id="Password" placeholder="Password" required>
                             <div class="invalid-feedback">
                                 Please enter right string format.
                             </div>
@@ -196,21 +197,21 @@
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="inputCreateBirthDate">Birth Date</label>
-                            <input type="date" class="form-control" id="inputCreateBirthDate" placeholder="BirthDate" required>
+                            <input type="date" class="form-control" id="BirthDate" placeholder="BirthDate" required>
                             <div class="invalid-feedback">
                                 Please enter right date format.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="inputCreatePhone">Phone</label>
-                            <input type="text" class="form-control" id="inputCreatePhone" placeholder="Phone" required>
+                            <input type="text" class="form-control" id="Phone" placeholder="Phone" required>
                             <div class="invalid-feedback">
                                 Please enter right phone format.
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="inputCreateRole">Role</label>
-                            <select class="form-control" id="inputCreateRole" placeholder="Role" required>
+                            <select class="form-control" id="Role" placeholder="Role" required>
                                 <option value="1">Admin</option>
                                 <option value="5" selected>Client</option>
                             </select>
@@ -222,7 +223,7 @@
                     <div class="form-row">
                         <div class="col-md-12 mb-3">
                             <label for="inputCreateAddress">Address</label>
-                            <input type="text" class="form-control" id="inputCreateAddress" placeholder="Address" required>
+                            <input type="text" class="form-control" id="Address" placeholder="Address" required>
                             <div class="invalid-feedback">
                                 Please enter right address format.
                             </div>
@@ -231,14 +232,14 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="inputCreateDepartment">Department</label>
-                            <input type="text" class="form-control" id="inputCreateDepartment" placeholder="Department" required>
+                            <input type="text" class="form-control" id="Department" placeholder="Department" required>
                             <div class="invalid-feedback">
                                 Please enter right string format.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="inputCreateCompany">Company</label>
-                            <input type="text" class="form-control" id="inputCreateCompany" placeholder="Company" required>
+                            <input type="text" class="form-control" id="Company" placeholder="Company" required>
                             <div class="invalid-feedback">
                                 Please enter right string format.
                             </div>
@@ -246,7 +247,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Create</button>
+                    <button class="btn btn-primary">Update</button>
                 </div>
             </form>
         </div>
