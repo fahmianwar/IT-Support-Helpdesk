@@ -39,5 +39,17 @@ namespace Web.Repository.Data
             }
             return data;
         }
+
+        public async Task<Convertation> GetConvertationByCaseId(int id)
+        {
+            Convertation entity = null;
+
+            using (var response = await httpClient.GetAsync(request + "ViewConvertationsByCaseId/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entity = JsonConvert.DeserializeObject<Convertation>(apiResponse);
+            }
+            return entity;
+        }
     }
 }

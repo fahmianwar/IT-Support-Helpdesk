@@ -55,6 +55,22 @@ namespace Web.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
             ViewBag.Role = HttpContext.Session.GetString("Role");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            if (ViewBag.Role == "Software Developer")
+            {
+                ViewBag.Level = 3;
+            }
+            else if (ViewBag.Role == "IT Support")
+            {
+                ViewBag.Level = 2;
+            }
+            else if (ViewBag.Role == "Customer Service")
+            {
+                ViewBag.Level = 1;
+            }
+            else
+            {
+                ViewBag.Level = 0;
+            }
         }
         public IActionResult Profile()
         {
@@ -289,13 +305,14 @@ namespace Web.Controllers
         //[AllowAnonymous]
         //[Route("ViewConvertationByCaseId")]
         //[HttpGet("ViewConvertationByCaseId/{caseId}")]
-        public IActionResult ViewConvertationByCaseId(int caseId)
+        [HttpGet("{caseId}")]
+        public async Task<IActionResult> GetConvertationsByCaseId(int caseId)
         {
-            ViewBag.CaseId = caseId;
-            return View();
+            var result = await convertationRepository.GetConvertationByCaseId(caseId);
+            return Json(result);
         }
 
-        public IActionResult Logout()
+            public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
