@@ -59,6 +59,31 @@
 
 function viewConvertation(caseId) {
     $("#inputConvertationCaseId").val(parseInt(caseId));
+    viewChat(caseId);
+    
+}
+
+function viewChat(caseId) {
+    $.ajax({
+        url: 'https://localhost:44381/api/Convertations/ViewConvertationsByCaseId/' + caseId
+    }).done((result) => {
+        text = "";
+        $.each(result, function (key, val) {
+            console.log(val.message);
+            text += `${val.message}`;
+            
+            //text += `
+            //    <td>${val.universityName}</td>
+            //`;
+            //console.log(val.universityName);
+        });
+        $("#chatMessages").html(text);
+        //text += `</tr>`;
+        //$('#universityName').html(text);
+        //return result.universityName;
+    }).fail((error) => {
+        console.log(error);
+    });
 }
 
 function createConvertation() {
@@ -87,9 +112,8 @@ function createConvertation() {
             data: JSON.stringify(obj)
         }).done((result) => {
             //alert(result);
-            text = `<h1>Reload</h1>`;
-            $("#chatMessages").html(text);
-            $("#inputConvertationMessage").reset();
+            viewChat(obj.CaseId);
+            $("#inputConvertationMessage").val("");
             Swal.fire({
                 title: 'Success!',
                 text: 'Berhasil menambahkan data',
@@ -99,7 +123,7 @@ function createConvertation() {
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
             $('#tableUsers').DataTable().ajax.reload();
-            $("#inputConvertationMessage").reset();
+            $("#inputConvertationMessage").val("");
             $('#viewConvertationModal').modal().hide();
         }).fail((error) => {
             alert(error);

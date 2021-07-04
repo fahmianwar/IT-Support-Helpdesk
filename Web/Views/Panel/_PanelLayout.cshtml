@@ -50,36 +50,52 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                         with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="/Panel/" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="/Panel/" class="nav-link @if (ViewBag.CurrentPage == "PanelIndex") { Write("active"); }">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
+                            
+                            @*@if (ViewBag.CurrentPage == "PanelIndex")
+                            {
+                                <a href="/Panel/" class="nav-link active">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/Panel/" class="nav-link active">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            }*@
+
                         </li>
                         @if (ViewBag.Role == "Admin")
                         {
                             <li class="nav-item">
-                                <a href="/panel/users" class="nav-link">
+                                <a href="/panel/users" class="nav-link @if (ViewBag.CurrentPage == "Users") { Write("active"); }">
                                     <i class="nav-icon fas fa-th"></i>
                                     <p>Users</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/panel/cases" class="nav-link">
+                                <a href="/panel/cases" class="nav-link @if (ViewBag.CurrentPage == "Cases") { Write("active"); }">
                                     <i class="nav-icon fas fa-copy"></i>
                                     <p>Cases</p>
                                 </a>
 
                             </li>
                             <li class="nav-item">
-                                <a href="/panel/convertations" class="nav-link">
+                                <a href="/panel/convertations" class="nav-link @if (ViewBag.CurrentPage == "Convertations") { Write("active"); }">
                                     <i class="nav-icon fas fa-chart-pie"></i>
                                     <p>Convertations</p>
                                 </a>
 
                             </li>
                             <li class="nav-item">
-                                <a href="/panel/histories" class="nav-link">
+                                <a href="/panel/histories" class="nav-link @if (ViewBag.CurrentPage == "Histories") { Write("active"); }">
                                     <i class="nav-icon fas fa-tree"></i>
                                     <p>
                                         Histories
@@ -89,7 +105,7 @@
                             </li>
                             <li class="nav-header">Data</li>
                             <li class="nav-item">
-                                <a href="/panel/categories" class="nav-link">
+                                <a href="/panel/categories" class="nav-link @if (ViewBag.CurrentPage == "Categories") { Write("active"); }">
                                     <i class="nav-icon fas fa-table"></i>
                                     <p>
                                         Categories
@@ -98,23 +114,23 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/panel/statuscodes" class="nav-link">
+                                <a href="/panel/statuscodes" class="nav-link @if (ViewBag.CurrentPage == "StatusCodes") { Write("active"); }">
                                     <i class="nav-icon far fa-calendar-alt"></i>
                                     <p>
-                                        StatusCode
+                                        StatusCodes
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/panel/priorities" class="nav-link">
+                                <a href="/panel/priorities" class="nav-link @if (ViewBag.CurrentPage == "Priorities") { Write("active"); }">
                                     <i class="nav-icon far fa-calendar-alt"></i>
                                     <p>
-                                        Priority
+                                        Priorities
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/panel/roles" class="nav-link">
+                                <a href="/panel/roles" class="nav-link @if (ViewBag.CurrentPage == "Roles") { Write("active"); }">
                                     <i class="nav-icon far fa-image"></i>
                                     <p>
                                         Roles
@@ -126,7 +142,7 @@
                         {
                             <li class="nav-header">Staffs</li>
                             <li class="nav-item">
-                                <a href="/Panel/ViewHandleTickets" class="nav-link">
+                                <a href="/Panel/ViewHandleTickets" class="nav-link @if (ViewBag.CurrentPage == "ViewHandleTickets") { Write("active"); }">
                                     <i class="nav-icon fas fa-edit"></i>
                                     <p>
                                         View Handle Ticket
@@ -134,7 +150,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Panel/ViewTickets" class="nav-link">
+                                <a href="/Panel/ViewTickets" class="nav-link @if (ViewBag.CurrentPage == "ViewTickets") { Write("active"); }">
                                     <i class="nav-icon fas fa-columns"></i>
                                     <p>
                                         View Tickets
@@ -170,7 +186,7 @@
                                     </a>
                                 </li>*@
                             <li class="nav-item">
-                                <a href="/Panel/Tickets" class="nav-link">
+                                <a href="/Panel/Tickets" class="nav-link @if (ViewBag.CurrentPage == "Tickets") { Write("active"); }">
                                     <i class="nav-icon fas fa-columns"></i>
                                     <p>
                                         Tickets
@@ -195,7 +211,7 @@
                                 </li>*@
                         }
                         <li class="nav-item menu-open">
-                            <a href="/Panel/Logout" class="nav-link active">
+                            <a href="/Panel/Logout" class="nav-link">
                                 <i class="nav-icon fas fa-door-alt"></i>
                                 <p>Logout</p>
                             </a>

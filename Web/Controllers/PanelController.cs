@@ -55,6 +55,7 @@ namespace Web.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
             ViewBag.Role = HttpContext.Session.GetString("Role");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+            ViewBag.CurrentPage = "";
             if (ViewBag.Role == "Software Developer")
             {
                 ViewBag.Level = 3;
@@ -75,11 +76,13 @@ namespace Web.Controllers
         public IActionResult Profile()
         {
             GetSession();
+            ViewBag.CurrentPage = "Profile";
             return View();
         }
         public IActionResult Users()
         {
             GetSession();
+            ViewBag.CurrentPage = "Users";
             return View();
         }
 
@@ -157,12 +160,14 @@ namespace Web.Controllers
         public IActionResult ViewTickets()
         {
             GetSession();
+            ViewBag.CurrentPage = "ViewTickets";
             return View();
         }
 
         public IActionResult ViewHandleTickets()
         {
             GetSession();
+            ViewBag.CurrentPage = "ViewHandleTickets";
             return View();
         }
 
@@ -213,12 +218,14 @@ namespace Web.Controllers
         public IActionResult ViewConvertations()
         {
             GetSession();
+            ViewBag.CurrentPage = "ViewConvertations";
             return View();
         }
 
         public IActionResult ViewAttachments()
         {
             GetSession();
+            ViewBag.CurrentPage = "ViewAttachments";
             return View();
         }
 
@@ -239,66 +246,77 @@ namespace Web.Controllers
         public IActionResult Index()
         {
             GetSession();
+            ViewBag.CurrentPage = "PanelIndex";
             return View();
         }
 
         public IActionResult Cases()
         {
             GetSession();
+            ViewBag.CurrentPage = "Cases";
             return View();
         }
 
         public IActionResult Tickets()
         {
             GetSession();
+            ViewBag.CurrentPage = "Tickets";
             return View();
         }
 
         public IActionResult Convertations()
         {
             GetSession();
+            ViewBag.CurrentPage = "Convertations";
             return View();
         }
 
         public IActionResult Attachments()
         {
             GetSession();
+            ViewBag.CurrentPage = "Attachments";
             return View();
         }
 
         public IActionResult Histories()
         {
             GetSession();
+            ViewBag.CurrentPage = "Histories";
             return View();
         }
 
         public IActionResult Categories()
         {
             GetSession();
+            ViewBag.CurrentPage = "Categories";
             return View();
         }
 
         public IActionResult StatusCodes()
         {
             GetSession();
+            ViewBag.CurrentPage = "StatusCodes";
             return View();
         }
 
         public IActionResult Priorities()
         {
             GetSession();
+            ViewBag.CurrentPage = "Priorities";
             return View();
         }
 
         public IActionResult Roles()
         {
             GetSession();
+            ViewBag.CurrentPage = "Roles";
             return View();
         }
 
         public IActionResult CreateTicket()
         {
             GetSession();
+            ViewBag.CurrentPage = "CreateTicket";
             return View();
         }
 
