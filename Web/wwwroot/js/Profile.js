@@ -1,61 +1,42 @@
 ﻿//$(document).ready(function () {
 //    var i = 1;
 //    console.log("Coba");
-//    $('#tableUsers').DataTable({
+//    $('#formprofile').Submit({
 //        ajax: {
 //            url: 'https://localhost:44357/Panel/GetUsers',
 //            dataSrc: ''
 //        },
-//        columns: [
-
-//            {
-//                "data": null, "sortable": false,
-//                render: function (data, type, row, meta) {
-//                    return meta.row + meta.settings._iDisplayStart + 1;
-//                }
-//            },
-//            {
-//                "data": "name"
-//            },
-//            {
-//                "data": "email"
-//            },
-//            {
-//                "render": function (data, type, row) {
-//                    var date = new Date(row['birthDate']);
-//                    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
-//                }
-//            },
-//            {
-//                "render": function (data, type, row) {
-//                    if (row['phone'].charAt(0) == 0) {
-//                        return "+62" + row['phone'].substring(1);
-//                    } else {
-//                        return row['phone'];
-//                    }
-//                }
-//            },
-//            {
-//                "data": "address"
-//            },
-//            {
-//                "data": "department"
-//            },
-//            {
-//                "data": "company"
-//            },
-//            {
-//                "data": "roleId"
-//            },
-//            {
-//                "render": function (data, type, row) {
-//                    return `<button type="button" class="btn btn-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteUser('${row['id']}')">Delete</button>`;
-//                }
-//            }
-//        ]
-//    });
-
 //});
+
+//$(document).ready(function () {
+//    $("#formprofile").submit(function (e) {
+//        //Serialize the form datas.   
+//        var obj = new Object();
+//        obj.Id = $("#Id").val();
+//        obj.Name = $("#Name").val();
+//        obj.Email = $("#Email").val();
+//        obj.Password = $("#Password").val();
+//        obj.BirthDate = $("#BirthDate").val();
+//        obj.Phone = $("#Phone").val();
+//        obj.Address = $("#Address").val();
+//        obj.Department = $("#Department").val();
+//        obj.Company = $("#Company").val();
+//        obj.RoleId = parseInt($("#Role").val());
+//        obj.Detail = "";
+//        console.log(obj);
+//        //to get alert popup   
+//        alert(valdata);
+//        $.ajax({
+//            url: 'https://localhost:44381/api/Users',
+//            type: "PUT",
+//            headers: {
+//                'Accept': 'application/json',
+//                'Content-Type': 'application/json'
+//            },
+//            data: JSON.stringify(obj),
+//        });
+//    });
+//});   
 
 (function () {
     'use strict';
@@ -75,62 +56,7 @@
     }, false);
 })();
 
-function insertProfile() {
-    debugger
-    var obj = new Object();
-    obj.Name = $("#inputCreateName").val();
-    obj.Email = $("#inputCreateEmail").val();
-    obj.Password = $("#inputCreatePassword").val();
-    obj.BirthDate = $("#inputCreateBirthDate").val();
-    obj.Phone = $("#inputCreatePhone").val();
-    obj.Address = $("#inputCreateAddress").val();
-    obj.Department = $("#inputCreateDepartment").val();
-    obj.Company = $("#inputCreateCompany").val();
-    obj.RoleId = parseInt($("#inputCreateRole").val());
-    obj.Detail = "";
-    console.log(obj);
-    console.log(JSON.stringify(obj));
-    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "" || obj.RoleId < 0) {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Failed create user',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    } else {
-        $.ajax({
-            url: 'https://localhost:44381/api/Users/',
-            type: "POST",
-            dataType: "json",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(obj)
-        }).done((result) => {
-            alert(result);
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            }).then(function () {
-                window.location.href = "/panel/users";
-            });
-            console.log(result);
-            $('#tableUsers').DataTable().ajax.reload();
-        }).fail((error) => {
-            alert(error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Gagal menambahkan data',
-                icon: 'error',
-                confirmButtonText: 'Ok'
-            });
-            console.log(error);
-        });
-    }
-}
+
 
 function editProfile() {
     debugger
@@ -171,7 +97,7 @@ function editProfile() {
             Swal.fire('Changes are not saved', '', 'info')
         }
         console.log(result);
-        $('#tableUsers').DataTable().ajax.reload();
+        $('#formProfile').ajax.reload();
     }).fail((error) => {
         alert(error);
         Swal.fire({
