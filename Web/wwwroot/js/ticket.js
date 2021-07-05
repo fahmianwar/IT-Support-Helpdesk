@@ -74,7 +74,18 @@
                 }
             },
             {
-                "data": "level"
+                "data": "level",
+                render: function (data, type, row) {
+                    if (row['level'] == 1) {
+                        return 'Case Handle by Customer Service';
+                    }
+                    else if (row['level'] == 2) {
+                        return 'Case Handle by IT Support';
+                    }
+                    else if (row['level'] == 3) {
+                        return 'Case Handle By Software Developer';
+                    }
+                }
             },
             {
                 "data": "userId"
