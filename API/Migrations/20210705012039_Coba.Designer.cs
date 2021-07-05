@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20210701031123_Coba")]
+    [Migration("20210705012039_Coba")]
     partial class Coba
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

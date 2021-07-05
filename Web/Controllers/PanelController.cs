@@ -55,6 +55,7 @@ namespace Web.Controllers
             ViewBag.Name = HttpContext.Session.GetString("Name");
             ViewBag.Role = HttpContext.Session.GetString("Role");
             ViewBag.RoleId = HttpContext.Session.GetString("RoleId");
+
             ViewBag.CurrentPage = "";
             if (ViewBag.Role == "Software Developer")
             {
