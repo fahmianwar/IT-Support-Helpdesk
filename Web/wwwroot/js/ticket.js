@@ -98,6 +98,47 @@ function createTicket() {
 
 function viewConvertation(caseId) {
     $("#inputConvertationCaseId").val(parseInt(caseId));
+    viewChat(caseId);
+}
+
+function viewChat(caseId) {
+    $.ajax({
+        url: 'https://localhost:44381/api/Convertations/ViewConvertationsByCaseId/' + caseId
+    }).done((result) => {
+        text = "";
+        $.each(result, function (key, val) {
+            if (val.userId == viewBagUserId) {
+                text += `
+                    <div class="direct-chat-msg right">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-right">${viewBagName}</span>
+                            <span class="direct-chat-timestamp float-left">${val.dateTime}</span>
+                        </div>
+                        <img class="direct-chat-img" src="/lib/adminlte/img/user1-128x128.jpg" alt="Profile">
+                        <div class="direct-chat-text">
+                            ${val.message}
+                        </div>
+                    </div>
+                    `;
+            } else {
+                text += `
+                    <div class="direct-chat-msg">
+                        <div class="direct-chat-infos clearfix">
+                            <span class="direct-chat-name float-left">Staff #${val.userId}</span>
+                            <span class="direct-chat-timestamp float-right">${val.dateTime}</span>
+                        </div>
+                        <img class="direct-chat-img" src="/lib/adminlte/img/user1-128x128.jpg" alt="Profile">
+                        <div class="direct-chat-text">
+                            ${val.message}
+                        </div>
+                    </div>
+                    `;
+            }
+        });
+        $("#chatMessages").html(text);
+    }).fail((error) => {
+        console.log(error);
+    });
 }
 
 function createConvertation() {
@@ -126,9 +167,8 @@ function createConvertation() {
             data: JSON.stringify(obj)
         }).done((result) => {
             //alert(result);
-            text = `<h1>Reload</h1>`;
-            $("#chatMessages").html(text);
-            $("#inputConvertationMessage").reset();
+            viewChat(obj.CaseId);
+            $("#inputConvertationMessage").val('');
             Swal.fire({
                 title: 'Success!',
                 text: 'Berhasil menambahkan data',

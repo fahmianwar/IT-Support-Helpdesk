@@ -143,6 +143,7 @@ D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netst
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.pdb
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
@@ -168,11 +169,16 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Crea
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Histories.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Priorities.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Profile.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\StatusCodes.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Tickets.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Users.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewAttachments.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewConvertationByCaseId.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewConvertations.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewHandleTickets.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewTickets.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_ListLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_PanelLayout.cshtml.g.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\_SidebarLayout.cshtml.g.cs
@@ -193,9 +199,3 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplet
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewAttachments.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewConvertations.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewHandleTickets.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\ViewTickets.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Profile.cshtml.g.cs
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
