@@ -17,5 +17,7 @@ namespace API.ViewModels
         public string UserName { get; set; }
         public string PriorityName { get; set; }
         public string CategoryName { get; set; }
+        //public int StatusCodeId { get; set; }
+        //public string StatusCodeName { get; set; }
     }
 }

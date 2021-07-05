@@ -74,7 +74,18 @@
                 }
             },
             {
-                "data": "level"
+                "data": "level",
+                render: function (data, type, row) {
+                    if (row['level'] == 1) {
+                        return 'Case Handle by Customer Service';
+                    }
+                    else if (row['level'] == 2) {
+                        return 'Case Handle by IT Support';
+                    }
+                    else if (row['level'] == 3) {
+                        return 'Case Handle By Software Developer';
+                    }
+                }
             },
             {
                 "data": "userId"
@@ -163,10 +174,10 @@ function viewChat(caseId) {
                 text += `
                     <div class="direct-chat-msg right">
                         <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-right">${viewBagName}</span>
+                            <span class="direct-chat-name float-right">${val.userName}</span>
                             <span class="direct-chat-timestamp float-left">${val.dateTime}</span>
                         </div>
-                        <img class="direct-chat-img" src="/lib/adminlte/img/user1-128x128.jpg" alt="Profile">
+                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.avatar}" alt="${val.userName}">
                         <div class="direct-chat-text">
                             ${val.message}
                         </div>
@@ -176,10 +187,10 @@ function viewChat(caseId) {
                 text += `
                     <div class="direct-chat-msg">
                         <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left">Staff #${val.userId}</span>
+                            <span class="direct-chat-name float-left">${val.userName} #${val.userId}</span>
                             <span class="direct-chat-timestamp float-right">${val.dateTime}</span>
                         </div>
-                        <img class="direct-chat-img" src="/lib/adminlte/img/user1-128x128.jpg" alt="Profile">
+                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.avatar}" alt="${val.userName}">
                         <div class="direct-chat-text">
                             ${val.message}
                         </div>

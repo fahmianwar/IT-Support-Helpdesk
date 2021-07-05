@@ -103,6 +103,8 @@ namespace API.Repository.Data
                 join u in context.Users on c.UserId equals u.Id
                 join p in context.Priorities on c.PriorityId equals p.Id
                 join ct in context.Categories on c.CategoryId equals ct.Id
+                //join h in context.Histories on c.Id equals h.CaseId
+                //join sc in context.StatusCodes on h.StatusCodeId equals sc.Id
                 select new CaseVM
                 {
                     Id = c.Id,
@@ -114,7 +116,9 @@ namespace API.Repository.Data
                     UserId = u.Id,
                     UserName = u.Name,
                     PriorityName = p.Name,
-                    CategoryName = ct.Name
+                    CategoryName = ct.Name,
+                    //StatusCodeId = sc.Id,
+                    //StatusCodeName = sc.Name
                 }).ToList();
             return all.Where(x => x.UserId == userId);
         }
