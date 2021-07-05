@@ -18,7 +18,21 @@
                 "data": "description"
             },
             {
-                "data": "dateTime"
+                "data": "dateTime",
+                render: function (data, type, row) {
+                    if (data) {
+                        debugger;
+                        var m = data.split(/[T-]/);
+                        var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
+                        var curr_date = d.getDate();
+                        var curr_month = d.getMonth() + 1
+                        var curr_year = d.getFullYear();
+                        var formatedDate = d.getDate() + '.' + d.getMonth() + '.' + d.getFullYear();
+                        return formatedDate;
+                    }
+                    else
+                        return data
+                },
             },
             {
                 "data": "level"
