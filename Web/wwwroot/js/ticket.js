@@ -87,8 +87,12 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
-                }
+                    if (row['endDateTime'] == null) {
+                        return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
+                    } else {
+                        return "-";
+                    }
+                    }
             }
         ]
     });
@@ -215,26 +219,27 @@ function createConvertation() {
             data: JSON.stringify(obj)
         }).done((result) => {
             //alert(result);
-            viewChat(obj.CaseId);
-            $("#inputConvertationMessage").val('');
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
+          
+            //$("#inputConvertationMessage").val('');
+            //Swal.fire({
+            //    title: 'Success!',
+            //    text: 'Berhasil menambahkan data',
+            //    icon: 'success',
+            //    confirmButtonText: 'Cool'
+            //});
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
-            $('#tableUsers').DataTable().ajax.reload();
-            $("#inputConvertationMessage").reset();
-            $('#viewConvertationModal').modal().hide();
+            viewChat(obj.CaseId);
+            $('#tableTickets').DataTable().ajax.reload();
+            $("#inputConvertationMessage").summernote('reset');
+            $('#viewConvertationModal').modal('hide');
         }).fail((error) => {
             alert(error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
                 icon: 'error',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'OK'
             });
             console.log(error);
         });
