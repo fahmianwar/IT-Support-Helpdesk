@@ -49,7 +49,13 @@ namespace API.Repository.Data
             return all.OrderByDescending(x => x.DateTime); 
         }
 
-        public IEnumerable<ConvertationVM> ViewConvertations()
+        public IEnumerable<Convertation> ViewConvertations()
+        {
+            var view = context.Convertations.ToList();
+            return view;
+        }
+
+        public IEnumerable<ConvertationVM> ViewConvertationsByCaseId(int id)
         {
             Convertation convertation = new Convertation();
             var all = (
@@ -65,13 +71,7 @@ namespace API.Repository.Data
                     UserName = u.Name,
                     Avatar = u.Avatar
                 }).ToList();
-            return all;
-        }
-
-        public IEnumerable<Convertation> ViewConvertationsByCaseId(int id)
-        {
-            var find = context.Convertations.Where(x => x.CaseId == id);
-            return find;
+            return all.Where(x => x.CaseId == id);
         }
 
         public IEnumerable<Convertation> ViewConvertationsByUserId(int userId)

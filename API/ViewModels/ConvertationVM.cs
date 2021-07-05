@@ -11,6 +11,7 @@ namespace API.ViewModels
         public DateTime DateTime { get; set; }
         public string Message { get; set; }
         public string CaseName { get; set; }
+        public int CaseId { get; set; }
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Avatar { get; set; }
