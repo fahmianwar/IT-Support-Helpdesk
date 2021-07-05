@@ -20,7 +20,6 @@
                 "data": "startDateTime",
                 render: function (data, type, row) {
                     if (data) {
-                        debugger;
                         var m = data.split(/[T-]/);
                         var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
                         var curr_date = d.getDate();
@@ -37,7 +36,6 @@
                 "data": "endDateTime",
                 render: function (data, type, row) {
                     if (data) {
-                        debugger;
                         var m = data.split(/[T-]/);
                         var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
                         var curr_date = d.getDate();
@@ -92,7 +90,7 @@
                 "render": function (data, type, row) {
                     if (row['endDateTime'] == null) {
                         if (row['level'] == viewBagLevel) {
-                            return `<button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Help</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${viewBagUserId}')">Close</button>`;
+                            return `<button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Help</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${viewBagUserId}')">Close</button>`;
                         } else {
                             return null;
                         }
@@ -182,8 +180,11 @@ function createConvertation() {
             data: JSON.stringify(obj)
         }).done((result) => {
             //alert(result);
+           
+            $("#inputConvertationMessage").summernote('reset');
+            $('#tableViewHandleTickets').DataTable().ajax.reload();
             viewChat(obj.CaseId);
-            $("#inputConvertationMessage").val("");
+            $('#viewconvertationmodal').modal('hide');
             //Swal.fire({
             //    title: 'Success!',
             //    text: 'Berhasil menambahkan data',
@@ -192,9 +193,7 @@ function createConvertation() {
             //});
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
-            $('#tableViewHandleTickets').DataTable().ajax.reload();
-            $("#inputConvertationMessage").val('');
-            $('#viewConvertationModal').modal().hide();
+
         }).fail((error) => {
             alert(error);
             Swal.fire({
