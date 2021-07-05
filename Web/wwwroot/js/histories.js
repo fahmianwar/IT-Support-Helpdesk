@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableHistories').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetHistories',
+            url: 'https://localhost:44381/api/Histories/GetHistory',
             dataSrc: ''
         },
         columns: [
@@ -38,13 +38,16 @@
                 "data": "level"
             },
             {
-                "data": "userId"
+                "data": null,
+                "render": function (data, type, row) {
+                    return row['userName'] + ' ' + '#' + row['userId'];
+                }
             },
             {
-                "data": "caseId"
+                "data": "caseName"
             },
             {
-                "data": "statusCodeId"
+                "data": "statusCodeName"
             },
             {
                 "render": function (data, type, row) {

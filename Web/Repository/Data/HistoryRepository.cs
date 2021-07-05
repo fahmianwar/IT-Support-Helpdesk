@@ -1,4 +1,5 @@
 ﻿using API.Models;
+using API.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -28,14 +29,14 @@ namespace Web.Repository.Data
             };
         }
 
-        public async Task<List<History>> GetHistories()
+        public async Task<List<HistoryVM>> GetHistories()
         {
-            List<History> data = new List<History>();
+            List<HistoryVM> data = new List<HistoryVM>();
 
             using (var response = await httpClient.GetAsync(request))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<History>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<HistoryVM>>(apiResponse);
             }
             return data;
         }

@@ -30,6 +30,25 @@ namespace API.Repository.Data
             return convertation.Id;
         }
 
+        public IEnumerable<ConvertationVM> GetConvertation()
+        {
+            Convertation convertation = new Convertation();
+            var all = (
+                from cv in context.Convertations
+                join u in context.Users on cv.UserId equals u.Id
+                join c in context.Cases on cv.CaseId equals c.Id
+                select new ConvertationVM
+                {
+                    Id = cv.Id,
+                    DateTime = cv.DateTime,
+                    Message = cv.Message,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    CaseName = c.Description
+                }).ToList();
+            return all.OrderByDescending(x => x.DateTime);
+        }
+
         public IEnumerable<Convertation> ViewConvertations()
         {
             var view = context.Convertations.ToList();

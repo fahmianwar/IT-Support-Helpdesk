@@ -227,7 +227,28 @@ namespace API.Repository.Data
                 return 0;
             }
         }
-
+        //Profile
+        public IEnumerable<ProfileVM> GetProfile()
+        {
+            User user = new User();
+            var all = (
+                from u in context.Users
+                join r in context.Roles on u.RoleId equals r.Id
+                select new ProfileVM
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    Email = u.Email,
+                    BirthDate = u.BirthDate,
+                    RoleName = r.Name,
+                    Phone = u.Phone,
+                    Address = u.Address,
+                    Department = u.Department,
+                    Company = u.Company,
+                    Detail = u.Detail
+                }).ToList();
+            return all;
+        }
         // Users
         public int UpdateProfile(ProfileVM profile)
         {

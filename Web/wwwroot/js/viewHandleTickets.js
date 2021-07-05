@@ -57,33 +57,36 @@
                         return '-';
                     }
                     else if (row['review'] == 1) {
-                        return ':star:';
+                        return '&#11088';
                     }
                     else if (row['review'] == 2) {
-                        return ':star:' + 'star:';
+                        return '&#11088' + '&#11088';
                     }
                     else if (row['review'] == 3) {
-                        return ':star:' + 'star:' + 'star:';
+                        return '&#11088' + '&#11088' + '&#11088';
                     }
                     else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:';
+                        return '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
-                    else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:' + 'star:';
+                    else if (row['review'] == 5) {
+                        return '&#11088' + '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
-                },
+                }
             },
             {
                 "data": "level"
             },
             {
-                "data": "userId"
+                "data": null,
+                "render": function (data, type, row) {
+                    return row['userName'] + ' ' + '#' + row['userId'];
+                }
             },
             {
-                "data": "priorityId"
+                "data": "priorityName"
             },
             {
-                "data": "categoryId"
+                "data": "categoryName"
             },
             {
                 "render": function (data, type, row) {

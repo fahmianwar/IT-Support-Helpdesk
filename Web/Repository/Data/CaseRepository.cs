@@ -1,4 +1,5 @@
 ﻿using API.Models;
+using API.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
@@ -28,38 +29,38 @@ namespace Web.Repository.Data
             };
         }
 
-        public async Task<List<Case>> GetCases()
+        public async Task<List<CaseVM>> GetCases()
         {
-            List<Case> data = new List<Case>();
+            List<CaseVM> data = new List<CaseVM>();
 
             using (var response = await httpClient.GetAsync(request))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<CaseVM>>(apiResponse);
             }
             return data;
         }
 
-        public async Task<List<Case>> GetTicketsByUserId(int userId)
+        public async Task<List<CaseVM>> GetTicketsByUserId(int userId)
         {
-            List<Case> data = new List<Case>();
+            List<CaseVM> data = new List<CaseVM>();
 
             using (var response = await httpClient.GetAsync(request + "ViewTicketsByStaffId/" + userId))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<CaseVM>>(apiResponse);
             }
             return data;
         }
 
-        public async Task<List<Case>> GetTicketsByLevel(int level)
+        public async Task<List<CaseVM>> GetTicketsByLevel(int level)
         {
-            List<Case> data = new List<Case>();
+            List<CaseVM> data = new List<CaseVM>();
 
             using (var response = await httpClient.GetAsync(request + "ViewTicketsByLevel/" + level))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                data = JsonConvert.DeserializeObject<List<Case>>(apiResponse);
+                data = JsonConvert.DeserializeObject<List<CaseVM>>(apiResponse);
             }
             return data;
         }

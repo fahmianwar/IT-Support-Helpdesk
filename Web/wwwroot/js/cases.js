@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableCases').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetCases',
+            url: 'https://localhost:44381/api/Cases/Getcase',
             dataSrc: ''
         },
         columns: [
@@ -69,22 +69,25 @@
                     else if (row['review'] == 4) {
                         return '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
-                    else if (row['review'] == 4) {
+                    else if (row['review'] == 5) {
                         return '&#11088' + '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
-                },
+                }
             },
             {
                 "data": "level"
             },
             {
-                "data": "userId"
+                "data": null,
+                "render": function (data, type, row) {
+                    return row['userName'] + ' ' + '#' + row['userId'];
+                }
             },
             {
-                "data": "priorityId"
+                "data": "priorityName"
             },
             {
-                "data": "categoryId"
+                "data": "categoryName"
             },
             {
                 "render": function (data, type, row) {
@@ -114,57 +117,57 @@
     }, false);
 })();
 
-function insertCase() {
-    var obj = new Object();
-    obj.Description = $("#inputDescription").val();
-    obj.StartDateTime = $("#inputStartDate").val();
-    obj.EndDateTime = $("#inputEndDate").val();
-    obj.Review = parseInt($("#inputReview").val());
-    obj.Level = parseInt($("#inputLevel").val());
-    obj.UserId = parseInt($("#inputUserId").val());
-    obj.PriorityId = parseInt($("#inputPriorityId").val());
-    obj.CategoryId = parseInt($("#inputCategoryId").val());
-    console.log(obj);
-    console.log(JSON.stringify(obj));
-    if (obj.Description == "" || obj.StartDateTime == "" || obj.EndDateTime == "" || obj.Review == "" || obj.Level == "" || obj.UserId == "" || obj.PriorityId == "" || obj.CategoryId == "") {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Failed create case',
-            icon: 'error',
-            confirmButtonText: 'OK'
-        });
-    } else {
-        $.ajax({
-            url: 'https://localhost:44357/api/cases',
-            type: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify(obj)
-        }).done((result) => {
-            alert(result);
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
-            //$('#tableProfiles').DataTable().ajax.reload();
-            console.log(result);
-            $('#tableCases').DataTable().ajax.reload();
-        }).fail((error) => {
-            alert(error);
-            Swal.fire({
-                title: 'Error!',
-                text: 'Gagal menambahkan data',
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            });
-            console.log(error);
-        });
-    }
-}
+//function insertCase() {
+//    var obj = new Object();
+//    obj.Description = $("#inputDescription").val();
+//    obj.StartDateTime = $("#inputStartDate").val();
+//    obj.EndDateTime = $("#inputEndDate").val();
+//    obj.Review = parseInt($("#inputReview").val());
+//    obj.Level = parseInt($("#inputLevel").val());
+//    obj.UserId = parseInt($("#inputUserId").val());
+//    obj.PriorityId = parseInt($("#inputPriorityId").val());
+//    obj.CategoryId = parseInt($("#inputCategoryId").val());
+//    console.log(obj);
+//    console.log(JSON.stringify(obj));
+//    if (obj.Description == "" || obj.StartDateTime == "" || obj.EndDateTime == "" || obj.Review == "" || obj.Level == "" || obj.UserId == "" || obj.PriorityId == "" || obj.CategoryId == "") {
+//        Swal.fire({
+//            title: 'Error!',
+//            text: 'Failed create case',
+//            icon: 'error',
+//            confirmButtonText: 'OK'
+//        });
+//    } else {
+//        $.ajax({
+//            url: 'https://localhost:44357/api/cases',
+//            type: "POST",
+//            headers: {
+//                'Accept': 'application/json',
+//                'Content-Type': 'application/json'
+//            },
+//            data: JSON.stringify(obj)
+//        }).done((result) => {
+//            alert(result);
+//            Swal.fire({
+//                title: 'Success!',
+//                text: 'Berhasil menambahkan data',
+//                icon: 'success',
+//                confirmButtonText: 'Cool'
+//            });
+//            //$('#tableProfiles').DataTable().ajax.reload();
+//            console.log(result);
+//            $('#tableCases').DataTable().ajax.reload();
+//        }).fail((error) => {
+//            alert(error);
+//            Swal.fire({
+//                title: 'Error!',
+//                text: 'Gagal menambahkan data',
+//                icon: 'error',
+//                confirmButtonText: 'Cool'
+//            });
+//            console.log(error);
+//        });
+//    }
+//}
 
 //function editCase() {
 //    var obj = new Object();

@@ -76,13 +76,16 @@
                 "data": "level"
             },
             {
-                "data": "userId"
+                "data": null,
+                "render": function (data, type, row) {
+                    return row['userName'] + ' ' + '#' + row['userId'];
+                }
             },
             {
-                "data": "priorityId"
+                "data": "priorityName"
             },
             {
-                "data": "categoryId"
+                "data": "categoryName"
             },
             {
                 "render": function (data, type, row) {

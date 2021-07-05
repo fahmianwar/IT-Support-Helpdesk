@@ -36,6 +36,21 @@ namespace API.Controllers
 
         }
 
+        [HttpGet("GetConvertation")]
+        public ActionResult GetConvertation()
+        {
+            var get = convertationRepository.GetConvertation();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+
         [HttpPost("CreateConvertations")]
         public ActionResult CreateConvertation(CreateConvertationVM createConvertationVM)
         {

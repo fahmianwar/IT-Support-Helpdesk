@@ -1,6 +1,7 @@
 ﻿using API.Base;
 using API.Models;
 using API.Repository.Data;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,20 @@ namespace API.Controllers
         public HistoriesController(HistoryRepository historyRepository) : base(historyRepository)
         {
             this.historyRepository = historyRepository;
+        }
+        [HttpGet("GetHistory")]
+        public ActionResult GetHistory()
+        {
+            var get = historyRepository.GetHistory();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
         }
     }
 }

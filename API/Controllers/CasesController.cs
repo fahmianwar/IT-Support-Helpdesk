@@ -34,6 +34,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("GetCase")]
+        public ActionResult GetProfile()
+        {
+            var get = caseRepository.GetCase();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+
         [HttpGet("ViewTicketsByUserId/{userId}")]
         public ActionResult ViewTicketsByUserId(int userId)
         {

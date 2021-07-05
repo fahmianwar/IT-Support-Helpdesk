@@ -71,11 +71,52 @@ namespace API.Repository.Data
             }
             return result;
         }
-
-        public IEnumerable<Case> ViewTicketsByUserId(int userId)
+        public IEnumerable<CaseVM> GetCase()
         {
-            var all = context.Cases.Where(x => x.UserId == userId);
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id 
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name
+                }).ToList();
             return all;
+        }
+
+        public IEnumerable<CaseVM> ViewTicketsByUserId(int userId)
+        {
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name
+                }).ToList();
+            return all.Where(x => x.UserId == userId);
         }
 
         public IEnumerable<Case> GetCases()
@@ -84,48 +125,54 @@ namespace API.Repository.Data
             return all;
         }
 
-        public IEnumerable<Case> ViewTicketsByStaffId(int userId)
+        public IEnumerable<CaseVM> ViewTicketsByStaffId(int userId)
         {
             var history = context.Histories.OrderByDescending(e => e.DateTime).Where(x => x.UserId == userId).Select(c => c.CaseId);
-            var all = context.Cases.Where(x => history.Contains(x.Id));
-            return all;
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name
+                }).ToList();
+            return all.Where(x => history.Contains(x.Id));
         }
 
-        public IEnumerable<Case> ViewTicketsByLevel(int level)
+        public IEnumerable<CaseVM> ViewTicketsByLevel(int level)
         {
-            // Cases sama HIstory, dapetin caseId di History yang levelnya sesuai parameter
-            //var all = context.Cases.ToList();
-            //var allHistory = context.Histories;
-            //var history = allHistory.Where(x => x.Level == level);
-            //return all;
-            //var result = (from h in context.Histories
-            //              join c in context.Cases on h.CaseId equals c.Id
-            //              select new TicketByLevelVM
-            //              {
-            //                  RoleId = h.Level,
-            //                  CaseId = c.Id,
-            //                  UserId = h.UserId
-
-            //              }).ToList();
-            //var result = from blabla in context.cases
-            //             select blabla.caseId;
-
-            //var result = (from h in context.Histories
-            //              join c in context.Cases on h.CaseId equals c.Id
-            //              where (from h1 in context.Histories
-            //                     join c1 in context.Cases on h1.CaseId equals c1.Id
-            //                     orderby h.DateTime descending
-            //                     select h.Level).FirstOrDefault(x => x.Id ==) == level
-            //              select h.CaseId);
-
-            //var getLatest = (from h in context.Histories
-            //                 join c in context.Cases on h.CaseId equals c.Id
-            //                 orderby h.DateTime descending
-            //                 select h.CaseId);
-            var getLatest = context.Cases.Where(x => x.EndDateTime == null && x.Level == level).OrderByDescending(x => x.StartDateTime);
-            //List<int> caseList = result.ToList();
-
-            return getLatest;
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id
+                //join h in context.Histories on c.Id equals h.CaseId orderby h.DateTime descending
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name
+                }).ToList();
+            return all.Where(x => x.EndDateTime == null && x.Level == level).OrderByDescending(x => x.StartDateTime);
         }
 
         public int AskNextLevel(int caseId)
@@ -155,7 +202,7 @@ namespace API.Repository.Data
                     Description = $"[STAFF] UserId #{get.UserId} Ask Help CaseId #{caseId} to Level #{get.Level + 1}",
                     UserId = get.UserId,
                     CaseId = get.CaseId,
-                    StatusCodeId = get.StatusCodeId
+                    StatusCodeId = 2
                 };
 
                 context.Histories.Add(history);
@@ -178,7 +225,7 @@ namespace API.Repository.Data
                     UserId = closeTicketVM.UserId,
                     Level = get.Level,
                     CaseId = get.CaseId,
-                    StatusCodeId = get.StatusCodeId
+                    StatusCodeId = 2
                 };
 
                 context.Histories.Add(history);
@@ -204,7 +251,7 @@ namespace API.Repository.Data
                     DateTime = DateTime.Now,
                     Level = lastHistory.Level,
                     UserId = closeTicketVM.UserId,
-                    StatusCodeId = lastHistory.StatusCodeId
+                    StatusCodeId = 3
                 };
                 context.Histories.Add(newHistory);
                 return context.SaveChanges();

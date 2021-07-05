@@ -192,5 +192,21 @@ namespace API.Controllers
             }
         }
 
+        //[Authorize(Roles = "Admin")]
+        [HttpGet("GetProfile")]
+        public ActionResult GetProfile()
+        {
+            var get = userRepository.GetProfile();
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data Tidak Ditemukan");
+            }
+
+        }
+
     }
 }

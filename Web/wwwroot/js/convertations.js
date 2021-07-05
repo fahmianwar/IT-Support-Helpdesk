@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableConvertations').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetConvertations',
+            url: 'https://localhost:44381/api/Convertations/GetConvertation',
             dataSrc: ''
         },
         columns: [
@@ -24,10 +24,13 @@
                 "data": "message"
             },
             {
-                "data": "caseId"
+                "data": "caseName"
             },
             {
-                "data": "userId"
+                "data": null,
+                "render": function (data, type, row) {
+                    return row['userName'] + ' ' + '#' + row['userId'];
+                }
             },
             {
                 "render": function (data, type, row) {

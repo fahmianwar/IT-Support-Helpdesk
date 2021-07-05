@@ -3,7 +3,7 @@
     console.log("Coba");
     $('#tableUsers').DataTable({
         ajax: {
-            url: 'https://localhost:44381/api/Users/',
+            url: 'https://localhost:44381/api/Users/GetProfile',
             dataSrc: ''
         },
         columns: [
@@ -45,7 +45,7 @@
                 "data": "company"
             },
             {
-                "data": "roleId"
+                "data": "roleName"
             },
             {
                 "render": function (data, type, row) {
