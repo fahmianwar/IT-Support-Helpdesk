@@ -1,8 +1,8 @@
-IT Support Helpdesk/API/bin/
-IT Support Helpdesk/API/obj/
-IT Support Helpdesk/Web/bin/
-IT Support Helpdesk/Web/obj/
-IT Support Helpdesk/API/Migrations/
+API/bin/
+API/obj/
+Web/bin/
+Web/obj/
+Migrations/
 .vs/
 .git/
 .vs/IT Support Helpdesk/DesignTimeBuild/.dtbcache.v2
