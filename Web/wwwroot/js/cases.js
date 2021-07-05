@@ -58,19 +58,19 @@
                         return '-';
                     }
                     else if (row['review'] == 1) {
-                        return ':star:';
+                        return '&#11088';
                     }
                     else if (row['review'] == 2) {
-                        return ':star:' + 'star:';
+                        return '&#11088' + '&#11088';
                     }
                     else if (row['review'] == 3) {
-                        return ':star:' + 'star:' + 'star:';
+                        return '&#11088' + '&#11088' + '&#11088';
                     }
                     else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:';
+                        return '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
                     else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:' + 'star:';
+                        return '&#11088' + '&#11088' + '&#11088' + '&#11088' + '&#11088';
                     }
                 },
             },
