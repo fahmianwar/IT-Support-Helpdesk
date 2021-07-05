@@ -126,7 +126,7 @@ function viewChat(caseId) {
                             <span class="direct-chat-name float-right">${val.userName}</span>
                             <span class="direct-chat-timestamp float-left">${val.dateTime}</span>
                         </div>
-                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.avatar}" alt="${val.userName}">
+                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.userId}" alt="${val.userName}">
                         <div class="direct-chat-text">
                             ${val.message}
                         </div>
@@ -139,7 +139,7 @@ function viewChat(caseId) {
                             <span class="direct-chat-name float-left">${val.userName} #${val.userId}</span>
                             <span class="direct-chat-timestamp float-right">${val.dateTime}</span>
                         </div>
-                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.avatar}" alt="${val.userName}">
+                        <img class="direct-chat-img" src="https://localhost:44381/api/Users/Avatar/${val.userId}" alt="${val.userName}">
                         <div class="direct-chat-text">
                             ${val.message}
                         </div>

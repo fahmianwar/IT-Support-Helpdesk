@@ -67,6 +67,7 @@ namespace API.Repository.Data
                     Id = cv.Id,
                     DateTime = cv.DateTime,
                     Message = cv.Message,
+                    CaseId = c.Id,
                     UserId = u.Id,
                     UserName = u.Name,
                     Avatar = u.Avatar
