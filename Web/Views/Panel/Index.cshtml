@@ -3,8 +3,7 @@
     Layout = "_PanelLayout";
 }
 
-@if (ViewBag.Role == "Admin")
-{
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <section class="content-header">
@@ -24,18 +23,32 @@
     </section>
     <section class="content">
         <div class="row">
-            <div class="col mb-6">
-                <div id="chart">
+            @if (ViewBag.Role == "Admin")
+            {
+                <div class="col mb-12">
+                    <div id="chart">
 
+                    </div>
+                </div>
+            }
+            else
+            { 
+        <div class="col mb-12">
+
+            <p>Welcome, @ViewBag.Name</p>
+            <div class="row align-items-center">
+                <div class="col-md-5 col-lg-7 order-md-1 pt-8"><img class="img-fluid" src="~/assets/img/illustrations/hero-header.png" alt="" /></div>
+                <div class="col-md-7 col-lg-5 text-center text-md-start pt-5 pt-md-9">
+                    <h1 class="mb-4 display-2 fw-bold">Membantu anda pada semua permasalahan <br class="d-block d-lg-none d-xl-block" />sistem informasi.</h1>
+                    <p class="mt-3 mb-4">IT Support Helpdesk <br />membantu anda dalam berbagai permasalahan <br />teknis maupun non-teknis <br />pada sistem informasi.</p>
                 </div>
             </div>
         </div>
-    </section>
+            } 
+          </div>
+</section>
 </div>
-} else
-{
-    <p>Welcome, @ViewBag.Name</p>
-}
+
 <!-- /.content-wrapper -->
 @section scripts {
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
