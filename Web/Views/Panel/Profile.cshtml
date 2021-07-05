@@ -32,6 +32,7 @@
                             <ul class="nav nav-pills">
                                 <li class="nav-item"><a class="nav-link active" href="#profile" data-toggle="tab">Profile</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab" onclick="getProfile('@ViewBag.UserId')">Settings</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#avatar" data-toggle="tab">Avatar</a></li>
                             </ul>
                         </div><!-- /.card-header -->
                         <div class="card-body">
@@ -50,35 +51,35 @@
                                         <p class="text-muted text-center">@ViewBag.Email</p>
                                     </div>
                                     <!--<div class="card card-primary">
-                                        <div class="card-header">
-                                            <h3 class="card-title">About Me</h3>
-                                        </div>-->
-                                        <!-- /.card-header -->
-                                        <!--<div class="card-body">
-                                            <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
+                                    <div class="card-header">
+                                        <h3 class="card-title">About Me</h3>
+                                    </div>-->
+                                    <!-- /.card-header -->
+                                    <!--<div class="card-body">
+                                        <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
 
-                                            <p class="text-muted">@ViewBag.Email</p>
+                                        <p class="text-muted">@ViewBag.Email</p>
 
-                                            <hr>
+                                        <hr>
 
-                                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
+                                        <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
 
-                                            <p class="text-muted" id="Address"></p>
+                                        <p class="text-muted" id="Address"></p>
 
-                                            <hr>
+                                        <hr>
 
-                                            <strong><i class="fas fa-calendar mr-1"></i> Birthdate</strong>
+                                        <strong><i class="fas fa-calendar mr-1"></i> Birthdate</strong>
 
-                                            <p class="text-muted" id="BirthDate"></p>
+                                        <p class="text-muted" id="BirthDate"></p>
 
-                                            <hr>
+                                        <hr>
 
-                                            <strong><i class="fas fa-phone mr-1"></i> Phone</strong>
+                                        <strong><i class="fas fa-phone mr-1"></i> Phone</strong>
 
-                                            <p class="text-muted" id="Phone"></p>
+                                        <p class="text-muted" id="Phone"></p>
 
-                                        </div>-->
-                                        <!-- /.card-body -->
+                                    </div>-->
+                                    <!-- /.card-body -->
                                     <!--</div>-->
 
                                 </div>
@@ -158,6 +159,21 @@
                                             </div>
                                         </div>
                                     </form>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="avatar">
+                                    <div class="card-body box-profile">
+                                        <div class="text-center">
+                                            <img class="profile-user-img img-fluid img-circle"
+                                                 src="~/lib/adminlte/img/user4-128x128.jpg"
+                                                 alt="User profile picture">
+                                        </div>
+
+                                        <h3 class="profile-username text-center">@ViewBag.Name</h3>
+
+                                        <p class="text-muted text-center">@ViewBag.Role</p>
+                                        <p class="text-muted text-center">@ViewBag.Email</p>
+                                    </div>
                                 </div>
                                 <!-- /.tab-pane -->
                             </div>

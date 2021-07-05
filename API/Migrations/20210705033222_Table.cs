@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API.Migrations
 {
-    public partial class Coba : Migration
+    public partial class Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
