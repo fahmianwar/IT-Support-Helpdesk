@@ -1,44 +1,4 @@
-﻿//$(document).ready(function () {
-//    var i = 1;
-//    console.log("Coba");
-//    $('#formprofile').Submit({
-//        ajax: {
-//            url: 'https://localhost:44357/Panel/GetUsers',
-//            dataSrc: ''
-//        },
-//});
-
-//$(document).ready(function () {
-//    $("#formprofile").submit(function (e) {
-//        //Serialize the form datas.   
-//        var obj = new Object();
-//        obj.Id = $("#Id").val();
-//        obj.Name = $("#Name").val();
-//        obj.Email = $("#Email").val();
-//        obj.Password = $("#Password").val();
-//        obj.BirthDate = $("#BirthDate").val();
-//        obj.Phone = $("#Phone").val();
-//        obj.Address = $("#Address").val();
-//        obj.Department = $("#Department").val();
-//        obj.Company = $("#Company").val();
-//        obj.RoleId = parseInt($("#Role").val());
-//        obj.Detail = "";
-//        console.log(obj);
-//        //to get alert popup   
-//        alert(valdata);
-//        $.ajax({
-//            url: 'https://localhost:44381/api/Users',
-//            type: "PUT",
-//            headers: {
-//                'Accept': 'application/json',
-//                'Content-Type': 'application/json'
-//            },
-//            data: JSON.stringify(obj),
-//        });
-//    });
-//});   
-
-(function () {
+﻿(function () {
     'use strict';
     window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -73,41 +33,49 @@ function editProfile() {
     obj.RoleId = parseInt($("#Role").val());
     obj.Detail = "";
     console.log(obj);
-    Swal.fire({
-        title: 'Do you want to save the changes?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: `Save`,
-        denyButtonText: `Don't save`,
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            $.ajax({
-                url: 'https://localhost:44381/api/Users',
-                type: "PUT",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify(obj),
-            }).done((result) => {
-                Swal.fire('Saved!', '', 'success')
-            })
-        } else if (result.isDenied) {
-            Swal.fire('Changes are not saved', '', 'info')
-        }
-        console.log(result);
-        $('#formProfile').ajax.reload();
-    }).fail((error) => {
-        alert(error);
+    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "") {
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal update data',
+            text: 'Failed Update Profile',
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'OK'
         });
-        console.log(error);
-    });
+    } else {
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Save`,
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'https://localhost:44381/api/Users',
+                    type: "PUT",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify(obj),
+                }).done((result) => {
+                    Swal.fire('Saved!', '', 'success')
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+            console.log(result);
+            $('#formProfile').ajax.reload();
+        }).fail((error) => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal update data',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+            console.log(error);
+        });
+    }
 }
 
 function getProfile(id) {

@@ -147,41 +147,50 @@ function editUser() {
     obj.RoleId = parseInt($("#Role").val());
     obj.Detail = "";
     console.log(obj);
-    Swal.fire({
-        title: 'Do you want to save the changes?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: `Save`,
-        denyButtonText: `Don't save`,
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            $.ajax({
-                url: 'https://localhost:44381/api/Users',
-                type: "PUT",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify(obj),
-            }).done((result) => {
-                Swal.fire('Saved!', '', 'success')
-            })
-        } else if (result.isDenied) {
-            Swal.fire('Changes are not saved', '', 'info')
-        }
-        console.log(result);
-        $('#tableUsers').DataTable().ajax.reload();
-    }).fail((error) => {
-        alert(error);
+    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "") {
         Swal.fire({
             title: 'Error!',
-            text: 'Gagal update data',
+            text: 'Failed Update Profile',
             icon: 'error',
-            confirmButtonText: 'Ok'
+            confirmButtonText: 'OK'
         });
-        console.log(error);
-    });
+    } else {
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Save`,
+            denyButtonText: `Don't save`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'https://localhost:44381/api/Users',
+                    type: "PUT",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify(obj),
+                }).done((result) => {
+                    Swal.fire('Saved!', '', 'success')
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+            console.log(result);
+            $('#tableUsers').DataTable().ajax.reload();
+        }).fail((error) => {
+            alert(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal update data',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+            console.log(error);
+        });
+    }
 }
 
 function getUser(id) {
