@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +34,52 @@ namespace API.Controllers
             {
                 return BadRequest("Register Gagal");
             }
+        }
+
+        [HttpPost("UpdateProfile")]
+        public ActionResult UpdateProfile(User user)
+        {
+            var register = userRepository.UpdateProfile(user);
+            if (register > 0)
+            {
+                return Ok("Data Berhasil Diubah");
+            }
+            else
+            {
+                return BadRequest("Data Gagal Diubah");
+            }
+        }
+
+        [HttpPost("UploadAvatar")]
+        public ActionResult UploadToFileSystem([FromForm] AvatarVM avatarVM)
+        {
+            var upload = userRepository.UploadToFileSystem(avatarVM);
+            if (upload > 0)
+            {
+                return Ok("Avatar berhasil diunggah");
+            }
+            else
+            {
+                return BadRequest("Avatar gagal diunggah");
+            }
+        }
+
+        [HttpGet("Avatar/{id}")]
+        public IActionResult DownloadFileFromFileSystem(int id)
+        {
+            var user = userRepository.Get(id);
+            if (user.Avatar == null)
+            {
+                var stream = new FileStream(Directory.GetCurrentDirectory() + "\\Avatars\\" + "avatar-default", FileMode.Open);
+                return new FileStreamResult(stream, "image/jpeg");
+            }
+            else
+            {
+                var stream = new FileStream(Directory.GetCurrentDirectory() + "\\Avatars\\" + user.Avatar, FileMode.Open);
+                return new FileStreamResult(stream, "image/jpeg");
+            }
+
+
         }
 
         [HttpPost("CreateUser")]

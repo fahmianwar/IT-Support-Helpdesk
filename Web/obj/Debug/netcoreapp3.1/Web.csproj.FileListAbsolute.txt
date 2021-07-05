@@ -143,7 +143,6 @@ D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netst
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.pdb
-D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csprojAssemblyReference.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
@@ -200,3 +199,4 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Chart.cshtml.g.cs
+D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache

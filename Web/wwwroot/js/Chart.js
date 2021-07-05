@@ -1,65 +1,21 @@
-﻿//const { type } = require("jquery");
+﻿var url = 'https://localhost:44357/Panel/GetRoles';
 
-
-options = {
-    chart: {
-        type: 'donut'
-    },
-    series: [44, 55, 13, 33],
-    labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
-}
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
-
-options = {
-    series: [{
-        name: 'Net Profit',
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-    }, {
-        name: 'Revenue',
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-    }, {
-        name: 'Free Cash Flow',
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-    }],
-    chart: {
-        type: 'bar',
-        height: 350
-    },
-    plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded'
+$.getJSON(url, function (response) {
+    console.log(response);
+    var labelDonutChart = response.map(item => item.name)
+        .filter((value, index, self) => self.indexOf(value) === index);
+    var dataDonutChart = response.map(item => item.user.length);
+    console.log(dataDonutChart);
+    console.log(labelDonutChart);
+    var options = {
+        series: dataDonutChart,
+        chart: {
+            type: 'donut',
+            height: 350
         },
-    },
-    dataLabels: {
-        enabled: false
-    },
-    stroke: {
-        show: true,
-        width: 2,
-        colors: ['transparent']
-    },
-    xaxis: {
-        categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-    },
-    yaxis: {
-        title: {
-            text: '$ (thousands)'
-        }
-    },
-    fill: {
-        opacity: 1
-    },
-    tooltip: {
-        y: {
-            formatter: function (val) {
-                return "$ " + val + " thousands"
-            }
-        }
-    }
-};
+        labels: labelDonutChart
+    };
 
-var barchart = new ApexCharts(document.querySelector("#barchart"), options);
-barchart.render();
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+});

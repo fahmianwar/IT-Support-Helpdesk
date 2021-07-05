@@ -220,7 +220,11 @@ namespace API.Repository.Data
         {
             int result = 0;
             var cases = context.Cases.Find(reviewTicketVM.CaseId);
-            if (cases.EndDateTime == null)
+            if(cases == null)
+            {
+                return result;
+            }
+            if (cases.EndDateTime != null)
             {
                 cases.Review = reviewTicketVM.Review;
                 context.Cases.Update(cases);

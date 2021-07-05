@@ -57,19 +57,19 @@
                         return '-';
                     }
                     else if (row['review'] == 1) {
-                        return ':star:';
+                        return ' &#11088;';
                     }
                     else if (row['review'] == 2) {
-                        return ':star:' + 'star:';
+                        return ' &#11088;' + ' &#11088;';
                     }
                     else if (row['review'] == 3) {
-                        return ':star:' + 'star:' + 'star:';
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
                     }
                     else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:';
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
                     }
-                    else if (row['review'] == 4) {
-                        return ':star:' + 'star:' + 'star:' + 'star:' + 'star:';
+                    else if (row['review'] == 5) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
                     }
                 },
             },
@@ -87,7 +87,15 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
+                    if (row['endDateTime'] == null) {
+                        return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
+                    } else {
+                        if (row['review'] == 0) {
+                            return `<button type="button" class="btn btn-success" onclick="viewReview('${row['id']}')" data-toggle="modal" data-target="#viewReviewModal">Review</button>`;
+                        } else {
+                            return "-";
+                        }
+                    }
                 }
             }
         ]
@@ -129,7 +137,7 @@ function createTicket() {
             });
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
-            $('#tableUsers').DataTable().ajax.reload();
+            $('#tableTickets').DataTable().ajax.reload();
             $('#createModal').modal('toggle');
         }).fail((error) => {
             //alert(error);
@@ -147,6 +155,60 @@ function createTicket() {
 function viewConvertation(caseId) {
     $("#inputConvertationCaseId").val(parseInt(caseId));
     viewChat(caseId);
+}
+
+function viewReview(caseId) {
+    $("#inputReviewCaseId").val(parseInt(caseId));
+}
+
+
+function reviewTicket() {
+    var obj = new Object();
+    obj.CaseId = parseInt($("#inputReviewCaseId").val());
+    obj.UserId = parseInt(viewBagUserId);
+    obj.Review = parseInt($("#inputReview ").val());
+    //console.log(obj);
+    //console.log(JSON.stringify(obj));
+    if (obj.CaseId < 0 || obj.CategoryId < 0 || obj.UserId < 0) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Gagal menambahkan review',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    } else {
+        $.ajax({
+            url: 'https://localhost:44381/api/Cases/ReviewTicket',
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(obj)
+        }).done((result) => {
+            //alert(result);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Berhasil memberikan review',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
+            //$('#tableProfiles').DataTable().ajax.reload();
+            //console.log(result);
+            $('#tableTickets').DataTable().ajax.reload();
+            $('#viewReviewModal').modal('toggle');
+        }).fail((error) => {
+            //alert(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal menambahkan data',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            });
+            //console.log(error);
+        });
+    }
 }
 
 function viewChat(caseId) {

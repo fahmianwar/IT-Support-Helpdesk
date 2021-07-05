@@ -1,12 +1,14 @@
 ﻿using API.Context;
 using API.Models;
 using API.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -25,6 +27,30 @@ namespace API.Repository.Data
             entities = context.Set<RegisterVM>();
             Configuration = configuration;
         }
+
+        public int UploadToFileSystem([FromForm] AvatarVM avatarVM)
+        {
+            int result = 0;
+                
+                var guid = Guid.NewGuid().ToString();
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\Avatars\\");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(avatarVM.File.FileName);
+                var filePath = Path.Combine(basePath, guid);
+                var extension = Path.GetExtension(avatarVM.File.FileName);
+                if (!System.IO.File.Exists(filePath))
+                {
+                    var stream = new FileStream(filePath, FileMode.Create);
+                    avatarVM.File.CopyToAsync(stream);
+                    stream.Close();
+                    var user = context.Users.Find(avatarVM.UserId);
+                    user.Avatar = guid;
+                    context.Users.Update(user);
+                    result = context.SaveChanges();
+                }
+            return result;
+        }
         public int Register (RegisterVM registerVM)
         {
             var result = 0;
@@ -38,6 +64,7 @@ namespace API.Repository.Data
                     Password = BCrypt.Net.BCrypt.HashPassword(registerVM.Password),
                     BirthDate = registerVM.BirthDate,
                     RoleId = 5,
+                    Avatar = "avatar-default",
                     Phone = registerVM.Phone,
                     Address = registerVM.Address,
                     Department = registerVM.Department,
@@ -64,7 +91,7 @@ namespace API.Repository.Data
         }
         public string GenerateTokenLogin(LoginVM loginVM)
         {
-            var user = context.Users.Single(p => p.Email == loginVM.Email);
+            var user = context.Users.FirstOrDefault(p => p.Email == loginVM.Email);
             var ar = context.Roles.Single(ar => ar.Id == user.RoleId);
             var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Sub, Configuration["Jwt:Subject"]),
@@ -229,10 +256,29 @@ namespace API.Repository.Data
         }
 
         // Users
-        public int UpdateProfile(ProfileVM profile)
+        public int UpdateProfile(User updateUser)
         {
-            
-            return 0;
+            var result = 0;
+            var user = context.Users.FirstOrDefault(u => u.Email == updateUser.Email);
+            if (user != null)
+
+            {
+
+                    user.Name = updateUser.Name;
+                    user.BirthDate = updateUser.BirthDate;
+                    user.Phone = updateUser.Phone;
+                    user.Address = updateUser.Address;
+                    user.Department = updateUser.Department;
+                    user.Company = updateUser.Company;
+
+                if (updateUser.Password != "")
+                {
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(updateUser.Password);
+                }
+                context.Users.Update(user);
+                result = context.SaveChanges();
+            }
+            return result;
         }
         public List<User> GetUsers()
         {
