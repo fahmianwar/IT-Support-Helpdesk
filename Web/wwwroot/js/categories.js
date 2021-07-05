@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     $('#tableCategories').DataTable({
         ajax: {
-            url: 'https://localhost:44357/Panel/GetCategories',
+            url: 'https://localhost:44381/api/Categories',
             dataSrc: ''
         },
         columns: [
@@ -74,7 +74,6 @@ function insertCategory() {
             },
             data: JSON.stringify(obj)
         }).done((result) => {
-            alert(result);
             Swal.fire({
                 title: 'Success!',
                 text: 'Berhasil menambahkan data',
