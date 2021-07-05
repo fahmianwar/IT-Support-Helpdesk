@@ -133,15 +133,15 @@ function createConvertation() {
             //alert(result);
             viewChat(obj.CaseId);
             $("#inputConvertationMessage").val("");
-            Swal.fire({
-                title: 'Success!',
-                text: 'Berhasil menambahkan data',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            });
+            //Swal.fire({
+            //    title: 'Success!',
+            //    text: 'Berhasil menambahkan data',
+            //    icon: 'success',
+            //    confirmButtonText: 'Cool'
+            //});
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
-            $('#tableUsers').DataTable().ajax.reload();
+            $('#tableViewHandleTickets').DataTable().ajax.reload();
             $("#inputConvertationMessage").val('');
             $('#viewConvertationModal').modal().hide();
         }).fail((error) => {
@@ -185,7 +185,7 @@ function closeTicket(caseId, userId) {
             }).done((result) => {
                 console.log(result);
                 console.log(obj);
-                $('#tableViewTickets').DataTable().ajax.reload();
+                $('#tableViewHandleTickets').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Success!',
                     text: 'Berhasil menambahkan Case untuk ditangani Anda',
@@ -213,7 +213,7 @@ function askNextLevel(caseId) {
     obj.CaseId = parseInt(caseId);
     Swal.fire({
         title: 'Konfirmasi Meminta Bantuan Ticket',
-        text: 'Apakan Anda yakin meminta bantuan ke Level selanjutnya untuk CaseId #' + caseId + ' oleh StaffId #' + userId + ' ?',
+        text: 'Apakan Anda yakin meminta bantuan ke Level selanjutnya untuk CaseId #' + caseId + ' oleh StaffId #' + viewBagUserId + ' ?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -234,7 +234,7 @@ function askNextLevel(caseId) {
             }).done((result) => {
                 console.log(result);
                 console.log(obj);
-                $('#tableViewTickets').DataTable().ajax.reload();
+                $('#tableViewHandleTickets').DataTable().ajax.reload();
                 Swal.fire({
                     title: 'Success!',
                     text: 'Berhasil menambahkan Case untuk ditangani Anda',
