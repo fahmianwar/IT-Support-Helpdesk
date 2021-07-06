@@ -200,3 +200,6 @@ D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CopyComplet
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.dll
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.pdb
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.genruntimeconfig.cache
+D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
