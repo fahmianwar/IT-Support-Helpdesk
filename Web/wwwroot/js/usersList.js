@@ -132,13 +132,31 @@ function insertUser() {
     }
 }
 
+function openCreateUser() {
+    $.ajax({
+        url: 'https://localhost:44381/api/Roles/'
+    }).done((result) => {
+        text = "";
+        $.each(result, function (key, val) {
+            text += `<option value="${val.id}">${val.name}</option>`;
+        });
+        $("#inputCreateRole").html(text);
+    }).fail((error) => {
+        console.log(error);
+    });
+}
+
+
+
 function editUser() {
     debugger
     var obj = new Object();
     obj.Id = $("#Id").val();
     obj.Name = $("#Name").val();
     obj.Email = $("#Email").val();
-    obj.Password = $("#Password").val();
+    if ($("#Password").val() != "") {
+        obj.Password = $("#Password").val();
+    }
     obj.BirthDate = $("#BirthDate").val();
     obj.Phone = $("#Phone").val();
     obj.Address = $("#Address").val();
@@ -147,7 +165,7 @@ function editUser() {
     obj.RoleId = parseInt($("#Role").val());
     obj.Detail = "";
     console.log(obj);
-    if (obj.Name == "" || obj.Email == "" || obj.Password == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "") {
+    if (obj.Name == "" || obj.Email == "" || obj.BirthDate == "" || obj.Phone == "" || obj.Address == "" || obj.Department == "" || obj.Company == "") {
         Swal.fire({
             title: 'Error!',
             text: 'Failed Update Profile',
@@ -194,7 +212,8 @@ function editUser() {
 }
 
 function getUser(id) {
-    console.log(id);
+
+
     $.ajax({
         url: 'https://localhost:44381/api/Users/' + id,
         type: "GET",
@@ -207,13 +226,27 @@ function getUser(id) {
         $("#Id").val(result.id);
         $("#Name").val(result.name);
         $("#Email").val(result.email);
-        $("#Password").val(result.password);
         $("#BirthDate").val(result.birthDate);
         $("#Phone").val(result.phone);
         $("#Address").val(result.address);
         $("#Department").val(result.department);
         $("#Company").val(result.company);
         $("#Role").val(result.roleId);
+        $.ajax({
+            url: 'https://localhost:44381/api/Roles/'
+        }).done((resultComboBox) => {
+            text = "";
+            $.each(resultComboBox, function (key, val) {
+                if (val.id == result.roleId) {
+                    text += `<option value="${val.id}" selected>${val.name}</option>`;
+                } else {
+                    text += `<option value="${val.id}">${val.name}</option>`;
+                }
+            });
+            $("#Role").html(text);
+        }).fail((error) => {
+            console.log(error);
+        });
     }).fail((error) => {
         alert(error);
         Swal.fire({

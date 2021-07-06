@@ -32,10 +32,7 @@
       "Web/1.0.0": {
         "dependencies": {
           "API": "1.0.0",
-<<<<<<< HEAD
           "MailKit": "2.13.0",
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
           "Newtonsoft.Json": "13.0.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -337,11 +334,7 @@
           "System.Dynamic.Runtime": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Xml.XmlDocument": "4.3.0"
         },
         "runtime": {
@@ -354,7 +347,6 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
-<<<<<<< HEAD
       "MailKit/2.13.0": {
         "dependencies": {
           "MimeKit": "2.13.0"
@@ -369,8 +361,6 @@
           "lib/netstandard2.1/MailKit.dll": {}
         }
       },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.16": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.6.0"
@@ -1055,11 +1045,7 @@
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Microsoft.IdentityModel.Logging": "6.11.1",
-<<<<<<< HEAD
           "System.Security.Cryptography.Cng": "4.7.0"
-=======
-          "System.Security.Cryptography.Cng": "4.5.0"
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {
@@ -1224,7 +1210,6 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-<<<<<<< HEAD
       "MimeKit/2.13.0": {
         "dependencies": {
           "Portable.BouncyCastle": "1.8.10",
@@ -1243,8 +1228,6 @@
           "lib/netstandard2.1/MimeKit.dll": {}
         }
       },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "NETStandard.Library/1.6.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1332,7 +1315,6 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-<<<<<<< HEAD
       "Portable.BouncyCastle/1.8.10": {
         "runtime": {
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
@@ -1344,8 +1326,6 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -1480,19 +1460,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-<<<<<<< HEAD
       "System.Buffers/4.5.1": {},
-=======
-      "System.Buffers/4.3.0": {
-        "dependencies": {
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0"
-        }
-      },
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "System.Collections/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1581,11 +1549,7 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1828,11 +1792,7 @@
           "System.Reflection.Emit": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -1891,11 +1851,7 @@
       "System.IO.Compression/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
-<<<<<<< HEAD
           "System.Buffers": "4.5.1",
-=======
-          "System.Buffers": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.IO": "4.3.0",
@@ -1913,11 +1869,7 @@
       },
       "System.IO.Compression.ZipFile/4.3.0": {
         "dependencies": {
-<<<<<<< HEAD
           "System.Buffers": "4.5.1",
-=======
-          "System.Buffers": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.IO": "4.3.0",
           "System.IO.Compression": "4.3.0",
           "System.IO.FileSystem": "4.3.0",
@@ -1968,11 +1920,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2068,11 +2016,7 @@
           "System.Reflection.Emit.Lightweight": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2143,16 +2087,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-<<<<<<< HEAD
       "System.Reflection.TypeExtensions/4.4.0": {},
-=======
-      "System.Reflection.TypeExtensions/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -2277,11 +2212,7 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
-<<<<<<< HEAD
       "System.Security.Cryptography.Cng/4.7.0": {},
-=======
-      "System.Security.Cryptography.Cng/4.5.0": {},
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -2332,7 +2263,6 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.0"
         }
       },
-<<<<<<< HEAD
       "System.Security.Cryptography.Pkcs/4.7.0": {
         "dependencies": {
           "System.Security.Cryptography.Cng": "4.7.0"
@@ -2341,8 +2271,6 @@
           "ref/netcoreapp3.0/System.Security.Cryptography.Pkcs.dll": {}
         }
       },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
       "System.Security.Cryptography.Primitives/4.3.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
@@ -2387,11 +2315,7 @@
           "System.Runtime.InteropServices": "4.3.0",
           "System.Runtime.Numerics": "4.3.0",
           "System.Security.Cryptography.Algorithms": "4.3.0",
-<<<<<<< HEAD
           "System.Security.Cryptography.Cng": "4.7.0",
-=======
-          "System.Security.Cryptography.Cng": "4.5.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Security.Cryptography.Csp": "4.3.0",
           "System.Security.Cryptography.Encoding": "4.3.0",
           "System.Security.Cryptography.OpenSsl": "4.3.0",
@@ -2537,11 +2461,7 @@
           "System.Reflection.Emit.ILGeneration": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-<<<<<<< HEAD
           "System.Reflection.TypeExtensions": "4.4.0",
-=======
-          "System.Reflection.TypeExtensions": "4.3.0",
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Runtime.Extensions": "4.3.0",
@@ -2554,10 +2474,7 @@
       "API/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.0.2",
-<<<<<<< HEAD
           "MailKit": "2.13.0",
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.1.16",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.16",
           "Microsoft.EntityFrameworkCore": "5.0.7",
@@ -4216,7 +4133,6 @@
       "path": "castle.core/4.4.1",
       "hashPath": "castle.core.4.4.1.nupkg.sha512"
     },
-<<<<<<< HEAD
     "MailKit/2.13.0": {
       "type": "package",
       "serviceable": true,
@@ -4224,8 +4140,6 @@
       "path": "mailkit/2.13.0",
       "hashPath": "mailkit.2.13.0.nupkg.sha512"
     },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     "Microsoft.AspNetCore.Authentication.JwtBearer/3.1.16": {
       "type": "package",
       "serviceable": true,
@@ -4590,7 +4504,6 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "MimeKit/2.13.0": {
       "type": "package",
       "serviceable": true,
@@ -4598,8 +4511,6 @@
       "path": "mimekit/2.13.0",
       "hashPath": "mimekit.2.13.0.nupkg.sha512"
     },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     "NETStandard.Library/1.6.1": {
       "type": "package",
       "serviceable": true,
@@ -4628,7 +4539,6 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "Portable.BouncyCastle/1.8.10": {
       "type": "package",
       "serviceable": true,
@@ -4636,8 +4546,6 @@
       "path": "portable.bouncycastle/1.8.10",
       "hashPath": "portable.bouncycastle.1.8.10.nupkg.sha512"
     },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4813,21 +4721,12 @@
       "path": "system.appcontext/4.3.0",
       "hashPath": "system.appcontext.4.3.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "System.Buffers/4.5.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "path": "system.buffers/4.5.1",
       "hashPath": "system.buffers.4.5.1.nupkg.sha512"
-=======
-    "System.Buffers/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ratu44uTIHgeBeI0dE8DWvmXVBSo4u7ozRZZHOMmK/JPpYyo0dAfgSiHlpiObMQ5lEtEyIXA40sKRYg5J6A8uQ==",
-      "path": "system.buffers/4.3.0",
-      "hashPath": "system.buffers.4.3.0.nupkg.sha512"
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     },
     "System.Collections/4.3.0": {
       "type": "package",
@@ -5186,21 +5085,12 @@
       "path": "system.reflection.primitives/4.3.0",
       "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "System.Reflection.TypeExtensions/4.4.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-dkmh/ySlwnXJp/1qYP9uyKkCK1CXR/REFzl7abHcArxBcV91mY2CgrrzSRA5Z/X4MevJWwXsklGRdR3A7K9zbg==",
       "path": "system.reflection.typeextensions/4.4.0",
       "hashPath": "system.reflection.typeextensions.4.4.0.nupkg.sha512"
-=======
-    "System.Reflection.TypeExtensions/4.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7u6ulLcZbyxB5Gq0nMkQttcdBTx57ibzw+4IOXEfR+sXYQoHvjW5LTLyNr8O22UIMrqYbchJQJnos4eooYzYJA==",
-      "path": "system.reflection.typeextensions/4.3.0",
-      "hashPath": "system.reflection.typeextensions.4.3.0.nupkg.sha512"
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     },
     "System.Resources.ResourceManager/4.3.0": {
       "type": "package",
@@ -5300,21 +5190,12 @@
       "path": "system.security.cryptography.algorithms/4.3.0",
       "hashPath": "system.security.cryptography.algorithms.4.3.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "System.Security.Cryptography.Cng/4.7.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-4WQjFuypWtxb/bl/YwEE7LYGn4fgpsikFfBU6xwEm4YBYiRAhXAEJ62lILBu2JJSFbClIAntFTGfDZafn8yZTg==",
       "path": "system.security.cryptography.cng/4.7.0",
       "hashPath": "system.security.cryptography.cng.4.7.0.nupkg.sha512"
-=======
-    "System.Security.Cryptography.Cng/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
-      "path": "system.security.cryptography.cng/4.5.0",
-      "hashPath": "system.security.cryptography.cng.4.5.0.nupkg.sha512"
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     },
     "System.Security.Cryptography.Csp/4.3.0": {
       "type": "package",
@@ -5337,7 +5218,6 @@
       "path": "system.security.cryptography.openssl/4.3.0",
       "hashPath": "system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
-<<<<<<< HEAD
     "System.Security.Cryptography.Pkcs/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -5345,8 +5225,6 @@
       "path": "system.security.cryptography.pkcs/4.7.0",
       "hashPath": "system.security.cryptography.pkcs.4.7.0.nupkg.sha512"
     },
-=======
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
     "System.Security.Cryptography.Primitives/4.3.0": {
       "type": "package",
       "serviceable": true,

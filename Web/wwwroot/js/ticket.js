@@ -20,7 +20,6 @@
                 "data": "startDateTime",
                 render: function (data, type, row) {
                     if (data) {
-                        debugger;
                         var m = data.split(/[T-]/);
                         var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
                         var curr_date = d.getDate();
@@ -37,7 +36,6 @@
                 "data": "endDateTime",
                 render: function (data, type, row) {
                     if (data) {
-                        debugger;
                         var m = data.split(/[T-]/);
                         var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
                         var curr_date = d.getDate();
@@ -109,6 +107,20 @@
     });
 
 });
+
+function openCreateTicket() {
+    $.ajax({
+        url: 'https://localhost:44381/api/Categories/'
+    }).done((result) => {
+        text = "";
+        $.each(result, function (key, val) {
+            text += `<option value="${val.id}">${val.name}</option>`;
+        });
+        $("#inputCreateCategoryId").html(text);
+    }).fail((error) => {
+        console.log(error);
+    });
+}
 
 function createTicket() {
     var obj = new Object();

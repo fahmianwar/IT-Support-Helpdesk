@@ -31,11 +31,6 @@
                 "render": function (data, type, row) {
                     return row['userName'] + ' ' + '#' + row['userId'];
                 }
-            },
-            {
-                "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="detailProfile('${row['id']}')" data-bs-toggle="modal" data-bs-target="#detailModal">Detail</button> | <button type="button" class="btn btn-info" onclick="editProfile('${row['id']}')" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteProfile('${row['id']}')">Delete</button>`;
-                }
             }
         ]
     });
