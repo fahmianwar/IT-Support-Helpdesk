@@ -57,17 +57,11 @@ D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
-<<<<<<< HEAD
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\MimeKit.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-=======
-D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -155,11 +149,8 @@ D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netst
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.dll
 D:\Github\IT Support Helpdesk\Web\bin\Debug\netcoreapp3.1\API.pdb
-<<<<<<< HEAD
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csprojAssemblyReference.cache
-=======
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.AssemblyReference.cache
->>>>>>> 82d68716756371fc8ef2673fec24453f9df9b557
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfoInputs.cache
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.AssemblyInfo.cs
 D:\Github\IT Support Helpdesk\Web\obj\Debug\netcoreapp3.1\Web.csproj.CoreCompileInputs.cache
