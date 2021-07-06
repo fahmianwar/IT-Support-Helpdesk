@@ -132,6 +132,22 @@ function insertUser() {
     }
 }
 
+function openCreateUser() {
+    $.ajax({
+        url: 'https://localhost:44381/api/Roles/'
+    }).done((result) => {
+        text = "";
+        $.each(result, function (key, val) {
+            text += `<option value="${val.id}">${val.name}</option>`;
+        });
+        $("#inputCreateRole").html(text);
+    }).fail((error) => {
+        console.log(error);
+    });
+}
+
+
+
 function editUser() {
     debugger
     var obj = new Object();
@@ -194,7 +210,8 @@ function editUser() {
 }
 
 function getUser(id) {
-    console.log(id);
+
+
     $.ajax({
         url: 'https://localhost:44381/api/Users/' + id,
         type: "GET",
@@ -214,6 +231,21 @@ function getUser(id) {
         $("#Department").val(result.department);
         $("#Company").val(result.company);
         $("#Role").val(result.roleId);
+        $.ajax({
+            url: 'https://localhost:44381/api/Roles/'
+        }).done((resultComboBox) => {
+            text = "";
+            $.each(resultComboBox, function (key, val) {
+                if (val.id == result.roleId) {
+                    text += `<option value="${val.id}" selected>${val.name}</option>`;
+                } else {
+                    text += `<option value="${val.id}">${val.name}</option>`;
+                }
+            });
+            $("#Role").html(text);
+        }).fail((error) => {
+            console.log(error);
+        });
     }).fail((error) => {
         alert(error);
         Swal.fire({
