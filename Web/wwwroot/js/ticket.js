@@ -25,7 +25,7 @@
                         var curr_date = d.getDate();
                         var curr_month = d.getMonth() + 1
                         var curr_year = d.getFullYear();
-                        var formatedDate = d.getDate() + '.' + d.getMonth() + '.' + d.getFullYear();
+                        var formatedDate = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
                         return formatedDate;
                     }
                     else
@@ -41,12 +41,32 @@
                         var curr_date = d.getDate();
                         var curr_month = d.getMonth() + 1
                         var curr_year = d.getFullYear();
-                        var formatedDate = d.getDate() + '.' + d.getMonth() + '.' + d.getFullYear();
+                        var formatedDate = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
                         return formatedDate;
                     }
                     else
                         return data
                 },
+            },
+            {
+                "data": "level",
+                render: function (data, type, row) {
+                    if (row['level'] == 1) {
+                        return 'Case Handle by Customer Service';
+                    }
+                    else if (row['level'] == 2) {
+                        return 'Case Handle by IT Support';
+                    }
+                    else if (row['level'] == 3) {
+                        return 'Case Handle By Software Developer';
+                    }
+                }
+            },
+            {
+                "data": "priorityName"
+            },
+            {
+                "data": "categoryName"
             },
             {
                 "data": "review",
@@ -72,36 +92,17 @@
                 }
             },
             {
-                "data": "level",
-                render: function (data, type, row) {
-                    if (row['level'] == 1) {
-                        return 'Case Handle by Customer Service';
-                    }
-                    else if (row['level'] == 2) {
-                        return 'Case Handle by IT Support';
-                    }
-                    else if (row['level'] == 3) {
-                        return 'Case Handle By Software Developer';
-                    }
-                }
-            },
-            {
-                "data": "userId"
-            },
-            {
-                "data": "priorityName"
-            },
-            {
-                "data": "categoryName"
-            },
-            {
                 "render": function (data, type, row) {
                     if (row['endDateTime'] == null) {
                         return `<button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button>`;
                     } else {
-                        return "-";
+                        if (row['review'] == 0) {
+                            return `<button type="button" class="btn btn-success" onclick="viewReviewTicket('${row['id']}')" data-toggle="modal" data-target="#viewReviewModal">Review</button>`;
+                        } else {
+                            return "-";
+                        }
                     }
-                    }
+                }
             }
         ]
     });
@@ -156,8 +157,8 @@ function createTicket() {
             });
             //$('#tableProfiles').DataTable().ajax.reload();
             //console.log(result);
-            $('#tableUsers').DataTable().ajax.reload();
-            $('#createModal').modal('toggle');
+            $('#tableTickets').DataTable().ajax.reload();
+            $('#createModal').modal('hide');
         }).fail((error) => {
             //alert(error);
             Swal.fire({
@@ -242,7 +243,7 @@ function createConvertation() {
             data: JSON.stringify(obj)
         }).done((result) => {
             //alert(result);
-          
+
             //$("#inputConvertationMessage").val('');
             //Swal.fire({
             //    title: 'Success!',
@@ -256,6 +257,50 @@ function createConvertation() {
             $('#tableTickets').DataTable().ajax.reload();
             $("#inputConvertationMessage").summernote('reset');
             $('#viewConvertationModal').modal('hide');
+        }).fail((error) => {
+            alert(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Gagal menambahkan data',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            console.log(error);
+        });
+    }
+}
+
+function viewReviewTicket(caseId) {
+    $("#inputReviewCaseId").val(parseInt(caseId));
+}
+
+function reviewTicket() {
+    var obj = new Object();
+    obj.CaseId = parseInt($("#inputReviewCaseId").val());
+    obj.Review = parseInt($("#inputReview").val());
+    obj.UserId = viewBagUserId;
+    console.log(obj);
+    //console.log(JSON.stringify(obj));
+    if (obj.CaseId < 0 || obj.Review < 0 || obj.UserId < 0) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Failed review',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    } else {
+        $.ajax({
+            url: 'https://localhost:44381/api/Cases/ReviewTicket',
+            type: "POST",
+            dataType: "json",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(obj)
+        }).done((result) => {
+            $('#tableTickets').DataTable().ajax.reload();
+            $('#viewReviewModal').modal('hide');
         }).fail((error) => {
             alert(error);
             Swal.fire({

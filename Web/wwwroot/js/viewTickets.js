@@ -48,29 +48,6 @@
                 },
             },
             {
-                "data": "review",
-                render: function (data, type, row) {
-                    if (row['review'] == 0) {
-                        return '-';
-                    }
-                    else if (row['review'] == 1) {
-                        return '&#11088';
-                    }
-                    else if (row['review'] == 2) {
-                        return ' &#11088;'+' &#11088;';
-                    }
-                    else if (row['review'] == 3) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                },
-            },
-            {
                 "data": "level"
             },
             {
@@ -84,6 +61,29 @@
             },
             {
                 "data": "categoryName"
+            },
+            {
+                "data": "review",
+                render: function (data, type, row) {
+                    if (row['review'] == 0) {
+                        return '-';
+                    }
+                    else if (row['review'] == 1) {
+                        return '&#11088';
+                    }
+                    else if (row['review'] == 2) {
+                        return ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 3) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 4) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 4) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                },
             },
             {
                 "render": function (data, type, row) {
