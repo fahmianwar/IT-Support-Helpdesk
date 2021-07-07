@@ -27,7 +27,7 @@
                         var curr_date = d.getDate();
                         var curr_month = d.getMonth() + 1
                         var curr_year = d.getFullYear();
-                        var formatedDate = d.getDate() + '.' + d.getMonth() + '.' + d.getFullYear();
+                        var formatedDate = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
                         return formatedDate;
                     }
                     else

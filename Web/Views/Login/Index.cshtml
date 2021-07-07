@@ -3,47 +3,37 @@
     Layout = "_LoginLayout";
 }
 
-<div class="login-box">
-    <!-- /.login-logo -->
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="" class="h1"><b>IT SUPPORT</b> HELPDESK</a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-
-            <form action="/Login/Auth" method="post">
-                <div class="input-group mb-3">
-                    <input type="email" name="Email" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="Password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
-
-            <p class="mb-0">
-                <a href="/Register/" class="text-center">Register a new membership</a>
-            </p>
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
+<div class="mb-4">
+    <h3>Sign In</h3>
+    <p class="mb-4">IT Support Helpdesk</p>
 </div>
-<!-- /.login-box -->
+<form action="/Login/Auth" method="post">
+    <div class="form-group first">
+        <label for="email">Email</label>
+        <input type="email" name="Email" class="form-control">
+        @*<div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>*@
+    </div>
+    <div class="form-group last mb-4">
+        <label for="password">Password</label>
+        <input type="password" name="Password" class="form-control">
+        @*<div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>*@
+    </div>
+
+    <div class="d-flex mb-5 align-items-center">
+
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>
+</form>
+
+<p class="mb-0">
+    <a href="/Register/" class="text-center">Register a new membership</a>
+</p>

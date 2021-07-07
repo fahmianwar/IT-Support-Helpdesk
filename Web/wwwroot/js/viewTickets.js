@@ -48,29 +48,6 @@
                 },
             },
             {
-                "data": "review",
-                render: function (data, type, row) {
-                    if (row['review'] == 0) {
-                        return '-';
-                    }
-                    else if (row['review'] == 1) {
-                        return '&#11088';
-                    }
-                    else if (row['review'] == 2) {
-                        return ' &#11088;'+' &#11088;';
-                    }
-                    else if (row['review'] == 3) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                },
-            },
-            {
                 "data": "level"
             },
             {
@@ -86,8 +63,31 @@
                 "data": "categoryName"
             },
             {
+                "data": "review",
+                render: function (data, type, row) {
+                    if (row['review'] == 0) {
+                        return '-';
+                    }
+                    else if (row['review'] == 1) {
+                        return '&#11088';
+                    }
+                    else if (row['review'] == 2) {
+                        return ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 3) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 4) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                    else if (row['review'] == 4) {
+                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
+                    }
+                },
+            },
+            {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-primary" onclick="handleTicket('${row['id']}','${userId}')">Handle</button>`;
+                    return `<button type="button" class="btn btn-outline-primary" onclick="handleTicket('${row['id']}','${userId}')"><i class="fas fa-check"></i></button>`;
                 }
             }
         ]

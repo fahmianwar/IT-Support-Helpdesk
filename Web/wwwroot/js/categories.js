@@ -24,7 +24,7 @@
                     var data = data;
                     var type = type;
                     var row = row;
-                    return `<button type="button" class="btn btn-info" onclick="getCategory('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteCategory('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-outline-info" onclick="getCategory('${row.id}')" data-toggle="modal" data-target="#editModal"><i class="far fa-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deleteCategory('${row['id']}')"><i class="fas fa-times"></i></button>`;
                 }
             }
         ]
