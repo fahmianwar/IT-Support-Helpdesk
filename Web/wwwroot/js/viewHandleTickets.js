@@ -90,7 +90,7 @@
                 "render": function (data, type, row) {
                     if (row['endDateTime'] == null) {
                         if (row['level'] == viewBagLevel) {
-                            return `<button type="button" class="btn btn-info" onclick="askNextLevel('${row['id']}')">Ask Help</button> | <button type="button" class="btn btn-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal">Chat</button> | <button type="button" class="btn btn-danger" onclick="closeTicket('${row['id']}','${viewBagUserId}')">Close</button>`;
+                            return `<button type="button" class="btn btn-outline-info" onclick="askNextLevel('${row['id']}')"><i class="fas fa-question"></i></button> | <button type="button" class="btn btn-outline-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal"><i class="fas fa-comment"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="closeTicket('${row['id']}','${viewBagUserId}')"><i class="fas fa-times"></i></button>`;
                         } else {
                             return null;
                         }

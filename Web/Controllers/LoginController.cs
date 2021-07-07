@@ -34,10 +34,10 @@ namespace Web.Controllers
             }
 
             HttpContext.Session.SetString("JWToken", jwToken.Token);
-            HttpContext.Session.SetString("UserId", user.Id.ToString());
+            HttpContext.Session.SetString("UserId", user.UserId.ToString());
             HttpContext.Session.SetString("Email", user.Email);
             HttpContext.Session.SetString("Name", user.Name);
-            HttpContext.Session.SetString("Role", user.Role.Name);
+            HttpContext.Session.SetString("Role", user.Role);
             HttpContext.Session.SetString("RoleId", user.RoleId.ToString());
 
             return RedirectToAction("Index", "Panel");

@@ -22,7 +22,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-info" onclick="getStatusCode('${row.id}')" data-toggle="modal" data-target="#editModal">Edit</button> | <button type="button" class="btn btn-danger" onclick="deleteStatusCode('${row['id']}')">Delete</button>`;
+                    return `<button type="button" class="btn btn-outline-info" onclick="getStatusCode('${row.id}')" data-toggle="modal" data-target="#editModal"><i class="far fa-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deleteStatusCode('${row['id']}')"><i class="fas fa-times"></i></button>`;
                 }
             }
         ]

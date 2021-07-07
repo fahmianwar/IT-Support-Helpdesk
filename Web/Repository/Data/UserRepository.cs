@@ -77,14 +77,14 @@ namespace Web.Repository.Data
             return entity;
         }
 
-        public async Task<User> GetUserByEmail(string email)
+        public async Task<UserSessionVM> GetUserByEmail(string email)
         {
-            User entity = null;
+            UserSessionVM entity = null;
 
             using (var response = await httpClient.GetAsync(request + "GetUserByEmail/" + email))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                entity = JsonConvert.DeserializeObject<User>(apiResponse);
+                entity = JsonConvert.DeserializeObject<UserSessionVM>(apiResponse);
             }
             return entity;
         }

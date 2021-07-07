@@ -134,10 +134,20 @@ namespace API.Repository.Data
             }
         }
 
-        public User GetUserByEmail(string email)
+        public UserSessionVM GetUserByEmail(string Email)
         {
-            var cek = context.Users.FirstOrDefault(u => u.Email == email);
-            return cek;
+            var all = (
+               from u in context.Users
+               join r in context.Roles on u.RoleId equals r.Id
+               select new UserSessionVM
+               {
+                   UserId = u.Id,
+                   Name = u.Name,
+                   Email = u.Email,
+                   Role = r.Name,
+                   RoleId = r.Id
+               }).ToList();
+            return all.FirstOrDefault(u => u.Email == Email);
         }
 
         // Clients
