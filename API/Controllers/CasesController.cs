@@ -13,11 +13,9 @@ namespace API.Controllers
     public class CasesController : BaseController<Case, CaseRepository, int>
     {
         private readonly CaseRepository caseRepository;
-        private readonly AttachmentRepository attachmentRepository;
-        public CasesController(CaseRepository caseRepository, AttachmentRepository attachmentRepository) : base(caseRepository)
+        public CasesController(CaseRepository caseRepository) : base(caseRepository)
         {
             this.caseRepository = caseRepository;
-            this.attachmentRepository = attachmentRepository;
         }
 
         [HttpPost("CreateTicket")]
@@ -77,6 +75,20 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("ViewHistoryTicketsByStaffId/{userId}")]
+        public ActionResult ViewHistoryTicketsByStaffId(int userId)
+        {
+            var get = caseRepository.ViewHistoryTicketsByStaffId(userId);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data tidak ditemukan");
+            }
+        }
+
         [HttpGet("ViewTicketsByLevel/{level}")]
         public ActionResult ViewTicketsByLevel(int level)
         {
@@ -104,6 +116,21 @@ namespace API.Controllers
                 return BadRequest("Gagal meminta bantuan");
             }
         }
+
+        [HttpPost("ChangePriority")]
+        public ActionResult ChangePriority(PriorityVM priorityVM)
+        {
+            var ask = caseRepository.ChangePriority(priorityVM);
+            if (ask > 0)
+            {
+                return Ok("Berhasil meminta mengubah prioritas");
+            }
+            else
+            {
+                return BadRequest("Gagal mengubah prioritas");
+            }
+        }
+
 
         [Route("HandleTicket")]
         [HttpPost]

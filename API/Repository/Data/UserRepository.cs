@@ -51,7 +51,7 @@ namespace API.Repository.Data
                 }
             return result;
         }
-        public int Register (RegisterVM registerVM)
+        public int Register(RegisterVM registerVM)
         {
             var result = 0;
             var cek = context.Users.FirstOrDefault(u => u.Email == registerVM.Email);

@@ -18,6 +18,7 @@ namespace API.Models
         public int? Review { get; set; }
         public int Level { get; set; }
         public int UserId { get; set; }
+        public int? StaffId { get; set; }
         public int PriorityId { get; set; }
         public int CategoryId { get; set; }
         public virtual ICollection<History> History { get; set; }

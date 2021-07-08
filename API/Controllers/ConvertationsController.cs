@@ -14,11 +14,9 @@ namespace API.Controllers
     public class ConvertationsController : BaseController<Convertation, ConvertationRepository, int>
     {
         private readonly ConvertationRepository convertationRepository;
-        private readonly AttachmentRepository attachmentRepository;
-        public ConvertationsController(ConvertationRepository convertationRepository, AttachmentRepository attachmentRepository) : base(convertationRepository)
+        public ConvertationsController(ConvertationRepository convertationRepository) : base(convertationRepository)
         {
             this.convertationRepository = convertationRepository;
-            this.attachmentRepository = attachmentRepository;
         }
 
         [HttpGet("ViewConvertations")]

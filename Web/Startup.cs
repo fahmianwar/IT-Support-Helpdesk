@@ -49,7 +49,6 @@ namespace Web
                 };
             });
 
-            services.AddScoped<AttachmentRepository>();
             services.AddScoped<UserRepository>();
             services.AddScoped<CaseRepository>();
             services.AddScoped<CategoryRepository>();

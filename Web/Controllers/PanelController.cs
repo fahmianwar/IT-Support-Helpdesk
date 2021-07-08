@@ -24,7 +24,7 @@ namespace Web.Controllers
         private readonly PriorityRepository priorityRepository;
         private readonly RoleRepository roleRepository;
         private readonly StatusCodeRepository statusCodeRepository;
-        private readonly AttachmentRepository attachmentRepository;
+
         public PanelController(
             UserRepository userRepository,
             CaseRepository caseRepository,
@@ -33,8 +33,7 @@ namespace Web.Controllers
             HistoryRepository historyRepository,
             PriorityRepository priorityRepository,
             RoleRepository roleRepository,
-            StatusCodeRepository statusCodeRepository,
-            AttachmentRepository attachmentRepository
+            StatusCodeRepository statusCodeRepository
             ) : base(userRepository)
         {
             this.userRepository = userRepository;
@@ -45,7 +44,6 @@ namespace Web.Controllers
             this.priorityRepository = priorityRepository;
             this.roleRepository = roleRepository;
             this.statusCodeRepository = statusCodeRepository;
-            this.attachmentRepository = attachmentRepository;
         }
 
         public void GetSession()
@@ -213,7 +211,20 @@ namespace Web.Controllers
             {
                 return Json(null);
             }
+        }
 
+        public async Task<JsonResult> GetHistoryHandleTickets()
+        {
+            GetSession();
+            if (ViewBag.UserId != null)
+            {
+                var result = await caseRepository.GetHistoryTicketsByUserId(Int32.Parse(ViewBag.UserId));
+                return Json(result);
+            }
+            else
+            {
+                return Json(null);
+            }
         }
 
         public IActionResult ViewConvertations()

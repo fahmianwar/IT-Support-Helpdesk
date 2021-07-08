@@ -13,8 +13,6 @@ namespace API.Context
         {
 
         }
-
-        public DbSet<Attachment> Attachments { get; set; }
         public DbSet<Case> Cases { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Convertation> Convertations { get; set; }
@@ -38,10 +36,6 @@ namespace API.Context
             //modelBuilder.Entity<User>()
             //.HasMany(cs => cs.Case)
             //.WithOne(u => u.User);
-
-            modelBuilder.Entity<Convertation>()
-            .HasMany(cv => cv.Attachment)
-            .WithOne(a => a.Convertation);
 
             modelBuilder.Entity<Case>()
             .HasMany(cs => cs.Convertation)

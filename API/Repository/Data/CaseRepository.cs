@@ -154,6 +154,31 @@ namespace API.Repository.Data
             return all.Where(x => history.Contains(x.Id));
         }
 
+        public IEnumerable<CaseVM> ViewHistoryTicketsByStaffId(int userId)
+        {
+            var history = context.Histories.OrderByDescending(e => e.DateTime).Where(x => x.UserId == userId).Select(c => c.CaseId);
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name
+                }).ToList();
+            return all.Where(x => history.Contains(x.Id) && x.EndDateTime != null);
+        }
+
         public IEnumerable<CaseVM> ViewTicketsByLevel(int level)
         {
             Case cases = new Case();
@@ -172,11 +197,12 @@ namespace API.Repository.Data
                     Review = c.Review,
                     Level = c.Level,
                     UserId = u.Id,
+                    StaffId = c.StaffId,
                     UserName = u.Name,
                     PriorityName = p.Name,
                     CategoryName = ct.Name
                 }).ToList();
-            return all.Where(x => x.EndDateTime == null && x.Level == level).OrderByDescending(x => x.StartDateTime);
+            return all.Where(x => x.EndDateTime == null && x.Level == level && (x.StaffId == null || x.StaffId == 0)).OrderByDescending(x => x.StartDateTime);
         }
 
         public int AskNextLevel(int caseId)
@@ -193,12 +219,13 @@ namespace API.Repository.Data
             {
                 return 0;
             }
-            cases.Level = cases.Level + 1;
-
-            context.Cases.Update(cases);
-            context.SaveChanges();
 
             if (get.Level < 3) {
+                cases.Level = cases.Level + 1;
+                cases.StaffId = 0;
+                context.Cases.Update(cases);
+                result = context.SaveChanges();
+
                 var history = new History()
                 {
                     DateTime = DateTime.Now,
@@ -212,6 +239,36 @@ namespace API.Repository.Data
                 context.Histories.Add(history);
                 result = context.SaveChanges();
             }
+            return result;
+        }
+
+        public int ChangePriority(PriorityVM priorityVM)
+        {
+            int result = 0;
+
+            var get = context.Cases.Find(priorityVM.CaseId);
+            if (get == null)
+            {
+                return 0;
+            }
+
+            var history = new History()
+            {
+                DateTime = DateTime.Now,
+                Description = $"[STAFF] StaffId #{priorityVM.UserId} Change Priority of CaseId #{priorityVM.CaseId} from Priority #{get.PriorityId} to #{priorityVM.PriorityId}",
+                UserId = priorityVM.UserId,
+                Level = get.Level,
+                CaseId = get.Id,
+                StatusCodeId = 2
+            };
+
+            get.PriorityId = priorityVM.PriorityId;
+
+            context.Cases.Update(get);
+            result = context.SaveChanges();
+
+            context.Histories.Add(history);
+            result = context.SaveChanges();
             return result;
         }
 
@@ -232,6 +289,12 @@ namespace API.Repository.Data
                     StatusCodeId = 2
                 };
 
+                var getCase = context.Cases.Find(closeTicketVM.CaseId);
+                getCase.StaffId = closeTicketVM.UserId;
+
+                context.Cases.Update(getCase);
+                result = context.SaveChanges();
+
                 context.Histories.Add(history);
                 result = context.SaveChanges();
             }
@@ -240,6 +303,7 @@ namespace API.Repository.Data
 
         public int CloseTicketById(CloseTicketVM closeTicketVM)
         {
+            int result = 0;
             var cases = context.Cases.Find(closeTicketVM.CaseId);
             if (cases.EndDateTime == null)
             {
@@ -257,8 +321,16 @@ namespace API.Repository.Data
                     UserId = closeTicketVM.UserId,
                     StatusCodeId = 3
                 };
+
+                var getCase = context.Cases.Find(closeTicketVM.CaseId);
+                getCase.StaffId = 0;
+
+                context.Cases.Update(getCase);
+                result = context.SaveChanges();
+
                 context.Histories.Add(newHistory);
-                return context.SaveChanges();
+                result = context.SaveChanges();
+                return result;
             }
             else
             {

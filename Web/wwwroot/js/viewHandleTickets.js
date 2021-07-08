@@ -58,7 +58,17 @@
                 }
             },
             {
-                "data": "priorityName"
+                "render": function (data, type, row) {
+                    if (row['priorityName'] == "Low") {
+                        return `<span class="right badge badge-info">${row['priorityName']}</span>`;
+                    } else if (row['priorityName'] == "Low") {
+                        return `<span class="right badge badge-warning">${row['priorityName']}</span>`;
+                    } else if (row['priorityName'] == "High") {
+                        return `<span class="right badge badge-danger">${row['priorityName']}</span>`;
+                    } else {
+                        return `<span class="right badge badge-info">${row['priorityName']}</span>`;
+                    }
+                }
             },
             {
                 "data": "categoryName"

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace API.Models
 {
-    [Table("TB_M_Histories")]
+    [Table("TB_T_Histories")]
     public class History
     {
         [Key]

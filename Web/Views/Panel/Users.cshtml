@@ -250,5 +250,11 @@
     </div>
 </div>
 @section scripts {
+    <script>
+        var viewBagUserId = '@ViewBag.UserId';
+        var viewBagRoleId = '@ViewBag.RoleId';
+        var viewBagLevel = '@ViewBag.Level';
+        var viewBagName = '@ViewBag.Name';
+    </script>
     <script src="~/js/usersList.js" asp-append-version="true"></script>
 }

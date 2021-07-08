@@ -36,7 +36,6 @@ namespace API
             services.AddControllers()
             .AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
-            services.AddScoped<AttachmentRepository>();
             services.AddScoped<CaseRepository>();
             services.AddScoped<CategoryRepository>();
             services.AddScoped<ConvertationRepository>();

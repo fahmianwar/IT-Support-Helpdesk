@@ -11,7 +11,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Tickets</h1>
-                    <span title="Create Ticket" data-toggle="tooltip" data-placement="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" onclick="openCreateTicket()"><i class="fas fa-edit"></i></button></span>
+                    <span title="Create Ticket" data-toggle="tooltip" data-placement="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" onclick="openCreateTicket()"><i class="fas fa-plus"></i></button></span>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -27,32 +27,59 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">List Ticket</h3>
-                        </div>
-                        <!-- /.card-header -->
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#ticket" data-toggle="tab">On Going</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">History</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->
                         <div class="card-body">
-                            <table id="tableTickets" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Description</th>
-                                        <th>StartDate Time</th>
-                                        <th>EndDate Time</th>
-                                        <th>Status</th>
-                                        <th>Priority Name</th>
-                                        <th>Category Name</th>
-                                        <th>Review</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="ticket">
+                                    <table id="tableTickets" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Description</th>
+                                                <th>Created Date</th>
+                                                <th>Closed Date</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Category</th>
+                                                <th>Review</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="history">
+                                    <table id="tableHistoryTickets" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Description</th>
+                                                <th>Created Date</th>
+                                                <th>Closed Date</th>
+                                                <th>Status</th>
+                                                <th>Priority</th>
+                                                <th>Category</th>
+                                                <th>Review</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
                         </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.col -->
                 </div>
                 <!-- /.col -->
             </div>
@@ -68,7 +95,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cases</h5>
+                <h5 class="modal-title">Create Ticket</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -76,17 +103,10 @@
             <form class="needs-validation" novalidate id="formCreate" action="javascript:createTicket()">
                 <div class="modal-body">
                     <div class="form-row">
-                        <div class="col-md-8 mb-3">
+                        <div class="col-md-12 mb-3">
                             <input type="number" class="form-control" id="inputCreateUserId" placeholder="UserId" value="@ViewBag.UserId" hidden required>
                         </div>
-                        <div class="col-md-8 mb-3">
-                            <label for="inputCreateDescription">Description</label>
-                            <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
-                            <div class="invalid-feedback">
-                                Please enter right string format.
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-12 mb-3">
                             <label for="inputCreateCategory">Category</label>
                             <select class="form-control" id="inputCreateCategoryId" placeholder="Category" required>
                             </select>
@@ -94,6 +114,14 @@
                                 Please enter right category option.
                             </div>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="inputCreateDescription">Description</label>
+                            <textarea class="form-control" id="inputCreateDescription" placeholder="Description" required></textarea>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -148,7 +176,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Cases</h5>
+                <h5 class="modal-title">Convertation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

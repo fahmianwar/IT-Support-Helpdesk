@@ -14,6 +14,7 @@ namespace API.ViewModels
         public int? Review { get; set; }
         public int Level { get; set; }
         public int UserId { get; set; }
+        public int? StaffId { get; set; }
         public string UserName { get; set; }
         public string PriorityName { get; set; }
         public string CategoryName { get; set; }

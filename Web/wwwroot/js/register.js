@@ -1,5 +1,4 @@
 ﻿function register() {
-    debugger
     var obj = new Object();
     obj.Name = $("#inputName").val();
     obj.Email = $("#inputEmail").val();
@@ -28,7 +27,7 @@
             },
             data: JSON.stringify(obj)
         }).done((result) => {
-            alert(result);
+            //alert(result);
             Swal.fire({
                 title: 'Success!',
                 text: 'Register Berhasil. Redirecting in 5 seconds.',
@@ -42,7 +41,7 @@
             /*console.log(result);*/
             $('#tableUsers').DataTable().ajax.reload();
         }).fail((error) => {
-            alert(error);
+            //alert(error);
             Swal.fire({
                 title: 'Error!',
                 text: 'Gagal menambahkan data',
