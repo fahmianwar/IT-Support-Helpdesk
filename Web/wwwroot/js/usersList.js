@@ -49,12 +49,16 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-outline-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal"><i class="fas fa-user-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deleteUser('${row['id']}')"><i class="fas fa-user-times"></i></button>`;
+                    return `<button type="button" class="btn btn-outline-info" onclick="getUser('${row.id}')" data-toggle="modal" data-target="#editModal"  data-placement="bottom" title="Edit User"><i class="fas fa-user-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deleteUser('${row['id']}')"><i class="fas fa-user-times"  data-placement="bottom" title="Delete User"></i></button>`;
                 }
             }
         ]
     });
 
+});
+
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 (function () {

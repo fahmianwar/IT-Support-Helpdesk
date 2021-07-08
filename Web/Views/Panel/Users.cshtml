@@ -11,7 +11,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>Users</h1>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" onclick="openCreateUser()"><i class="fas fa-edit"></i></button>
+                    <span title="Create User" data-toggle="tooltip" data-placement="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#createModal" onclick="openCreateUser()"><i class="fas fa-edit"></i></button></span>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -45,7 +45,7 @@
                                         <th>Address</th>
                                         <th>Department</th>
                                         <th>Company</th>
-                                        <th>RoleName</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -130,25 +130,25 @@
                             <div class="invalid-feedback">
                                 Please enter right address format.
                             </div>
-                         </div>
                         </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="inputCreateDepartment">Department</label>
-                                <input type="text" class="form-control" id="inputCreateDepartment" placeholder="Department" required>
-                                <div class="invalid-feedback">
-                                    Please enter right string format.
-                                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateDepartment">Department</label>
+                            <input type="text" class="form-control" id="inputCreateDepartment" placeholder="Department" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="inputCreateCompany">Company</label>
-                                <input type="text" class="form-control" id="inputCreateCompany" placeholder="Company" required>
-                                <div class="invalid-feedback">
-                                    Please enter right string format.
-                                </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="inputCreateCompany">Company</label>
+                            <input type="text" class="form-control" id="inputCreateCompany" placeholder="Company" required>
+                            <div class="invalid-feedback">
+                                Please enter right string format.
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary">Create</button>
                 </div>

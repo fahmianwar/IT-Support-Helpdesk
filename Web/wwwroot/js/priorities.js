@@ -22,12 +22,16 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-outline-info" onclick="getPriority('${row.id}')" data-toggle="modal" data-target="#editModal"><i class="far fa-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deletePriority('${row['id']}')"><i class="fas fa-times"></i></button>`;
+                    return `<button type="button" class="btn btn-outline-info" onclick="getPriority('${row.id}')" data-toggle="modal" data-target="#editModal"  data-placement="bottom" title="Edit Priority"><i class="far fa-edit"></i></button> | <button type="button" class="btn btn-outline-danger" onclick="deletePriority('${row['id']}')"><i class="fas fa-times"  data-placement="bottom" title="Delete Priority"></i></button>`;
                 }
             }
         ]
     });
 
+});
+
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 (function () {

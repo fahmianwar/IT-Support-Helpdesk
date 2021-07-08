@@ -94,10 +94,10 @@
             {
                 "render": function (data, type, row) {
                     if (row['endDateTime'] == null) {
-                        return `<button type="button" class="btn btn-outline-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal"><i class="fas fa-comment"></button>`;
+                        return `<span title="Create Ticket" data-toggle="tooltip" data-placement="bottom"><button type="button" class="btn btn-outline-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal" data-placement="bottom" title="Chatting With Staff IT Support Helpdesk"><i class="fas fa-comment"></button>`;
                     } else {
                         if (row['review'] == 0) {
-                            return `<button type="button" class="btn btn-outline-success" onclick="viewReviewTicket('${row['id']}')" data-toggle="modal" data-target="#viewReviewModal"><i class="fas fa-star"></button>`;
+                            return `<button type="button" class="btn btn-outline-success" onclick="viewReviewTicket('${row['id']}')" data-toggle="modal" data-target="#viewReviewModal"  data-placement="bottom" title="Review"><i class="fas fa-star"></button>`;
                         } else {
                             return "-";
                         }
@@ -107,6 +107,10 @@
         ]
     });
 
+});
+
+$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 function openCreateTicket() {

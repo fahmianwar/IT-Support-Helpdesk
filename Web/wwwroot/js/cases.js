@@ -91,7 +91,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-danger" onclick="deleteCase('${row['id']}')"><i class="fas fa-times"></i></button>`;
+                    return `<button type="button" class="btn btn-danger" onclick="deleteCase('${row['id']}')"><i class="fas fa-times"  data-placement="bottom" title="Delete Case"></i></button>`;
                 }
             }
         ]

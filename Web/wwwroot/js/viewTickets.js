@@ -87,7 +87,7 @@
             },
             {
                 "render": function (data, type, row) {
-                    return `<button type="button" class="btn btn-outline-primary" onclick="handleTicket('${row['id']}','${userId}')"><i class="fas fa-check"></i></button>`;
+                    return `<button type="button" class="btn btn-outline-primary" onclick="handleTicket('${row['id']}','${userId}')"><i class="fas fa-check"  data-placement="bottom" title="Handle Ticket"></i></button>`;
                 }
             }
         ]
