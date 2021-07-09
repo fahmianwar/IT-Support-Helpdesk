@@ -33,22 +33,6 @@
                 },
             },
             {
-                "data": "endDateTime",
-                render: function (data, type, row) {
-                    if (data) {
-                        var m = data.split(/[T-]/);
-                        var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
-                        var curr_date = d.getDate();
-                        var curr_month = d.getMonth() + 1
-                        var curr_year = d.getFullYear();
-                        var formatedDate = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
-                        return formatedDate;
-                    }
-                    else
-                        return data
-                },
-            },
-            {
                 "data": "level"
             },
             {
@@ -72,29 +56,6 @@
             },
             {
                 "data": "categoryName"
-            },
-            {
-                "data": "review",
-                render: function (data, type, row) {
-                    if (row['review'] == 0) {
-                        return '-';
-                    }
-                    else if (row['review'] == 1) {
-                        return '&#11088';
-                    }
-                    else if (row['review'] == 2) {
-                        return '&#11088' + '&#11088';
-                    }
-                    else if (row['review'] == 3) {
-                        return '&#11088' + '&#11088' + '&#11088';
-                    }
-                    else if (row['review'] == 4) {
-                        return '&#11088' + '&#11088' + '&#11088' + '&#11088';
-                    }
-                    else if (row['review'] == 5) {
-                        return '&#11088' + '&#11088' + '&#11088' + '&#11088' + '&#11088';
-                    }
-                }
             },
             {
                 "render": function (data, type, row) {
@@ -146,22 +107,6 @@
                 },
             },
             {
-                "data": "endDateTime",
-                render: function (data, type, row) {
-                    if (data) {
-                        var m = data.split(/[T-]/);
-                        var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
-                        var curr_date = d.getDate();
-                        var curr_month = d.getMonth() + 1
-                        var curr_year = d.getFullYear();
-                        var formatedDate = d.getDate() + ' - ' + d.getMonth() + ' - ' + d.getFullYear();
-                        return formatedDate;
-                    }
-                    else
-                        return data
-                },
-            },
-            {
                 "data": "level"
             },
             {
@@ -185,29 +130,6 @@
             },
             {
                 "data": "categoryName"
-            },
-            {
-                "data": "review",
-                render: function (data, type, row) {
-                    if (row['review'] == 0) {
-                        return '-';
-                    }
-                    else if (row['review'] == 1) {
-                        return '&#11088';
-                    }
-                    else if (row['review'] == 2) {
-                        return ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 3) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                    else if (row['review'] == 4) {
-                        return ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;' + ' &#11088;';
-                    }
-                },
             },
             {
                 "render": function (data, type, row) {

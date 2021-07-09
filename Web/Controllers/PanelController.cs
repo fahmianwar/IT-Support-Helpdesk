@@ -113,6 +113,20 @@ namespace Web.Controllers
             }
         }
 
+        public async Task<JsonResult> GetHistoryTickets()
+        {
+            GetSession();
+            if (ViewBag.UserId != null)
+            {
+                var result = await caseRepository.GetHistoryTicketsByUserId(Int32.Parse(ViewBag.UserId));
+                return Json(result);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task<JsonResult> GetConvertations()
         {
             GetSession();
@@ -156,10 +170,10 @@ namespace Web.Controllers
         }
 
         // Staff
-        public IActionResult ViewTickets()
+        public IActionResult ManageTickets()
         {
             GetSession();
-            ViewBag.CurrentPage = "ViewTickets";
+            ViewBag.CurrentPage = "ManageTickets";
             return View();
         }
 
@@ -204,7 +218,7 @@ namespace Web.Controllers
             GetSession();
             if(ViewBag.UserId != null)
             {
-                var result = await caseRepository.GetTicketsByUserId(Int32.Parse(ViewBag.UserId));
+                var result = await caseRepository.GetTicketsByStaffId(Int32.Parse(ViewBag.UserId));
                 return Json(result);
             }
             else
@@ -218,7 +232,7 @@ namespace Web.Controllers
             GetSession();
             if (ViewBag.UserId != null)
             {
-                var result = await caseRepository.GetHistoryTicketsByUserId(Int32.Parse(ViewBag.UserId));
+                var result = await caseRepository.GetHistoryTicketsByStaffId(Int32.Parse(ViewBag.UserId));
                 return Json(result);
             }
             else

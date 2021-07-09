@@ -33,6 +33,74 @@
                 },
             },
             {
+                "data": "level",
+                render: function (data, type, row) {
+                    if (row['level'] == 1) {
+                        return 'Case Handle by Customer Service';
+                    }
+                    else if (row['level'] == 2) {
+                        return 'Case Handle by IT Support';
+                    }
+                    else if (row['level'] == 3) {
+                        return 'Case Handle By Software Developer';
+                    }
+                }
+            },
+            {
+                "data": "priorityName"
+            },
+            {
+                "data": "categoryName"
+            },
+            {
+                "render": function (data, type, row) {
+                    if (row['endDateTime'] == null) {
+                        return `<button type="button" class="btn btn-outline-primary" onclick="viewConvertation('${row['id']}')" data-toggle="modal" data-target="#viewConvertationModal" data-placement="bottom" title="Chatting With Staff IT Support Helpdesk"><i class="fas fa-comment"></button>`;
+                    } else {
+                        if (row['review'] == 0) {
+                            return `<button type="button" class="btn btn-outline-success" onclick="viewReviewTicket('${row['id']}')" data-toggle="modal" data-target="#viewReviewModal"  data-placement="bottom" title="Review"><i class="fas fa-star"></button>`;
+                        } else {
+                            return "-";
+                        }
+                    }
+                }
+            }
+        ]
+    });
+
+    $('#tableHistoryTickets').DataTable({
+        ajax: {
+            url: 'https://localhost:44357/Panel/GetHistoryTickets',
+            dataSrc: ''
+        },
+        columns: [
+
+            {
+                "data": null, "sortable": false,
+                render: function (data, type, row, meta) {
+                    return meta.row + meta.settings._iDisplayStart + 1;
+                }
+            },
+            {
+                "data": "description"
+            },
+            {
+                "data": "startDateTime",
+                render: function (data, type, row) {
+                    if (data) {
+                        var m = data.split(/[T-]/);
+                        var d = new Date(parseInt(m[0]), parseInt(m[1]) - 1, parseInt(m[2]));
+                        var curr_date = d.getDate();
+                        var curr_month = d.getMonth() + 1
+                        var curr_year = d.getFullYear();
+                        var formatedDate = d.getDate() + '-' + d.getMonth() + '-' + d.getFullYear();
+                        return formatedDate;
+                    }
+                    else
+                        return data
+                },
+            },
+            {
                 "data": "endDateTime",
                 render: function (data, type, row) {
                     if (data) {

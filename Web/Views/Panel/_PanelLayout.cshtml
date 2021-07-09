@@ -140,20 +140,11 @@
                         }
                         else if (ViewBag.Role == "Software Developer" || ViewBag.Role == "IT Support" || ViewBag.Role == "Customer Service")
                         {
-                            <li class="nav-header">Staffs</li>
                             <li class="nav-item">
-                                <a href="/Panel/ViewHandleTickets" class="nav-link @if (ViewBag.CurrentPage == "ViewHandleTickets") { Write("active"); }">
-                                    <i class="nav-icon fas fa-edit"></i>
-                                    <p>
-                                        View Handle Ticket
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Panel/ViewTickets" class="nav-link @if (ViewBag.CurrentPage == "ViewTickets") { Write("active"); }">
+                                <a href="/Panel/ManageTickets" class="nav-link @if (ViewBag.CurrentPage == "ManageTickets") { Write("active"); }">
                                     <i class="nav-icon fas fa-columns"></i>
                                     <p>
-                                        View Tickets
+                                        Manage Tickets
                                     </p>
                                 </a>
                             </li>

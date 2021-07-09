@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "List Tickets";
+    ViewData["Title"] = "Manage Tickets";
     Layout = "_PanelLayout";
 }
 
@@ -45,12 +45,10 @@
                                                 <th>No</th>
                                                 <th>Description</th>
                                                 <th>Created Date</th>
-                                                <th>Closed Date</th>
                                                 <th>Level</th>
                                                 <th>User</th>
                                                 <th>Priority</th>
                                                 <th>Category</th>
-                                                <th>Review</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -64,12 +62,10 @@
                                                 <th>No</th>
                                                 <th>Description</th>
                                                 <th>Created Date</th>
-                                                <th>Closed Date</th>
                                                 <th>Level</th>
                                                 <th>User</th>
                                                 <th>Priority</th>
                                                 <th>Category</th>
-                                                <th>Review</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -114,50 +110,6 @@
 </div>
 <!-- /.content-wrapper -->
 
-<div id="createModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Cases</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form class="needs-validation" novalidate id="formCreate" action="javascript:createTicket()">
-                <div class="modal-body">
-                    <div class="form-row">
-                        <div class="col-md-8 mb-3">
-                            <input type="number" class="form-control" id="inputCreateUserId" placeholder="UserId" value="@ViewBag.UserId" hidden required>
-                        </div>
-                        <div class="col-md-8 mb-3">
-                            <label for="inputCreateDescription">Description</label>
-                            <input type="text" class="form-control" id="inputCreateDescription" placeholder="Description" required>
-                            <div class="invalid-feedback">
-                                Please enter right string format.
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="inputCreateCategory">Category</label>
-                            <select class="form-control" id="inputCreateCategoryId" placeholder="Category" required>
-                                <option value="1">Login</option>
-                                <option value="2">Register</option>
-                                <option value="3">Menu</option>
-                                <option value="4">Aplikasi</option>
-                                <option value="5">Lainnya</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please enter right category option.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <div id="viewPriorityModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -204,35 +156,6 @@
 
             <div class="modal-body">
                 <div class="direct-chat-messages" id="chatMessages">
-                    <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-left">Alexander Pierce</span>
-                            <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="~/lib/adminlte/img/user1-128x128.jpg" alt="message user image">
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                            Is this template really for free? That's unbelievable!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                    </div>
-                    <!-- /.direct-chat-msg -->
-                    <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
-                        <div class="direct-chat-infos clearfix">
-                            <span class="direct-chat-name float-right">Sarah Bullock</span>
-                            <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                        </div>
-                        <!-- /.direct-chat-infos -->
-                        <img class="direct-chat-img" src="~/lib/adminlte/img/user3-128x128.jpg" alt="message user image">
-                        <!-- /.direct-chat-img -->
-                        <div class="direct-chat-text">
-                            You better believe it!
-                        </div>
-                        <!-- /.direct-chat-text -->
-                    </div>
                 </div>
                 <form class="needs-validation" novalidate id="formCreateConvertation" action="javascript:createConvertation()">
 
@@ -258,11 +181,11 @@
 </div>
 @section scripts {
     <script>
-        var userId = '@ViewBag.UserId';viewBagLevel
+        var userId = '@ViewBag.UserId';
         var viewBagUserId = '@ViewBag.UserId';
         var viewBagRoleId = '@ViewBag.RoleId';
         var viewBagLevel = '@ViewBag.Level';
         var viewBagName = '@ViewBag.Name';
     </script>
-    <script src="~/js/viewTickets.js" asp-append-version="true"></script>
+    <script src="~/js/manageTickets.js" asp-append-version="true"></script>
 }
