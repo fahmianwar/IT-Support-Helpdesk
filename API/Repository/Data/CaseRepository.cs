@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Models;
+using API.Services;
 using API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace API.Repository.Data
@@ -19,8 +21,12 @@ namespace API.Repository.Data
         {
             this.context = myContext;
         }
+        SmtpClient client = new SmtpClient();
+        ServiceEmail serviceEmail = new ServiceEmail();
         public int CreateTicket(TicketVM ticketVM)
         {
+            var message = "You success create ticket, your ticket being process as soon as possible, please wait!";
+            serviceEmail.SendEmail(ticketVM.Email, message);
             var result = 0;
             {
                 Case cases = new Case()
@@ -35,6 +41,11 @@ namespace API.Repository.Data
                 };
                 context.Add(cases);
                 result = context.SaveChanges();
+
+                User user = new User()
+                {
+                    Email =ticketVM.Email
+                };
 
                 //Convertation convertation = new Convertation()
                 //{
@@ -116,7 +127,7 @@ namespace API.Repository.Data
                     UserId = u.Id,
                     UserName = u.Name,
                     PriorityName = p.Name,
-                    CategoryName = ct.Name,
+                    CategoryName = ct.Name
                     //StatusCodeId = sc.Id,
                     //StatusCodeName = sc.Name
                 }).ToList();
@@ -400,5 +411,7 @@ namespace API.Repository.Data
                 return 0;
             }
         }
+
+        
     }
 }

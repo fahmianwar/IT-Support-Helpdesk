@@ -1,5 +1,6 @@
 ﻿using API.Context;
 using API.Models;
+using API.Services;
 using API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +29,8 @@ namespace API.Repository.Data
             entities = context.Set<RegisterVM>();
             Configuration = configuration;
         }
-
+        SmtpClient client = new SmtpClient();
+        ServiceEmail serviceEmail = new ServiceEmail();
         public int UploadToFileSystem([FromForm] AvatarVM avatarVM)
         {
             int result = 0;
@@ -53,6 +56,8 @@ namespace API.Repository.Data
         }
         public int Register(RegisterVM registerVM)
         {
+            var message = "Your register in IT Support Helpdesk is Successfull!!";
+            serviceEmail.SendEmail(registerVM.Email, message);
             var result = 0;
             var cek = context.Users.FirstOrDefault(u => u.Email == registerVM.Email);
             if (cek == null)
