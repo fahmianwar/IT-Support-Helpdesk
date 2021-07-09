@@ -131,7 +131,35 @@ namespace API.Repository.Data
                     //StatusCodeId = sc.Id,
                     //StatusCodeName = sc.Name
                 }).ToList();
-            return all.Where(x => x.UserId == userId);
+            return all.Where(x => x.UserId == userId && (x.Review == null || x.Review < 0));
+        }
+
+        public IEnumerable<CaseVM> ViewHistoryTicketsByUserId(int userId)
+        {
+            Case cases = new Case();
+            var all = (
+                from c in context.Cases
+                join u in context.Users on c.UserId equals u.Id
+                join p in context.Priorities on c.PriorityId equals p.Id
+                join ct in context.Categories on c.CategoryId equals ct.Id
+                //join h in context.Histories on c.Id equals h.CaseId
+                //join sc in context.StatusCodes on h.StatusCodeId equals sc.Id
+                select new CaseVM
+                {
+                    Id = c.Id,
+                    Description = c.Description,
+                    StartDateTime = c.StartDateTime,
+                    EndDateTime = c.EndDateTime,
+                    Review = c.Review,
+                    Level = c.Level,
+                    UserId = u.Id,
+                    UserName = u.Name,
+                    PriorityName = p.Name,
+                    CategoryName = ct.Name,
+                    //StatusCodeId = sc.Id,
+                    //StatusCodeName = sc.Name
+                }).ToList();
+            return all.Where(x => x.UserId == userId && (x.Review != null || x.Review > 0));
         }
 
         public IEnumerable<Case> GetCases()
@@ -162,7 +190,7 @@ namespace API.Repository.Data
                     PriorityName = p.Name,
                     CategoryName = ct.Name
                 }).ToList();
-            return all.Where(x => history.Contains(x.Id));
+            return all.Where(x => history.Contains(x.Id) && x.EndDateTime == null);
         }
 
         public IEnumerable<CaseVM> ViewHistoryTicketsByStaffId(int userId)

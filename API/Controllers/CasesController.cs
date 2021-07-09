@@ -61,6 +61,20 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("ViewHistoryTicketsByUserId/{userId}")]
+        public ActionResult ViewHistoryTicketsByUserId(int userId)
+        {
+            var get = caseRepository.ViewHistoryTicketsByUserId(userId);
+            if (get != null)
+            {
+                return Ok(get);
+            }
+            else
+            {
+                return BadRequest("Data tidak ditemukan");
+            }
+        }
+
         [HttpGet("ViewTicketsByStaffId/{userId}")]
         public ActionResult ViewTicketsByStaffId(int userId)
         {
