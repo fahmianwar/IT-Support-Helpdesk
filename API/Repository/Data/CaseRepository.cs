@@ -25,9 +25,15 @@ namespace API.Repository.Data
         ServiceEmail serviceEmail = new ServiceEmail();
         public int CreateTicket(TicketVM ticketVM)
         {
+            int result = 0;
             var message = "You success create ticket, your ticket being process as soon as possible, please wait!";
-            serviceEmail.SendEmail(ticketVM.Email, message);
-            var result = 0;
+            var user = context.Users.Find(ticketVM.UserId);
+            if(user == null)
+            {
+                return 0;
+            }
+            serviceEmail.SendEmail(user.Email, message);
+            
             {
                 Case cases = new Case()
                 {
@@ -37,15 +43,16 @@ namespace API.Repository.Data
                     PriorityId = 1,
                     Level = 1,
                     UserId = ticketVM.UserId,
+                    StaffId = 0,
                     CategoryId = ticketVM.CategoryId
                 };
                 context.Add(cases);
                 result = context.SaveChanges();
 
-                User user = new User()
-                {
-                    Email =ticketVM.Email
-                };
+                //User user = new User()
+                //{
+                //    Email =ticketVM.Email
+                //};
 
                 //Convertation convertation = new Convertation()
                 //{
@@ -131,7 +138,7 @@ namespace API.Repository.Data
                     //StatusCodeId = sc.Id,
                     //StatusCodeName = sc.Name
                 }).ToList();
-            return all.Where(x => x.UserId == userId && (x.Review == null || x.Review < 0));
+            return all.Where(x => x.UserId == userId && (x.Review == null || x.Review <= 0));
         }
 
         public IEnumerable<CaseVM> ViewHistoryTicketsByUserId(int userId)
