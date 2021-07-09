@@ -25,7 +25,7 @@ namespace API.Repository.Data
         ServiceEmail serviceEmail = new ServiceEmail();
         public int CreateTicket(TicketVM ticketVM)
         {
-            var message = "You success create ticket, your ticket being process as soon as possible, please wait!";
+            var message = "Success create ticket, your ticket being process, Please Wait!";
             serviceEmail.SendEmail(ticketVM.Email, message);
             var result = 0;
             {
