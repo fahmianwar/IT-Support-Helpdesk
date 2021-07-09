@@ -9,6 +9,7 @@ namespace API.ViewModels
     public class TicketVM
     {
         public string Description { get; set; }
+        public string Email { get; set; }
         public DateTime StartDateTime { get; set; }
         public int CategoryId { get; set; }
         public string Message { get; set; }

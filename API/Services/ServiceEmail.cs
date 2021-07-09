@@ -17,14 +17,14 @@ namespace API.Services
     }
     public class ServiceEmail
     {
-        public void SendEmail(string sendEmail, string theCode)
+        public void SendEmail(string sendEmail, string message)
         {
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
             mail.To.Add(new MailAddress(sendEmail));
-            mail.From = new MailAddress("mcc50mcc@gmail.com", "NET CORE WEB API");
-            mail.Subject = "VERIFICATION CODE: " + DateTime.Now.ToString();
-            mail.Body = "Dear User, <br><br>Please sign up using this code to your application :<br><br><b>" + theCode + "</b><br><br> Thank you, <br> CJ Education";
+            mail.From = new MailAddress("mcc50mcc@gmail.com", "IT SUPPORT HELPDESK");
+            mail.Subject ="IT Support Helpdesk" + DateTime.Now.ToString();
+            mail.Body = "Dear User, <br><br><b>" + message + "</b><br><br> Thank you, <br> IT Support Helpdesk";
             mail.IsBodyHtml = true;
 
             SmtpServer.UseDefaultCredentials = false;
