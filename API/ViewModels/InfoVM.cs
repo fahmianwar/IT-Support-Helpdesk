@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.ViewModels
 {
-    public class LoginVM
+    public class InfoVM
     {
         public string Email { get; set; }
         public string Password { get; set; }
