@@ -99,7 +99,6 @@ function insertStatusCode() {
 }
 
 function editStatusCode() {
-    debugger
     var obj = new Object();
     obj.id = $("#Id").val();
     obj.Name = $("#Name").val();
