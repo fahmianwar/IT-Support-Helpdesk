@@ -34,6 +34,7 @@ namespace API.Repository.Data
             }
             serviceEmail.SendEmail(user.Email, message);
             
+            var message = "Success create ticket, your ticket being process, Please Wait!";
             {
                 Case cases = new Case()
                 {

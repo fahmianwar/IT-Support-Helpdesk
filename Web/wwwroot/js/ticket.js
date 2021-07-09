@@ -196,8 +196,10 @@ function openCreateTicket() {
 }
 
 function createTicket() {
+    debugger
     var obj = new Object();
     obj.UserId = parseInt($("#inputCreateUserId").val());
+    obj.Email = $("#inputEmail").val();
     obj.Description = $("#inputCreateDescription").val();
     obj.CategoryId = parseInt($("#inputCreateCategoryId ").val());
     //console.log(obj);
